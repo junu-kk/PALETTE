@@ -1,0 +1,8 @@
+index
+
+authentication : login, logout, signup
+
+school : list, one
+club : list, one
+a_p : list, one, register
+mypage : profile, p_edit, e_c, resume
