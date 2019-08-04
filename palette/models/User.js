@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
     required : true,
     unique : true,
   },
-  pw:{
+  password:{
     type : String,
     required : true,
     trim : true,
@@ -51,7 +51,7 @@ var userSchema = mongoose.Schema({
   },
   grade:{
     type:Number,
-    required:true,
+    //required:true,
   },
   class:{
     type:String,
@@ -81,10 +81,12 @@ userSchema.methods = {
     });
   },
 
-  pwCheck: function(pw){
-    if(pw===this.pw){
+  passwordCheck: function(password){
+    if(password===this.password){
+      console.log('비번같아');
       return true;
     } else{
+      console.log('비번달라');
       return false;
     }
   },

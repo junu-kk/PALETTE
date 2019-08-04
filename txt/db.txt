@@ -2,7 +2,7 @@ Student
 fname
 lname
 email
-pw
+password
 DOB
 address
 school -> school참조

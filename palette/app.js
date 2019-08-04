@@ -18,6 +18,9 @@ signupRouter = require('./routes/authentication/signup');
 
 var app = express();
 
+library.passport();
+library.database();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -28,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({secret:'O@#YRwr8oqyr8oqwirh', resave:true, saveUninitialized:false}));
+app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -13,42 +13,42 @@ module.exports = function(){
 
   passport.use('local-login',new LocalStrategy({
     usernameField:'email',
-    passwordField:'pw',
+    passwordField:'password',
     passReqToCallback:true,
 
-  }, function(req,email,pw,done){
+  }, function(req,email,password,done){
     User.findOne({email:email}, function(err,user){
-      if(err){
+      if(err){//펑션오류
         return done(err);
       }
-      if(!user){
+      if(!user){//이멜틀림
         return done(null,false);
       }
-      if(!user.pwCheck(pw)){
+      if(!user.passwordCheck(password)){//비번틀림
         return done(null,false);
       }
-      return done(null,user);
+      return done(null,user);//성공
     });
   }));
 
   passport.use('local-signup', new LocalStrategy({
     usernameField:'email',
-    passwordField:'pw',
+    passwordField:'password',
     passReqToCallback:true,
-  }, function(req,email,pw,done){
+  }, function(req,email,password,done){
     User.findOne({email:email},function(err,user){
-      if(err){
+      if(err){//펑션오류
         return done(err);
       }
-      if(user){
+      if(user){//이메일이미존재
         return done(null,false);
-      } else{
+      } else{//성공
         var newUser = new User();
 
         newUser.fname = req.body.fname;
         newUser.lname = req.body.lname;
         newUser.email = email;
-        newUser.pw = pw;
+        newUser.password = password;
 
         newUser.save(function(err){
           if(err){
