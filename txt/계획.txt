@@ -1,4 +1,5 @@
-﻿CTO of Palette
+﻿1일차 모임
+CTO of Palette
 
 그냥 싹 다 개발해야함..ㅎㅎㅎ
 유니밴드 페이지와 nodejs 책 참고하면서
@@ -82,6 +83,68 @@ interact with followers
 2. 동아리,대외활동,학교 등록
 3. 조회
 
+--------------------------------
+2일차 모임
+
+students
+organizers
+club
+
+rc olympics
+houseleader -> 고객확보
+
+uiux디자이너 
+
+announcement
+: skku
+dribble 프론트엔드 앱
+
+
+
+school management
+
+
+-------------------
+통합검색으로 하자.
+팔레트로 관심사 ㄱ
+팔로잉기능
+e - certificates : from now, 그냥 따온는걸로.
+portfoliio : 유저가 직접 
+1. input themselves
+later on. rc send.
+latttter on. 
+
+유저별 다른건 어떻게할거지?
+
+
+filter
+
+location : specific
+price : range
+competition type : list보내주는거받자.
+date
+school
+
+
+googleform 같이.
+
+-------------------------------
+db에 미리 넣어놓는걸로.
+
+key )
+
+events ) 
+
+기본적으로 Student로.
+
+account 다르게.계정은 똑같지만. 페이스북 페이지같이. 그렇게 갑니다. 우리가 한 사람을 슈퍼관리자로 지정하면 걔가 쭉쭉 뻗어나갈 수 있도록.
+
+
+1-2 a week
+
+인도 개발자를 이기자.
+
+11월까지 기한. 12월엔 여기저기 돌아다닐 수도.
 
 
 

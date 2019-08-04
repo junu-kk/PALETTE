@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h2 SIGNUP
+    form(action="/signup" method="POST")
+      p First Name : 
+      input(name="fname" type="text")
+      p Last Name :
+      input(name="lname" type="text")
+      p Email : 
+      input(name="email" type="email")
+      p Password : 
+      input(name="pw" type="password")
+      button.submit signup

@@ -1,15 +1,23 @@
 Student
-firstname
-lastname
+fname
+lname
 email
 pw
+DOB
+address
 school -> school참조
 clubs -> club참조
-tags -> tag참조
 pic
 bio
-e_c -> E_C참조
-resume -> Resume참조
+ecert -> Ecert참조
+pfolio -> Pfolio참조
+grade
+class
+major
+work_exp
+fun_facts
+s_i
+
 
 School
 name
@@ -42,7 +50,7 @@ location
 price
 tags -> tag참조
 
-E_C
+Ecert
 
 Resume
 
