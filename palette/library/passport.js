@@ -22,10 +22,14 @@ module.exports = function(){
         return done(err);
       }
       if(!user){//이멜틀림
-        return done(null,false);
+        return done(null,false,{
+          message:'Incorrect Email.'
+        });
       }
       if(!user.passwordCheck(password)){//비번틀림
-        return done(null,false);
+        return done(null,false,{
+          message:'Incorrect Password.'
+        });
       }
       return done(null,user);//성공
     });
@@ -41,7 +45,9 @@ module.exports = function(){
         return done(err);
       }
       if(user){//이메일이미존재
-        return done(null,false);
+        return done(null,false,{
+          message:'Email already exists.'
+        });
       } else{//성공
         var newUser = new User();
 

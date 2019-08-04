@@ -2,7 +2,9 @@ extends ../layout
 
 block content
   h2 LOGIN
+  div(style="color:red;") #{ct.feedback}
   form(action="/login" method="POST")
     input(name="email" type="email")
     input(name="password" type = "password")
     button.submit login
+    
