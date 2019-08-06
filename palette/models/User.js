@@ -21,7 +21,6 @@ var userSchema = mongoose.Schema({
   },
   dob:{
     type : Date,
-
   },
   address:{
     type : String,
@@ -39,12 +38,14 @@ var userSchema = mongoose.Schema({
   },
   bio:{
     type:String,
-    'default':'',
   },
+  /*
+  ecert는 pfolio에 포함시키자.
   ecert:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Ecert',
   },
+  */
   pfolio:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Pfolio',
@@ -68,6 +69,10 @@ var userSchema = mongoose.Schema({
   },
   s_i:{
     type:String,
+  },
+  is_new:{
+    type:Boolean,
+    'default':true,
   }
 });
 

@@ -1,0 +1,34 @@
+pfolio를
+1. 스키마로 만들어 user가 참조하게 한다
+2. user에 넣어서 촥촥 하게한다
+
+근데 pfolio에는 ecert가 들어가기 때문에
+1번으로 ㄱㄱ
+
+first_login은 크게
+first_login/1 : 기본정보. pic은 기본값.
+dob address bio grade class work_exp fun_facts s_i.
+first_login/2 : 포트폴리오. e_cert는 기본값.
+pfolio -> list positions, awards, projects, internships.
+여기서 넷 다 배열로 받아야 하는데
+사실 칸을 똑같이 세 개 준다고 하면 내 입장에선 쉽지만
+사람마다 항목 수가 다르므로 어떻게 할까
+
+1. 일단 하나씩만 받고 추후에 하나씩 push할수있게 한다.
+2. 칸 5개를 주고, 채운 칸들만 push한다.
+3. (공부필요 but 가장 이상적)
+추가 버튼을 누르면 칸이 하나씩 더 생기게 한다.
+
+3번으로 하고 싶은데
+그럼 js로 싹 해야하지 않을까 싶다. 공부하자.
+
+onclick 할때마다 input form 추가
+
+first_login/3 : 학교와 전공과 동아리
+school, major, club 불러오기, 선택 및 id값 할당.
+요놈은 지난프로젝트랑 똑같이 하면될듯.
+
+그게 다 끝나야
+메인페이지 ㄱㄱ.
+
+db.collection_name.find()

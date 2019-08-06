@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h2 Thanks for basic information.
+  h3 Let's make your palette portfolio.
+  form(action="/first_login/pfolio" method="POST")
+    //생각해보니 넷 다 배열로 받아야 한다.
+    p List Positions :
+    input(name="pos", type="text")
+    p Awards :
+    input(name="awards", type="text")
+    p Projects :
+    input(name="projs", type="text")
+    p Internships :
+    input(name="interns", type="text")

@@ -16,11 +16,14 @@ router.get('/', function(req,res,next){
 });
 
 router.post('/', passport.authenticate('local-login',{
+  successRedirect:'/',
   failureRedirect:'/login',
   failureFlash:true,
-}), function(req,res){
-  console.log("로그인성공");
-  return res.redirect('/');
-});
+})//, function(req,res){
+  //console.log("로그인성공");
+  
+  //return res.redirect('/');
+//});
+);
 
 module.exports = router;
