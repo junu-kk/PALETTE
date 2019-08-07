@@ -1,0 +1,20 @@
+<html>
+
+<head>
+  <title>Dynamic Form</title>
+  <script language="javascript" type="text/javascript">
+    function changeIt() {
+      createTextbox.innerHTML = createTextbox.innerHTML + "<br><input type='text' name='mytext' >"
+    }
+  </script>
+</head>
+
+<body>
+
+  <form name="form">
+    <input type="button" value="clickHere" onClick="changeIt()">
+    <div id="createTextbox"></div>
+  </form>
+</body>
+
+</html>

@@ -1,15 +1,51 @@
 extends ../layout
 
 block content
-  h2 Thanks for basic information.
+  h2 Thanks for giving basic information.
   h3 Let's make your palette portfolio.
-  form(action="/first_login/pfolio" method="POST")
-    //생각해보니 넷 다 배열로 받아야 한다.
+  script(language="javascript" type="text/javascript").
+    var l=0,a=0,p=0,i=0;
+    function addL() {
+      createL.innerHTML +=
+      "<br><input type='text' name='pos"+l+"' >"
+      l++;
+    }
+    function addA() {
+      createA.innerHTML +=
+      "<br><input type='text' name='awards"+a+"' >"
+      a++;
+    }
+    function addP() {
+      createP.innerHTML +=
+      "<br><input type='text' name='projs"+p+"' >"
+      p++;
+    }
+    function addI() {
+      createI.innerHTML +=
+      "<br><input type='text' name='interns"+i+"' >"
+      i++;
+    }
+    function retL(){return l;}
+    function retA(){return A;}
+    function retP(){return p;}
+    function retI(){return i;}
+  
+  form(name="form" action="/first_login/pfolio" method="POST")
     p List Positions :
-    input(name="pos", type="text")
+    input(type="button" value="Add List Positions" onclick="addL()")
+    #createL
     p Awards :
-    input(name="awards", type="text")
+    input(type="button" value="Add Awards" onclick="addA()")
+    #createA
     p Projects :
-    input(name="projs", type="text")
-    p Internships :
-    input(name="interns", type="text")
+    input(type="button" value="Add Projects" onclick="addP()")
+    #createP
+    p Internships : 
+    input(type="button" value="Add Internships" onclick="addI()")
+    #createI
+    br
+    //라우터에서는 l0l1l2a0p0i0을 받는다고 하면
+    //아몰라일단전송 고
+    br
+
+    button.submit confirm

@@ -1,6 +1,8 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/User');
+var Pfolio = require('../models/Pfolio');
+var Ecert = require('../models/Ecert');
 
 module.exports = function(){
   passport.serializeUser(function(user,done){
@@ -50,11 +52,30 @@ module.exports = function(){
         });
       } else{//성공
         var newUser = new User();
-
+        var newPfolio = new Pfolio();
+        var newEcert = new Ecert();
+        
         newUser.fname = req.body.fname;
         newUser.lname = req.body.lname;
         newUser.email = email;
         newUser.password = password;
+
+        newUser.pfolio = newPfolio._id;
+        newPfolio.ecert = newEcert._id;
+        newEcert.save(function(err){
+          if(err){
+            console.log(err);
+          } else{
+            return done(null, newEcert);
+          }
+        });
+        newPfolio.save(function(err){
+          if(err){
+            console.log(err);
+          } else{
+            return done(null, newPfolio);
+          }
+        });
 
         newUser.save(function(err){
           if(err){
@@ -64,6 +85,6 @@ module.exports = function(){
           }
         });
       }
-    })
+    });
   }));
 }
