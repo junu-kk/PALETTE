@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 
 var pfolioSchema = mongoose.Schema({
+  userid:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User'
+  },
   pos:[{
     type:String,
   }],

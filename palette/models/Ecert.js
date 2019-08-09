@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 var ecertSchema = mongoose.Schema({
-
+  pfolioid:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Pfolio',
+  },
 });
 
 ecertSchema.methods={

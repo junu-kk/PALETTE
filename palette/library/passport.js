@@ -61,6 +61,9 @@ module.exports = function(){
         newUser.password = password;
 
         newUser.pfolio = newPfolio._id;
+        newPfolio.userid = newUser._id;
+
+        newEcert.pfolioid = newPfolio._id;
         newPfolio.ecert = newEcert._id;
         newEcert.save(function(err){
           if(err){
