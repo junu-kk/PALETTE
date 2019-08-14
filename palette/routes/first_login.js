@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var Pfolio = require('../models/Pfolio');
+var School = require('../models/School');
+var Club = require('../models/Club');
 
 router.get('/', function(req,res,next){
   if(req.isUnauthenticated()){
@@ -72,7 +74,30 @@ router.get('/smc', function(req,res,next){
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  return res.render('first_login/smc');
+  School.find({}).exec(function(errS,school){
+    if(errS) throw errS;
+
+    Club.find({}).exec(function(errC,club){
+      if(errC) throw errC;
+
+      return res.render('first_login/smc', {ct:{
+        school:school,
+        club:club,
+      }});
+    });
+  });
+});
+
+router.post('/smc', function(req,res,next){
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+  User.findOneAndUpdate({email:req.user.email},{
+  //post처리
+  },function(err,updateUser){
+    if(err) throw err;
+    updateUser.saveUser();
+  });
 });
 
 module.exports = router;

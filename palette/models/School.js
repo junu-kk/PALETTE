@@ -1,8 +1,25 @@
 var mongoose = require('mongoose');
 
 var schoolSchema = mongoose.Schema({
-
-});
+  name:{
+    type:String,
+    required:true,
+  },
+  address:{
+    type:String,
+    required:true,
+  },
+  pic:{
+    type:String,
+  },
+  info:{
+    type:String,
+  },
+  major:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Major',
+  },
+}, {collection:'school'});
 
 schoolSchema.methods={
   saveSchool:function(callback){
@@ -15,4 +32,4 @@ schoolSchema.methods={
   }
 }
 
-module.exports.mongoose.model('School', schoolSchema);
+module.exports=mongoose.model('School', schoolSchema);

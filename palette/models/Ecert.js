@@ -5,7 +5,7 @@ var ecertSchema = mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Pfolio',
   },
-});
+},{collection:"ecerts"});
 
 ecertSchema.methods={
   saveEcert:function(callback){

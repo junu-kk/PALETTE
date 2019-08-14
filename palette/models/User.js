@@ -74,7 +74,7 @@ var userSchema = mongoose.Schema({
     type:Boolean,
     'default':true,
   }
-});
+},{collection:"users"});
 
 userSchema.methods = {
   saveUser: function(callback){

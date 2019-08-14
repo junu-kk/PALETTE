@@ -1,3 +1,8 @@
+db.school.insert({name:"YU",address:"Sinchon",info:"Yonsei University"})
+db.club.insert({name:"Sorisarang",school:ObjectId("5d53ad34b200eada4b01a8ed"),info:"Band Club"})
+db.club.insert({name:"BadCode",school:ObjectId("5d53ad34b200eada4b01a8ed"),info:"Another Band Club"})
+db.major.insert({name:"Computer Education",info:"to be Computer Teacher",school:ObjectId("5d53a59bb200eada4b01a8e6")})
+
 Student
 fname
 lname

@@ -21,7 +21,7 @@ var pfolioSchema = mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Ecert',
   },
-});
+},{collection:"pfolios"});
 
 pfolioSchema.methods={
   savePfolio:function(callback){
