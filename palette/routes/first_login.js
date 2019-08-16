@@ -92,12 +92,18 @@ router.post('/smc', function(req,res,next){
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  console.log(req.body);
+  //console.log(req.body.club);
   User.findOneAndUpdate({email:req.user.email},{
-  //post처리
+    school:req.body.school,
+    clubs:req.body.club,
+    is_new:false,
   },function(err,updateUser){
     if(err) throw err;
     updateUser.saveUser();
+    
   });
+  return res.redirect('/main');
 });
 
 module.exports = router;

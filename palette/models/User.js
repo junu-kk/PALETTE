@@ -72,7 +72,7 @@ var userSchema = mongoose.Schema({
   },
   is_new:{
     type:Boolean,
-    'default':true,
+    default:true,
   }
 },{collection:"users"});
 

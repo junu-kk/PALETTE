@@ -3,15 +3,16 @@ extends ../layout
 block content
   h2 It's the last page!
   h3 Please enter your School, Major, and Club You're in.
+  h3 Choose ONLY ONE PLEASE
   h4 School
   form(action="/first_login/smc" method="POST")
     -for(var s=0;s<ct.school.length;s++)
       c #{ct.school[s].name}
-      input(type="checkbox" value=s)
+      input(type="checkbox" name="school" value=ct.school[s]._id)
     h4 Club
     -for(var c=0;c<ct.club.length;c++)
       c #{ct.club[c].name}
-      input(type="checkbox" value=c)
+      input(type="checkbox" name="club" value=ct.club[c]._id)
     br
     br
     button.submit confirm

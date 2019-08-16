@@ -1,7 +1,8 @@
-db.school.insert({name:"YU",address:"Sinchon",info:"Yonsei University"})
-db.club.insert({name:"Sorisarang",school:ObjectId("5d53ad34b200eada4b01a8ed"),info:"Band Club"})
-db.club.insert({name:"BadCode",school:ObjectId("5d53ad34b200eada4b01a8ed"),info:"Another Band Club"})
-db.major.insert({name:"Computer Education",info:"to be Computer Teacher",school:ObjectId("5d53a59bb200eada4b01a8e6")})
+db.school.insert({name:"SKKU",address:"Hyehwa",info:"Sungkyunkwan University"})
+db.club.insert({name:"Sorisarang",school:ObjectId("5d562f62b18bda3033c1e937"),info:"Band Club"})
+db.club.insert({name:"BadCode",school:ObjectId("5d562f62b18bda3033c1e937"),info:"Another Band Club"})
+db.major.insert({name:"Computer Education",info:"to be Computer Teacher",school:ObjectId("5d562f62b18bda3033c1e937")})
+db.major.insert({name:"Math Education",info:"to be Math Teacher",school:ObjectId("5d562f62b18bda3033c1e937")})
 
 Student
 fname
