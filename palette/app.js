@@ -18,6 +18,12 @@ logoutRouter = require('./routes/authentication/logout'),
 signupRouter = require('./routes/authentication/signup');
 var first_loginRouter = require('./routes/first_login');
 var mainRouter = require('./routes/main');
+var excRouter = require('./routes/exc');
+var schoolRouter = require('./routes/school');
+var rcRouter = require('./routes/rc');
+var clubRouter = require('./routes/club');
+var pfolioRouter = require('./routes/pfolio');
+var mypageRouter = require('./routes/mypage');
 
 var app = express();
 
@@ -46,6 +52,12 @@ app.use('/logout', logoutRouter);
 app.use('/signup', signupRouter);
 app.use('/first_login', first_loginRouter);
 app.use('/main', mainRouter);
+app.use('/exc', excRouter);
+app.use('/school', schoolRouter);
+app.use('/rc', rcRouter);
+app.use('/club', clubRouter);
+app.use('/pfolio', pfolioRouter);
+app.use('/mypage', mypageRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

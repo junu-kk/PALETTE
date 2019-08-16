@@ -8,11 +8,11 @@ block content
   form(action="/first_login/smc" method="POST")
     -for(var s=0;s<ct.school.length;s++)
       c #{ct.school[s].name}
-      input(type="checkbox" name="school" value=ct.school[s]._id)
+      input(type="radio" name="school" value=ct.school[s]._id)
     h4 Club
     -for(var c=0;c<ct.club.length;c++)
       c #{ct.club[c].name}
-      input(type="checkbox" name="club" value=ct.club[c]._id)
+      input(type="radio" name="club" value=ct.club[c]._id)
     br
     br
     button.submit confirm
