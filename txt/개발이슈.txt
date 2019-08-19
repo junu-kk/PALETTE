@@ -29,3 +29,10 @@ DB에 저장하는 것까지 완료.
 
 이제 school, major, club을 띄워주고
 사용자가 선택하면 그 id를 User db에 넣는 걸 해야겠다.
+
+20190820
+browse extracurricular database 기초는 다 만듬.
+보완할 점으로는
+사진표시와 시간표시
+이게 해결되면
+mypage로 넘어가자.
