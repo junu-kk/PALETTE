@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  h2 Application for
+  h2 #{ct.exc.name}
+  h3 DUE DATE :
+  p #{ct.exc.due}
+  br
+  form(action="/exc/"+ct.exc._id method="POST")
+    -for(var i=0;i<ct.exc.apcnq.length;i++)
+      h4 Question #{i+1}
+      p #{ct.exc.apcnq[i]}
+      input(type="text" name="ans")
+    br
+    button.submit enroll
+    

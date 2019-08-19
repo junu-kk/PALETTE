@@ -73,7 +73,11 @@ var userSchema = mongoose.Schema({
   is_new:{
     type:Boolean,
     default:true,
-  }
+  },
+  excs:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Exc',
+  }],
 },{collection:"users"});
 
 userSchema.methods = {

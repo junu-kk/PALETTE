@@ -48,7 +48,7 @@ records
 posts -> post참조
 contact(name, phone, email)
 
-Activity
+Exc
 name
 pic
 description

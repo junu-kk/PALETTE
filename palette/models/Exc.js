@@ -23,6 +23,16 @@ var excSchema = mongoose.Schema({
   contact:{
     type:String,
   },
+  due:{
+    type:Date,
+  },
+  apcnq:[{
+    type:String,
+  }],
+  apcns:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Apcn',
+  }],
 }, {collection:"exc"}
 );
 

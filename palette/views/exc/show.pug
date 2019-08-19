@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h2 #{ct.exc.name}
+  br
+  h3 info :
+  p #{ct.exc.info}
+  br
+  h3 sch :
+  -for(var i=0;i<ct.exc.sch.length;i++)
+    p #{ct.exc.sch[i].date}
+    p #{ct.exc.sch[i].event}
+  br
+  h3 due :
+  p #{ct.exc.due}
+  br
+  h4 for more information, please contact to
+  p #{ct.exc.contact}
+  br
+  a(href="/exc/apcn/"+ct.exc._id) enroll
+  
