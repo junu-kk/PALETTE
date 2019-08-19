@@ -67,6 +67,7 @@ router.post('/:id',(req,res,next)=>{
       if(err2) throw err2;
 
       newApcn.user=user._id;
+      newApcn.exc=exc._id;
       exc.apcns.push(newApcn._id);
       user.excs.push(exc._id);
       

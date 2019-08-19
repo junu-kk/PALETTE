@@ -2,11 +2,10 @@ extends ../layout
 
 block content
   h2 #{ct.exc.name}
-  br
-  h3 info :
+  h3 information :
   p #{ct.exc.info}
   br
-  h3 sch :
+  h3 schedule :
   -for(var i=0;i<ct.exc.sch.length;i++)
     p #{ct.exc.sch[i].date}
     p #{ct.exc.sch[i].event}
