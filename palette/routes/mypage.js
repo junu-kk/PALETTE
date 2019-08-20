@@ -6,9 +6,20 @@ var crypto = require('crypto');
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
 require('../models/Upload');
+var Grid = require('gridfs-stream');
+
+var mongoose = require('mongoose');
+var mongoURI = 'mongodb://localhost:27017/palette_test';
+const conn = mongoose.createConnection(mongoURI);
+let gfs;
+conn.once('open', () => {
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+//require('../library/database');
 
 
-//gfs에 db와 collection 할당은 일단 생략
+//gfs에 db와 collection 할당은 database.js에함.
 const storage = new GridFsStorage({
   url: 'mongodb://localhost:27017/palette_test',
   file: (req, file) => {
@@ -34,13 +45,30 @@ router.get('/', function (req, res, next) {
   }
   User.findOne({ email: req.user.email }).populate('pic').exec(function (err, user) {
     if (err) throw err;
-
     
+    gfs.files.findOne({_id:user.pic._id},(err,file)=>{
+      if(err) throw err;
+      /*
+      드디어된다ㅜㅜㅜㅜㅜ이게 이미지 하나 띄울때고
+      const readstream=gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+      */
+      
+      file.isImage=true;
+      return res.render('mypage',{
+        ct:{
+          pic:file
+        }
+      });
+      
+    });
+    /*
     return res.render('mypage', {
       ct: {
         pic: user.pic
       }
     });
+    */
   });
 });
 
