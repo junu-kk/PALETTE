@@ -33,9 +33,14 @@ var userSchema = mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Club',
   }],
-  pic:{
-    type:String,
-  },
+  pic:[{
+    length:Number,
+    chunkSize:Number,
+    uploadDate:Date,
+    filename:String,
+    md5:String,
+    contentType:String,
+  }],
   bio:{
     type:String,
   },

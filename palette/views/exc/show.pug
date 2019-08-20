@@ -7,11 +7,11 @@ block content
   br
   h3 schedule :
   -for(var i=0;i<ct.exc.sch.length;i++)
-    p #{ct.exc.sch[i].date}
+    p #{ct.exc.sch[i].date.getFullYear()}.#{ct.exc.sch[i].date.getMonth()+1}.#{ct.exc.sch[i].date.getDate()}
     p #{ct.exc.sch[i].event}
   br
   h3 due :
-  p #{ct.exc.due}
+  p #{ct.exc.due.getFullYear()}.#{ct.exc.due.getMonth()+1}.#{ct.exc.due.getDate()}
   br
   h4 for more information, please contact to
   p #{ct.exc.contact}

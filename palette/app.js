@@ -10,6 +10,7 @@ var library = {
   database: require('./library/database'),
 };
 var flash = require('connect-flash');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -38,6 +39,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
