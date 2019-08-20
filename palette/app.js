@@ -10,7 +10,11 @@ var library = {
   database: require('./library/database'),
 };
 var flash = require('connect-flash');
+//img
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var Grid = require('gridfs-stream');
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -39,8 +43,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+//img
+app.use(methodOverride('_method'));
+app.use(bodyParser.json());
 
 app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
 app.use(passport.initialize());
@@ -77,4 +83,11 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//hmm
+/*
+let gfs;
+connectDB.once('open', ()=>{
+  gfs = Grid()
+})
+*/
 module.exports = app;

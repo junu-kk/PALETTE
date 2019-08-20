@@ -10,7 +10,8 @@ block content
     input(type='file' name='file')
     label(for='file') Choose file
     input(type='submit' value='submit')
-  img(src='image/#{ct.file.filename}' alt='')
+  p #{ct.pic}
+  img(src=ct.pic.filename alt='')
   form(method='POST' action='/mypage/#{ct.file._id}/delete')
     button.submit Delete
   
