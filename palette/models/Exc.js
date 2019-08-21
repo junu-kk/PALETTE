@@ -9,8 +9,11 @@ var excSchema = mongoose.Schema({
     type:String,
     required:true,
   },
+  //이미지는 항상 nodejs를 통해 업로드해야 하므로
+  //아직은 구현불가
   pic:{
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Upload',
   },
   sch:[{
     date:{

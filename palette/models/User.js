@@ -35,7 +35,7 @@ var userSchema = mongoose.Schema({
   }],
   pic:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'Upload'
+    ref:'Upload',
   },
   bio:{
     type:String,
