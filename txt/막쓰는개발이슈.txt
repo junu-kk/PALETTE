@@ -32,3 +32,12 @@ school, major, club 불러오기, 선택 및 id값 할당.
 메인페이지 ㄱㄱ.
 
 db.collection_name.find()
+
+
+---
+아 방법을 찾았다.
+readsteram.pipe()로 그냥 전체이미지를 표시하는 라우터를 하나 만든 다음에
+src로 그 링크를 가리키면 될듯.
+
+그러면 readstream.pipe()를 또다른 라우터로 만들까..?
+이미지는 어디든지 쓰이니까.
