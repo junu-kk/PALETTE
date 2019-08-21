@@ -37,13 +37,30 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
+/*
+들어가야 할걸로는
+pic, name, palette, schoolinfo, workexp, bio, interests, friends, accomplishments, posts, ext, addfriend
+이중에 일단 user db에 있는건
+pic, fname&lname, school, work_exp, bio,  s_i, excs
+없는건
+palette, friends, accomplishments, posts, addfriend
+게시물과 친구기능은 일단 추후추가.
+팔레트기능은.. 7개가 뭔지 일단 준서한테 물어보자. 역시 추후추가.
+*/
+
+
 router.get('/', function (req, res, next) {
   if (req.isUnauthenticated()) {
     return res.redirect('/login');
   }
-  User.findOne({ email: req.user.email }).populate('pic').exec(function (err, user) {
+  User.findOne({ email: req.user.email })
+  .populate('school')
+  .populate('excs')
+  .exec(function (err, user) {
     if (err) throw err;
-    return res.render('mypage');
+    return res.render('mypage',{ct:{
+      user:user,
+    }});
     
   });
 });
@@ -54,6 +71,9 @@ router.get('/hi', function (req, res, next) {
   User.findOne({ email: req.user.email }).populate('pic').exec(function (err, user) {
     if (err) throw err;
     
+    if(user.pic==null){
+      return;
+    }
     gfs.files.findOne({_id:user.pic._id},(err,file)=>{
       if(err) throw err;
       
@@ -67,12 +87,33 @@ router.get('/hi', function (req, res, next) {
 router.post('/upload', upload.single('file'), (req, res, next) => {
   User.findOne({ email: req.user.email }).exec(function (err, user) {
     if (err) throw err;
-
+    
     user.pic = res.req.file.id;
     user.saveUser((err) => {
       if (err) throw err;
     });
+    
     res.redirect('/main');
+  });
+});
+
+router.post('/delete/:id', (req,res,next)=>{
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+
+  User.findOne({email:req.user.email}).exec((err,user)=>{
+    if(err) throw err;
+    user.pic=null;
+    user.saveUser((err)=>{
+      if(err) throw err;
+    });
+    gfs.remove({_id:req.params.id,root:'uploads'},(err,gridStore)=>{
+      if(err) return res.status(404).json({err:err});
+
+      res.redirect('/mypage');
+    });
+
   });
 });
 
