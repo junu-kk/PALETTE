@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
+  //Boolean타입 admin을 추가하자.
   fname:{
     type : String,
     required : true,

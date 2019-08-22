@@ -9,16 +9,21 @@ var schoolSchema = mongoose.Schema({
     type:String,
     required:true,
   },
+  //역시 나중에 넣을 예정
   pic:{
     type:String,
   },
   info:{
     type:String,
   },
-  major:{
+  major:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Major',
-  },
+  }],
+  clubs:[{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Club',
+  }],
 }, {collection:'school'});
 
 schoolSchema.methods={

@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  h2 #{ct.school.name}
+  h3 information :
+  p #{ct.school.info}
+  h3 address :
+  p #{ct.school.address}
+  
+  h3 major :
+  -for(var i=0;i<ct.school.major.length;i++)
+    p #{ct.school.major[i].name}
+    a(href='major/'+ct.school.major[i]._id) go

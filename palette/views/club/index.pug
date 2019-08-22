@@ -1,4 +1,9 @@
 extends ../layout
 
 block content
-  p palette clubs page
+  p palette club page
+  -for(var i=0;i<ct.clubs.length;i++)
+    p #{ct.clubs[i].name}
+    //사진구현
+    a(href='club/'+ct.clubs[i]._id) go
+    br

@@ -1,0 +1,8 @@
+extends ../layout
+
+block content
+  h2 #{ct.club.name}
+  -if(!(ct.club.school==null||ct.club.school==''))
+    h3 from #{ct.club.school.name}
+  h3 information :
+  p #{ct.club.info}

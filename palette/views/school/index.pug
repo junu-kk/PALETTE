@@ -2,3 +2,8 @@ extends ../layout
 
 block content
   p palette school page
+  -for(var i=0;i<ct.school.length;i++)
+    p #{ct.school[i].name}
+    //사진구현
+    a(href='school/'+ct.school[i]._id) go
+    br
