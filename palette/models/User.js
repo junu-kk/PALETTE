@@ -80,6 +80,10 @@ var userSchema = mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Exc',
   }],
+  admin:{
+    type:Boolean,
+    default:false,
+  },
 },{collection:"users"});
 
 userSchema.methods = {
