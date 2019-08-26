@@ -1,0 +1,19 @@
+extends ../../layout
+
+block content
+
+  form(action='/admin/exc/create' method="POST")
+    input(type='file' name='file')
+    label(for='file') Choose File
+    p Name :
+    input(name="name" type="text")
+    p Info :
+    input(name="info" type="text")
+    p Schedule :
+    //다중입력
+    p Questions in Application Form :
+    p Contact :
+    input(name="contact" type="text")
+    p Due Date :
+    input(name="due" type="date")
+    button.submit confirm

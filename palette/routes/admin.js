@@ -1,3 +1,4 @@
+//모든 get함수에 admin권한 확인 나중에 추가할것(req.isUnauthenticated부분)
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
@@ -45,7 +46,7 @@ router.get('/', (req,res,next)=>{
   User.findOne({email:req.user.email})
   .exec((err,user)=>{
     if(err) throw err;
-
+    
     
     if(user.admin==false){
       return res.redirect('/main');
@@ -54,7 +55,7 @@ router.get('/', (req,res,next)=>{
     return res.render('admin');
   });
 });
-//admin에서의 exc 목적 : exc를 cd하는 데에 있다.
+//admin에서의 exc 목적 : exc를 create&delete하는 데에 있다.
 router.get('/exc', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
@@ -77,6 +78,16 @@ router.get('/exc', (req,res,next)=>{
   });
 });
 
+router.get('/exc/create', (req,res,next)=>{
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+  return res.render('admin/exc/create');
+
+});
+
+
+//일단이거는보류 create랑 delete 먼저
 router.get('/exc/:id', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
@@ -98,6 +109,7 @@ router.get('/exc/:id', (req,res,next)=>{
   });
 });
 
+//사진보여주기
 router.get('/exc/:id/hi', (req,res,next)=>{
 
   Exc.findOne({_id:req.params.id}).populate('pic').exec((err,exc)=>{
