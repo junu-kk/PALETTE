@@ -1,11 +1,14 @@
+//Model for application(for extracurricular activities)
 var mongoose = require('mongoose');
 
+//schema for E-Certification of user
 var ecertSchema = mongoose.Schema({
-  pfolioid:{
+  pfolio:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Pfolio',
   },
-},{collection:"ecerts"});
+  //추후추가예정
+},{collection:"ecert"});
 
 ecertSchema.methods={
   saveEcert:function(callback){

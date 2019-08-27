@@ -25,10 +25,6 @@ block content
       "<br><input type='text' name='interns"+i+"' >"
       i++;
     }
-    function retL(){return l;}
-    function retA(){return A;}
-    function retP(){return p;}
-    function retI(){return i;}
   
   form(name="form" action="/first_login/pfolio" method="POST")
     p List Positions :
@@ -44,8 +40,6 @@ block content
     input(type="button" value="Add Internships" onclick="addI()")
     #createI
     br
-    //라우터에서는 l0l1l2a0p0i0을 받는다고 하면
-    //아몰라일단전송 고
     br
 
     button.submit confirm

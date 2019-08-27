@@ -1,3 +1,4 @@
+//Model for club
 var mongoose = require('mongoose');
 
 var clubSchema = mongoose.Schema({
@@ -10,7 +11,8 @@ var clubSchema = mongoose.Schema({
     ref:'School',
   },
   pic:{
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Upload',
   },
   info:{
     type:String,

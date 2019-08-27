@@ -1,3 +1,4 @@
+//Model for School
 var mongoose = require('mongoose');
 
 var schoolSchema = mongoose.Schema({
@@ -16,7 +17,7 @@ var schoolSchema = mongoose.Schema({
   info:{
     type:String,
   },
-  major:[{
+  majors:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Major',
   }],

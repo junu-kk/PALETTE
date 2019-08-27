@@ -6,9 +6,8 @@ block content
   p #{ct.exc.info}
   br
   h3 schedule :
-  -for(var i=0;i<ct.exc.sch.length;i++)
-    p #{ct.exc.sch[i].date.getFullYear()}.#{ct.exc.sch[i].date.getMonth()+1}.#{ct.exc.sch[i].date.getDate()}
-    p #{ct.exc.sch[i].event}
+  p #{ct.exc.sch.date.getFullYear()}.#{ct.exc.sch.date.getMonth()+1}.#{ct.exc.sch.date.getDate()}
+  p #{ct.exc.sch.event}
   br
   h3 due :
   p #{ct.exc.due.getFullYear()}.#{ct.exc.due.getMonth()+1}.#{ct.exc.due.getDate()}

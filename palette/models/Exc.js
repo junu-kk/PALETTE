@@ -1,3 +1,4 @@
+//Model for Extracurricular Activities
 var mongoose = require('mongoose');
 
 var excSchema = mongoose.Schema({
@@ -9,29 +10,31 @@ var excSchema = mongoose.Schema({
     type:String,
     required:true,
   },
-  //이미지는 항상 nodejs를 통해 업로드해야 하므로
-  //아직은 구현불가
+  //pic upload
   pic:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Upload',
   },
-  sch:[{
+  //schedule : 일단 하나만 구현.
+  sch:{
     date:{
       type:Date,
     },
     event:{
       type:String,
     }
-  }],
+  },
   contact:{
     type:String,
   },
   due:{
     type:Date,
   },
-  apcnq:[{
+  //application questions
+  apcnqs:[{
     type:String,
   }],
+  //applications
   apcns:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Apcn',

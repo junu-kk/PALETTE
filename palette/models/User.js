@@ -1,11 +1,13 @@
+//Model for User
 var mongoose = require('mongoose');
 
 var userSchema = mongoose.Schema({
-  //Boolean타입 admin을 추가하자.
+  //first name
   fname:{
     type : String,
     required : true,
   },
+  //last name
   lname:{
     type : String,
     required : true,
@@ -20,6 +22,7 @@ var userSchema = mongoose.Schema({
     required : true,
     trim : true,
   },
+  //date of birth
   dob:{
     type : Date,
   },
@@ -41,13 +44,6 @@ var userSchema = mongoose.Schema({
   bio:{
     type:String,
   },
-  /*
-  ecert는 pfolio에 포함시키자.
-  ecert:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Ecert',
-  },
-  */
   pfolio:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Pfolio',
@@ -63,28 +59,34 @@ var userSchema = mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Major',
   },
+  //work experiences
   work_exp:{
     type:String,
   },
+  //fun facts
   fun_facts:{
     type:String,
   },
+  //skills and interests
   s_i:{
     type:String,
   },
+  //is user first logged-in new user?
   is_new:{
     type:Boolean,
     default:true,
   },
+  //extracurricular activities
   excs:[{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Exc',
   }],
+  //is user administrator?
   admin:{
     type:Boolean,
     default:false,
   },
-},{collection:"users"});
+},{collection:"user"});
 
 userSchema.methods = {
   saveUser: function(callback){

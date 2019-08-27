@@ -1,8 +1,10 @@
+//router for club
 var express = require('express');
 var router = express.Router();
 var Club = require('../models/Club');
 
-router.get('/', function(req, res, next) {
+//show list of clubs
+router.get('/', (req, res, next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
@@ -15,6 +17,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+//show information of a club
 router.get('/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');

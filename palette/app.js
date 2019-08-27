@@ -1,3 +1,4 @@
+//Main code file for running PALETTE Web Application
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,14 +11,14 @@ var library = {
   database: require('./library/database'),
 };
 var flash = require('connect-flash');
-//img
+
+//for img
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var Grid = require('gridfs-stream');
 
-
+//routers
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/authentication/login'),
 logoutRouter = require('./routes/authentication/logout'),
 signupRouter = require('./routes/authentication/signup');
@@ -45,7 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-//img
+//for img
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 
@@ -55,7 +56,6 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/signup', signupRouter);
@@ -85,11 +85,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//hmm
-/*
-let gfs;
-connectDB.once('open', ()=>{
-  gfs = Grid()
-})
-*/
 module.exports = app;

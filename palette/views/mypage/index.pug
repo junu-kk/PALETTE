@@ -10,15 +10,15 @@ block content
     input(type='file' name='file')
     label(for='file') Choose file
     input(type='submit' value='submit')
-  -if(ct.user.pic!=null)
+  -if(!(ct.user.pic==null||ct.user.pic==''))
     img(src='/mypage/hi' alt='')
   form(method='POST' action='/mypage/delete/'+ct.user.pic)
     button.submit Delete
   br
   p first name : #{ct.user.fname}
   p last name : #{ct.user.lname}
-  //school페이지 만들면 링크 추가하자.
   p school : #{ct.user.school.name}
+  a(href='school/'+ct.user.school._id) go
   p work experience : #{ct.user.work_exp}
   p bio : #{ct.user.bio}
   p skills and interests : #{ct.user.s_i}

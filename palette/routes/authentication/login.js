@@ -1,8 +1,10 @@
+//router for login
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-router.get('/', function(req,res,next){
+//for login page
+router.get('/', (req,res,next)=>{
   var fmsg = req.flash();
   var feedback = '';
   if(fmsg.error){
@@ -15,11 +17,12 @@ router.get('/', function(req,res,next){
   });
 });
 
+//for login procedure
 router.post('/', passport.authenticate('local-login',{
   //successRedirect:'/',
   failureRedirect:'/login',
   failureFlash:true,
-}), function(req,res){
+}), (req,res)=>{
   console.log(req.user.is_new);
   if(req.user.is_new){
     return res.redirect('/first_login');

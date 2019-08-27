@@ -6,13 +6,13 @@ block content
   h3 Choose ONLY ONE PLEASE
   h4 School
   form(action="/first_login/smc" method="POST")
-    -for(var s=0;s<ct.school.length;s++)
-      c #{ct.school[s].name}
-      input(type="radio" name="school" value=ct.school[s]._id)
+    -for(var s=0;s<ct.schools.length;s++)
+      c #{ct.schools[s].name}
+      input(type="radio" name="school" value=ct.schools[s]._id)
     h4 Club
-    -for(var c=0;c<ct.club.length;c++)
-      c #{ct.club[c].name}
-      input(type="radio" name="club" value=ct.club[c]._id)
+    -for(var c=0;c<ct.clubs.length;c++)
+      c #{ct.clubs[c].name}
+      input(type="radio" name="club" value=ct.clubs[c]._id)
     br
     br
     button.submit confirm

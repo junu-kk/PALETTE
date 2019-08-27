@@ -1,3 +1,4 @@
+//Model for Uploaded pictures
 var mongoose = require('mongoose');
 
 var uploadSchema = mongoose.Schema({

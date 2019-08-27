@@ -7,7 +7,7 @@ block content
   h3 address :
   p #{ct.school.address}
   
-  h3 major :
-  -for(var i=0;i<ct.school.major.length;i++)
-    p #{ct.school.major[i].name}
-    a(href='major/'+ct.school.major[i]._id) go
+  h3 Clubs in #{ct.school.name} :
+  -for(var i=0;i<ct.school.clubs.length;i++)
+    p #{ct.school.clubs[i].name}
+    a(href='/club/'+ct.school.clubs[i]._id) go

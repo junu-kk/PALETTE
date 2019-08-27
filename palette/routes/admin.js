@@ -1,3 +1,4 @@
+//router for administration작업중
 //모든 get함수에 admin권한 확인 나중에 추가할것(req.isUnauthenticated부분)
 var express = require('express');
 var router = express.Router();
@@ -128,11 +129,11 @@ router.get('/exc/:id/hi', (req,res,next)=>{
 });
 //isAdmin 귀찮아서 그냥 나중에 다 때려넣자.
 router.post('/exc/:id/upload', upload.single('file'),(req,res,next)=>{
-  Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
+  Exc.findOne({_id:req.params.id}).exec((err,newExc)=>{
     if(err) throw err;
 
-    exc.pic = res.req.file.id;
-    exc.saveExc((err)=>{
+    newExc.pic = res.req.file.id;
+    newExc.saveExc((err)=>{
       if(err) throw err;
     });
 

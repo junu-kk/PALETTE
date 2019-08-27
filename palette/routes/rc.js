@@ -1,8 +1,10 @@
+//router of residential college
+//not in progress
 var express = require('express');
 var router = express.Router();
 
-
-router.get('/', function(req, res, next) {
+//
+router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }

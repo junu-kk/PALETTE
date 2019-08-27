@@ -1,27 +1,30 @@
+//router of school
 var express = require('express');
 var router = express.Router();
 var School = require('../models/School');
 var Major = require('../models/Major');
 
-router.get('/', function(req, res, next) {
+//shows list of schools
+router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  School.find({}).exec((err,school)=>{
+  School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
     return res.render('school', {ct:{
-      school:school,
+      schools:schools,
     }});
   });
 });
 
+//shows information of school
 router.get('/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
   School.findOne({_id:req.params.id})
-  .populate('major')
+  .populate('clubs')
   .exec((err,school)=>{
     if(err) throw err;
     return res.render('school/show', {ct:{
@@ -30,6 +33,7 @@ router.get('/:id',(req,res,next)=>{
   });
 });
 
+//not using
 router.get('/major/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');

@@ -1,3 +1,6 @@
+//Model for Major in school
+//일단 major 신경쓰지 말자. 중요한건 school과 club.
+
 var mongoose = require('mongoose');
 
 var majorSchema = mongoose.Schema({

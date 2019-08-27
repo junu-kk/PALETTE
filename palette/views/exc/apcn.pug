@@ -7,9 +7,9 @@ block content
   p #{ct.exc.due.getFullYear()}.#{ct.exc.due.getMonth()+1}.#{ct.exc.due.getDate()}
   br
   form(action="/exc/"+ct.exc._id method="POST")
-    -for(var i=0;i<ct.exc.apcnq.length;i++)
+    -for(var i=0;i<ct.exc.apcnqs.length;i++)
       h4 Question #{i+1}
-      p #{ct.exc.apcnq[i]}
+      p #{ct.exc.apcnqs[i]}
       input(type="text" name="ans")
     br
     button.submit enroll

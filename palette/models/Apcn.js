@@ -1,3 +1,4 @@
+//Model for application(for extracurricular activities)
 var mongoose = require('mongoose');
 
 var apcnSchema = mongoose.Schema({

@@ -1,7 +1,8 @@
+//Model for portfolio of user
 var mongoose = require('mongoose');
 
 var pfolioSchema = mongoose.Schema({
-  userid:{
+  user:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'User'
   },
@@ -21,7 +22,7 @@ var pfolioSchema = mongoose.Schema({
     type:mongoose.Schema.Types.ObjectId,
     ref:'Ecert',
   },
-},{collection:"pfolios"});
+},{collection:"pfolio"});
 
 pfolioSchema.methods={
   savePfolio:function(callback){

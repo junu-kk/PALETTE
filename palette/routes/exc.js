@@ -1,29 +1,30 @@
+//router for extracurricular activities
 var express = require('express');
 var router = express.Router();
 var Exc = require('../models/Exc');
 var Apcn = require('../models/Apcn');
 var User = require('../models/User');
 
-
-router.get('/', function(req, res, next) {
+//show list of extracurricular activities
+router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  Exc.find({}).exec(function(err,exc){
+  Exc.find({}).exec((err,excs)=>{
     if(err) throw err;
 
     return res.render('exc', {ct:{
-      exc:exc
+      excs:excs
     }});
   });
 });
-
+//show information of an extracurricular activity
 router.get('/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
   console.log('works');
-  Exc.findOne({_id:req.params.id}).exec(function(err,exc){
+  Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
     return res.render('exc/show',{ct:{
       exc:exc
@@ -31,11 +32,13 @@ router.get('/:id',(req,res,next)=>{
   });
 });
 
+//shows application form for
+//registering the extracurricular activity
 router.get('/apcn/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  Exc.findOne({_id:req.params.id}).exec(function(err,exc){
+  Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
     return res.render('exc/apcn',{ct:{
       exc:exc
@@ -43,11 +46,12 @@ router.get('/apcn/:id',(req,res,next)=>{
   });
 });
 
+//procedure for registering extracurricular activity
 router.post('/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  Exc.findOne({_id:req.params.id}).exec(function(err,exc){
+  Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
 
     if(exc.due<Date.now()){
@@ -63,8 +67,8 @@ router.post('/:id',(req,res,next)=>{
     }
     console.log(newApcn.ans);
     
-    User.findOne({email:req.user.email}).exec(function(err2,user){
-      if(err2) throw err2;
+    User.findOne({email:req.user.email}).exec((err,user)=>{
+      if(err) throw err;
 
       newApcn.user=user._id;
       newApcn.exc=exc._id;
@@ -74,14 +78,14 @@ router.post('/:id',(req,res,next)=>{
       
       
       
-      user.saveUser(function(err4){
-        if(err4) throw err4;
+      user.saveUser((err)=>{
+        if(err) throw err;
       });
-      exc.saveExc(function(err5){
-        if(err5) throw err5;
+      exc.saveExc((err)=>{
+        if(err) throw err;
       });
-      newApcn.saveApcn(function(err3){
-        if(err3) throw err3;
+      newApcn.saveApcn((err)=>{
+        if(err) throw err;
       });
       
     });

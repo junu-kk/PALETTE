@@ -1,3 +1,5 @@
+//router of my page
+//파일업로드 관련은 나중에 주석달자.
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
@@ -48,15 +50,15 @@ palette, friends, accomplishments, posts, addfriend
 팔레트기능은.. 7개가 뭔지 일단 준서한테 물어보자. 역시 추후추가.
 */
 
-
-router.get('/', function (req, res, next) {
+//shows mypage
+router.get('/', (req, res, next)=> {
   if (req.isUnauthenticated()) {
     return res.redirect('/login');
   }
   User.findOne({ email: req.user.email })
   .populate('school')
   .populate('excs')
-  .exec(function (err, user) {
+  .exec((err, user)=> {
     if (err) throw err;
     return res.render('mypage',{ct:{
       user:user,
@@ -65,10 +67,10 @@ router.get('/', function (req, res, next) {
   });
 });
 
-//user를 찾고, 그 pic에 맞는 파일을 찾아 띄우는 라우터.
-router.get('/hi', function (req, res, next) {
+//gets profile picture
+router.get('/hi', (req, res, next)=> {
   
-  User.findOne({ email: req.user.email }).populate('pic').exec(function (err, user) {
+  User.findOne({ email: req.user.email }).populate('pic').exec((err, user)=> {
     if (err) throw err;
     
     if(user.pic==null){
@@ -84,8 +86,9 @@ router.get('/hi', function (req, res, next) {
   });
 });
 
+//uploads new profile picture
 router.post('/upload', upload.single('file'), (req, res, next) => {
-  User.findOne({ email: req.user.email }).exec(function (err, user) {
+  User.findOne({ email: req.user.email }).exec((err, user)=> {
     if (err) throw err;
     
     user.pic = res.req.file.id;
@@ -97,6 +100,7 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
   });
 });
 
+//deletes the profile picture
 router.post('/delete/:id', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');

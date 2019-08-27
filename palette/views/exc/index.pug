@@ -3,10 +3,10 @@ extends ../layout
 block content
   p palette extracurricular page
   //일단 리스트 및 상세조회를 여기서 만들자.
-  -for(var i=0;i<ct.exc.length;i++)
-    p #{ct.exc[i].name}
+  -for(var i=0;i<ct.excs.length;i++)
+    p #{ct.excs[i].name}
     //사진구현
-    a(href='exc/'+ct.exc[i]._id) go
+    a(href='exc/'+ct.excs[i]._id) go
     br
 
 

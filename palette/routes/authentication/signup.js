@@ -1,8 +1,10 @@
+//router for signup
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-router.get('/', function(req,res,next){
+//for signup page
+router.get('/', (req,res,next)=>{
   var fmsg = req.flash();
   var feedback = '';
   if(fmsg.error){
@@ -15,6 +17,7 @@ router.get('/', function(req,res,next){
   });
 });
 
+//for signup procedure
 router.post('/', passport.authenticate('local-signup',{
   failureRedirect:'/signup',
   failureFlash:true,

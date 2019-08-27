@@ -1,3 +1,4 @@
+//code for authentication by using passport
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/User');
@@ -61,9 +62,9 @@ module.exports = function(){
         newUser.password = password;
 
         newUser.pfolio = newPfolio._id;
-        newPfolio.userid = newUser._id;
+        newPfolio.user = newUser._id;
 
-        newEcert.pfolioid = newPfolio._id;
+        newEcert.pfolio = newPfolio._id;
         newPfolio.ecert = newEcert._id;
         newEcert.save(function(err){
           if(err){

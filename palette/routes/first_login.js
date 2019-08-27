@@ -1,3 +1,4 @@
+//router for first logged-in user
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
@@ -5,14 +6,16 @@ var Pfolio = require('../models/Pfolio');
 var School = require('../models/School');
 var Club = require('../models/Club');
 
-router.get('/', function(req,res,next){
+//shows questions of user
+router.get('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
   return res.render('first_login/basic');
 });
 
-router.post('/', function(req,res,next){
+//saves questions of user
+router.post('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
@@ -25,21 +28,23 @@ router.post('/', function(req,res,next){
     work_exp:req.body.work_exp,
     fun_facts:req.body.fun_facts,
     s_i:req.body.s_i,
-  }, function(err,updateUser){
+  }, (err,updateUser)=>{
     if(err) throw err;
     updateUser.saveUser();
   });
   return res.redirect('/first_login/pfolio');
 });
 
-router.get('/pfolio', function(req,res,next){
+//shows questions of portfolio
+router.get('/pfolio', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
   return res.render('first_login/pfolio');
 });
 
-router.post('/pfolio', function(req,res,next){
+//saves questions of portfolio
+router.post('/pfolio', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
@@ -51,7 +56,7 @@ router.post('/pfolio', function(req,res,next){
   p.push(req.body.projs0,req.body.projs1,req.body.projs2,req.body.projs3,req.body.projs4,req.body.projs5,req.body.projs6,req.body.projs7,req.body.projs8,req.body.projs9);
   i.push(req.body.interns0,req.body.interns1,req.body.interns2,req.body.interns3,req.body.interns4,req.body.interns5,req.body.interns6,req.body.interns7,req.body.interns8,req.body.interns9);  
   
-  Pfolio.findOne({userid:req.user._id}).exec(function(err,pfolio){
+  Pfolio.findOne({user:req.user._id}).exec((err,pfolio)=>{
     if(err) throw err;
   
     var k=0;
@@ -62,7 +67,7 @@ router.post('/pfolio', function(req,res,next){
       pfolio.interns.push(i[k]);
     }
     
-    pfolio.savePfolio(function(err){
+    pfolio.savePfolio((err)=>{
       if(err) throw err;
 
     });
@@ -70,25 +75,27 @@ router.post('/pfolio', function(req,res,next){
   return res.redirect('/first_login/smc');
 });
 
-router.get('/smc', function(req,res,next){
+//shows questions of school, (major,) and club
+router.get('/smc', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  School.find({}).exec(function(errS,school){
-    if(errS) throw errS;
+  School.find({}).exec((err,schools)=>{
+    if(err) throw err;
 
-    Club.find({}).exec(function(errC,club){
-      if(errC) throw errC;
+    Club.find({}).exec((err,clubs)=>{
+      if(err) throw err;
 
       return res.render('first_login/smc', {ct:{
-        school:school,
-        club:club,
+        schools:schools,
+        clubs:clubs,
       }});
     });
   });
 });
 
-router.post('/smc', function(req,res,next){
+//saves questions of school, (major,) and club
+router.post('/smc', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
@@ -98,7 +105,7 @@ router.post('/smc', function(req,res,next){
     school:req.body.school,
     clubs:req.body.club,
     is_new:false,
-  },function(err,updateUser){
+  },(err,updateUser)=>{
     if(err) throw err;
     updateUser.saveUser();
     
