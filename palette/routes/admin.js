@@ -87,8 +87,51 @@ router.get('/exc/create', (req,res,next)=>{
 
 });
 
+router.post('/exc/create', upload.single('file'), (req,res,next)=>{
+  var newExc = new Exc();
+  //console.log(res.req); 여기서 file이 없음.
+  //왜 이게 안되는가.
+  //다른거는 mypage는 file만 보내는거고 여기는 다 보내는건데.
+  //mypage처럼 하나만 딱 해보자.
+  newExc.pic = res.req.file.id;
+  
+  newExc.name = req.body.name;
+  newExc.info = req.body.info;
+  newExc.sch.event = req.body.sche;
+  newExc.sch.date = req.body.schd;
+  newExc.contact = req.body.contact;
+  newExc.due = req.body.due;
+
+  if(req.body.apcnq0!=null){
+    newExc.apcnqs.push(req.body.apcnq0);
+  }
+  if(req.body.apcnq1!=null){
+    newExc.apcnqs.push(req.body.apcnq1);
+  }
+  if(req.body.apcnq2!=null){
+    newExc.apcnqs.push(req.body.apcnq2);
+  }
+  if(req.body.apcnq3!=null){
+    newExc.apcnqs.push(req.body.apcnq3);
+  }
+  if(req.body.apcnq4!=null){
+    newExc.apcnqs.push(req.body.apcnq4);
+  }
+
+  
+  newExc.saveExc((err)=>{
+    if(err) throw err;
+  });
+
+  return res.redirect('/admin/exc');
+
+});
+
+
+
 
 //일단이거는보류 create랑 delete 먼저
+/*
 router.get('/exc/:id', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
@@ -109,7 +152,7 @@ router.get('/exc/:id', (req,res,next)=>{
     }});
   });
 });
-
+*/
 //사진보여주기
 router.get('/exc/:id/hi', (req,res,next)=>{
 
@@ -128,6 +171,7 @@ router.get('/exc/:id/hi', (req,res,next)=>{
   });
 });
 //isAdmin 귀찮아서 그냥 나중에 다 때려넣자.
+/*
 router.post('/exc/:id/upload', upload.single('file'),(req,res,next)=>{
   Exc.findOne({_id:req.params.id}).exec((err,newExc)=>{
     if(err) throw err;
@@ -140,5 +184,6 @@ router.post('/exc/:id/upload', upload.single('file'),(req,res,next)=>{
     res.redirect('/main');
   })
 })
+*/
 
 module.exports = router;

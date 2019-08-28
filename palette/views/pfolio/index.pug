@@ -1,5 +1,20 @@
 extends ../layout
 
 block content
-  p palette portfolio page
   //position, awards, projects, internships
+  h3 Positions
+  -for(var i=0;i<10;i++)
+    p #{ct.pfolio.pos[i]}
+  br
+  h3 Awards
+  -for(i=0;i<10;i++)
+    p #{ct.pfolio.awards[i]}
+  br
+  h3 Projects
+  -for(i=0;i<10;i++)
+    p #{ct.pfolio.projs[i]}
+  br
+  h3 Internships
+  -for(i=0;i<10;i++)
+    p #{ct.pfolio.interns[i]}
+  

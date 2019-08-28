@@ -5,9 +5,9 @@ block content
   p palette admin exc page
   -for(var i=0;i<ct.excs.length;i++)
     p #{ct.excs[i].name}
-    a(href='exc/'+ct.excs[i]._id) go
+    a(href='/exc/'+ct.excs[i]._id) go
     br
-    a(href='admin/exc/delete/'+ct.excs[i]._id) delete
+    a(href='exc/delete/'+ct.excs[i]._id) delete
     br
     br
-  a(href='admin/exc/create') create new exc
+  a(href='exc/create') create new exc

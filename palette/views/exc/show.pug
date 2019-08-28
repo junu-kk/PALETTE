@@ -1,7 +1,13 @@
 extends ../layout
 
 block content
+  style.
+    img{
+      width:10%
+    }
   h2 #{ct.exc.name}
+  -if(!(ct.exc.pic==null||ct.exc.pic==''))
+    img(src='/exc/hi/'+ct.exc._id alt='')
   h3 information :
   p #{ct.exc.info}
   br

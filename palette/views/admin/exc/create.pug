@@ -1,19 +1,35 @@
 extends ../../layout
 
 block content
-
-  form(action='/admin/exc/create' method="POST")
+  script(language="javascript" type="text/javascript").
+    var i=0;
+    function addQ(){
+      createQ.innerHTML+=
+      "<br><input type='text' name='apcnq"+i+"'>"
+      i++;
+    }
+  //enctype에 대해 좀 더 알아보자.
+  form(action='/admin/exc/create' method="POST" enctype='multipart/form-data')
     input(type='file' name='file')
     label(for='file') Choose File
     p Name :
     input(name="name" type="text")
     p Info :
     input(name="info" type="text")
-    p Schedule :
-    //다중입력
-    p Questions in Application Form :
+    p Schedule(event) :
+    input(name="sche" type="text")
+    p Schedule(date) :     
+    input(name="schd" type='date')
     p Contact :
     input(name="contact" type="text")
     p Due Date :
     input(name="due" type="date")
-    button.submit confirm
+    p Questions to ask in Application form :
+    p (Max 5 Questions)
+    input(type="button" value="Add Question" onclick="addQ()")
+    #createQ
+    br
+    br
+    input(type='submit' value='submit')
+    //button.submit confirm 
+    //아니근데도대체무슨차이가있는거지뭐지뭐지;
