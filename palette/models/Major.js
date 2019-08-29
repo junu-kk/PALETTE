@@ -26,7 +26,7 @@ majorSchema.methods={
 
     this.validate(function(err){
       if(err) return callback(err);
-      self.saveMajor(callback);
+      self.save(callback);
     });
   }
 }

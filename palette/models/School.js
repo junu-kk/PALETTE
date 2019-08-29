@@ -12,7 +12,8 @@ var schoolSchema = mongoose.Schema({
   },
   //역시 나중에 넣을 예정
   pic:{
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Upload',
   },
   info:{
     type:String,
@@ -33,7 +34,7 @@ schoolSchema.methods={
 
     this.validate(function(err){
       if(err) return callback(err);
-      self.saveSchool(callback);
+      self.save(callback);
     });
   }
 }

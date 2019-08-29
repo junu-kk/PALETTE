@@ -3,6 +3,16 @@ var express = require('express');
 var router = express.Router();
 var Club = require('../models/Club');
 
+var Grid = require('gridfs-stream');
+var mongoose = require('mongoose');
+var mongoURI = 'mongodb://localhost:27017/palette_test';
+const conn = mongoose.createConnection(mongoURI);
+let gfs;
+conn.once('open', ()=>{
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+
 //show list of clubs
 router.get('/', (req, res, next)=>{
   if(req.isUnauthenticated()){
@@ -29,6 +39,23 @@ router.get('/:id',(req,res,next)=>{
     return res.render('club/show', {ct:{
       club:club,
     }});
+  });
+});
+
+router.get('/hi/:id', (req,res,next)=>{
+
+  Club.findOne({_id:req.params.id}).populate('pic').exec((err,club)=>{
+    if(err) throw err;
+
+    if(club.pic==null||club.pic==''){
+      return;
+    }
+    gfs.files.findOne({_id:club.pic._id},(err,file)=>{
+      if(err) throw err;
+
+      const readstream=gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    });
   });
 });
 

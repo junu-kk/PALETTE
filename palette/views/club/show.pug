@@ -1,8 +1,14 @@
 extends ../layout
 
 block content
+  style.
+    img{
+      width:10%
+    }
   h2 #{ct.club.name}
   -if(!(ct.club.school==null||ct.club.school==''))
     h3 from #{ct.club.school.name}
+  -if(!(ct.club.pic==null||ct.club.pic==''))
+    img(src='/club/hi/'+ct.club._id alt='')
   h3 information :
   p #{ct.club.info}

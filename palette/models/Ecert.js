@@ -16,7 +16,7 @@ ecertSchema.methods={
 
     this.validate(function(err){
       if(err) return callback(err);
-      self.saveEcert(callback);
+      self.save(callback);
     });
   }
 }

@@ -4,6 +4,8 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var Exc = require('../models/Exc');
+var School = require('../models/School');
+var Club = require('../models/Club');
 
 var path = require('path');
 var crypto = require('crypto');
@@ -185,5 +187,144 @@ router.post('/exc/:id/upload', upload.single('file'),(req,res,next)=>{
   })
 })
 */
+
+router.get('/school', (req,res,next)=>{
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+
+  User.findOne({email:req.user.email}).exec((err,user)=>{
+    if(err) throw err;
+
+    if(user.admin==false){
+      return res.redirect('/main')
+    }
+  });
+
+  School.find({}).exec((err,schools)=>{
+    if(err) throw err;
+
+    return res.render('admin/school',{ct:{
+      schools:schools
+    }});
+  });
+});
+
+router.get('/school/create', (req,res,next)=>{
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+  return res.render('admin/school/create');
+
+});
+
+router.post('/school/create', upload.single('file'), (req,res,next)=>{
+  var newSchool = new School();
+  newSchool.pic = res.req.file.id;
+  newSchool.name = req.body.name;
+  newSchool.address = req.body.address;
+  newSchool.info = req.body.info;
+  console.log(newSchool);
+  newSchool.saveSchool((err)=>{
+    if(err) throw err;
+  });
+  School.find({}).exec((err,schools)=>{
+    if(err) throw err;
+    console.log(schools);
+  });
+  return res.redirect('/admin/school');
+
+});
+
+router.get('/school/:id/hi', (req,res,next)=>{
+
+  School.findOne({_id:req.params.id}).populate('pic').exec((err,school)=>{
+    if(err) throw err;
+
+    if(school.pic==null||school.pic==''){
+      return;
+    }
+    gfs.files.findOne({_id:school.pic._id},(err,file)=>{
+      if(err) throw err;
+
+      const readstream=gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    });
+  });
+});
+
+router.get('/club', (req,res,next)=>{
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+
+  User.findOne({email:req.user.email}).exec((err,user)=>{
+    if(err) throw err;
+
+    if(user.admin==false){
+      return res.redirect('/main')
+    }
+  });
+
+  Club.find({}).exec((err,clubs)=>{
+    if(err) throw err;
+
+    return res.render('admin/club',{ct:{
+      clubs:clubs
+    }});
+  });
+});
+
+router.get('/club/create', (req,res,next)=>{
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+  School.find({}).exec((err,schools)=>{
+    if(err) throw err;
+
+    return res.render('admin/club/create',{ct:{
+      schools:schools
+    }});
+  });
+});
+
+router.post('/club/create', upload.single('file'), (req,res,next)=>{
+  var newClub = new Club();
+  newClub.pic = res.req.file.id;
+
+  newClub.name = req.body.name;
+  newClub.info = req.body.info;
+  newClub.school = req.body.school;
+  
+  newClub.saveClub((err)=>{
+    if(err) throw err;
+  });
+  School.findOne({_id:req.body.school}).exec((err,school)=>{
+    if(err) throw err;
+    school.clubs.push(newClub._id);
+    school.saveSchool((err)=>{
+      if(err) throw err;
+    });
+  });
+  return res.redirect('/admin/club');
+
+});
+
+router.get('/club/:id/hi', (req,res,next)=>{
+
+  Club.findOne({_id:req.params.id}).populate('pic').exec((err,club)=>{
+    if(err) throw err;
+
+    if(club.pic==null||club.pic==''){
+      return;
+    }
+    gfs.files.findOne({_id:club.pic._id},(err,file)=>{
+      if(err) throw err;
+
+      const readstream=gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    });
+  });
+});
 
 module.exports = router;

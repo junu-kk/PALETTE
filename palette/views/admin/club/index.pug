@@ -1,0 +1,13 @@
+extends ../../layout
+
+block content
+  //crud 모두 계획중.
+  p palette admin club page
+  -for(var i=0;i<ct.clubs.length;i++)
+    p #{ct.clubs[i].name}
+    a(href='/club/'+ct.clubs[i]._id) go
+    br
+    a(href='club/delete/'+ct.clubs[i]._id) delete
+    br
+    br
+  a(href='club/create') create new club

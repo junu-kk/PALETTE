@@ -25,7 +25,7 @@ clubSchema.methods={
 
     this.validate(function(err){
       if(err) return callback(err);
-      self.saveClub(callback);
+      self.save(callback);
     });
   }
 }

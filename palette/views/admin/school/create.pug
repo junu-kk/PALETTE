@@ -1,0 +1,18 @@
+extends ../../layout
+
+block content
+  //enctype에 대해 좀 더 알아보자.
+  form(action='/admin/school/create' method="POST" enctype='multipart/form-data')
+    input(type='file' name='file')
+    label(for='file') Choose File
+    p Name :
+    input(name="name" type="text")
+    p Info :
+    input(name="info" type="text")
+    p Address :
+    input(name="address" type="text")
+    br
+    br
+    input(type='submit' value='submit')
+    //button.submit confirm 
+    //아니근데도대체무슨차이가있는거지뭐지뭐지;

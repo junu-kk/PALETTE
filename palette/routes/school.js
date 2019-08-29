@@ -4,6 +4,16 @@ var router = express.Router();
 var School = require('../models/School');
 var Major = require('../models/Major');
 
+var Grid = require('gridfs-stream');
+var mongoose = require('mongoose');
+var mongoURI = 'mongodb://localhost:27017/palette_test';
+const conn = mongoose.createConnection(mongoURI);
+let gfs;
+conn.once('open', ()=>{
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('uploads');
+});
+
 //shows list of schools
 router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
@@ -30,6 +40,23 @@ router.get('/:id',(req,res,next)=>{
     return res.render('school/show', {ct:{
       school:school,
     }});
+  });
+});
+
+router.get('/hi/:id', (req,res,next)=>{
+
+  School.findOne({_id:req.params.id}).populate('pic').exec((err,school)=>{
+    if(err) throw err;
+
+    if(school.pic==null||school.pic==''){
+      return;
+    }
+    gfs.files.findOne({_id:school.pic._id},(err,file)=>{
+      if(err) throw err;
+
+      const readstream=gfs.createReadStream(file.filename);
+      readstream.pipe(res);
+    });
   });
 });
 

@@ -1,0 +1,13 @@
+extends ../../layout
+
+block content
+  //crud 모두 계획중.
+  p palette admin school page
+  -for(var i=0;i<ct.schools.length;i++)
+    p #{ct.schools[i].name}
+    a(href='/school/'+ct.schools[i]._id) go
+    br
+    a(href='school/delete/'+ct.schools[i]._id) delete
+    br
+    br
+  a(href='school/create') create new school
