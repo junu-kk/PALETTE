@@ -40,37 +40,28 @@ const storage = new GridFsStorage({
   }
 });
 
-const upload = multer({storage});
-
-router.get('/', (req,res,next)=>{
+function adminCheck(req,res){
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  User.findOne({email:req.user.email})
-  .exec((err,user)=>{
-    if(err) throw err;
-    
-    
-    if(user.admin==false){
-      return res.redirect('/main');
-    }
-
-    return res.render('admin');
-  });
-});
-//admin에서의 exc 목적 : exc를 create&delete하는 데에 있다.
-router.get('/exc', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
 
     if(user.admin==false){
-      return res.redirect('/main')
+      return res.redirect('/main');
     }
   });
+}
+
+const upload = multer({storage});
+
+router.get('/', (req,res)=>{
+  adminCheck(req,res);
+  return res.render('admin');
+});
+//admin에서의 exc 목적 : exc를 create&delete하는 데에 있다.
+router.get('/exc', (req,res)=>{
+  adminCheck(req,res);
 
   Exc.find({}).exec((err,excs)=>{
     if(err) throw err;
@@ -82,9 +73,7 @@ router.get('/exc', (req,res,next)=>{
 });
 
 router.get('/exc/create', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
+  adminCheck(req,res);
   return res.render('admin/exc/create');
 
 });
@@ -130,76 +119,14 @@ router.post('/exc/create', upload.single('file'), (req,res,next)=>{
 });
 
 
-
-
-//일단이거는보류 create랑 delete 먼저
-/*
-router.get('/exc/:id', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-
-    if(user.admin==false){
-      return res.redirect('/main')
-    }
-  });
-
-  Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
-    if(err) throw err;
-    return res.render('admin/exc/show',{ct:{
-      exc:exc
-    }});
-  });
+router.get('/exc/delete/:id', (req,res)=>{
+  adminCheck(req,res);
+  Exc.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
+  return res.redirect('/admin/exc');
 });
-*/
-//사진보여주기
-router.get('/exc/:id/hi', (req,res,next)=>{
-
-  Exc.findOne({_id:req.params.id}).populate('pic').exec((err,exc)=>{
-    if(err) throw err;
-
-    if(exc.pic==null||exc.pic==''){
-      return;
-    }
-    gfs.files.findOne({_id:exc.pic._id},(err,file)=>{
-      if(err) throw err;
-
-      const readstream=gfs.createReadStream(file.filename);
-      readstream.pipe(res);
-    });
-  });
-});
-//isAdmin 귀찮아서 그냥 나중에 다 때려넣자.
-/*
-router.post('/exc/:id/upload', upload.single('file'),(req,res,next)=>{
-  Exc.findOne({_id:req.params.id}).exec((err,newExc)=>{
-    if(err) throw err;
-
-    newExc.pic = res.req.file.id;
-    newExc.saveExc((err)=>{
-      if(err) throw err;
-    });
-
-    res.redirect('/main');
-  })
-})
-*/
 
 router.get('/school', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-
-    if(user.admin==false){
-      return res.redirect('/main')
-    }
-  });
+  adminCheck(req,res);
 
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
@@ -211,9 +138,7 @@ router.get('/school', (req,res,next)=>{
 });
 
 router.get('/school/create', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
+  adminCheck(req,res);
   return res.render('admin/school/create');
 
 });
@@ -236,35 +161,15 @@ router.post('/school/create', upload.single('file'), (req,res,next)=>{
 
 });
 
-router.get('/school/:id/hi', (req,res,next)=>{
 
-  School.findOne({_id:req.params.id}).populate('pic').exec((err,school)=>{
-    if(err) throw err;
-
-    if(school.pic==null||school.pic==''){
-      return;
-    }
-    gfs.files.findOne({_id:school.pic._id},(err,file)=>{
-      if(err) throw err;
-
-      const readstream=gfs.createReadStream(file.filename);
-      readstream.pipe(res);
-    });
-  });
+router.get('/school/delete/:id', (req,res)=>{
+  adminCheck(req,res);
+  School.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
+  return res.redirect('/admin/school');
 });
 
 router.get('/club', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-
-    if(user.admin==false){
-      return res.redirect('/main')
-    }
-  });
+  adminCheck(req,res);
 
   Club.find({}).exec((err,clubs)=>{
     if(err) throw err;
@@ -276,9 +181,7 @@ router.get('/club', (req,res,next)=>{
 });
 
 router.get('/club/create', (req,res,next)=>{
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
+  adminCheck(req,res);
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
@@ -296,35 +199,46 @@ router.post('/club/create', upload.single('file'), (req,res,next)=>{
   newClub.info = req.body.info;
   newClub.school = req.body.school;
   
+  console.log(req.body.school);
+  console.log(newClub.school);
+  
   newClub.saveClub((err)=>{
     if(err) throw err;
   });
-  School.findOne({_id:req.body.school}).exec((err,school)=>{
+  
+  School.findOne({_id:newClub.school}).exec((err,school)=>{
     if(err) throw err;
     school.clubs.push(newClub._id);
     school.saveSchool((err)=>{
       if(err) throw err;
     });
   });
+  
   return res.redirect('/admin/club');
 
 });
 
-router.get('/club/:id/hi', (req,res,next)=>{
 
-  Club.findOne({_id:req.params.id}).populate('pic').exec((err,club)=>{
+router.get('/club/delete/:id', (req,res)=>{
+  adminCheck(req,res);
+  //Club.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
+  Club.findOne({_id:req.params.id}).exec((err,club)=>{
     if(err) throw err;
 
-    if(club.pic==null||club.pic==''){
-      return;
-    }
-    gfs.files.findOne({_id:club.pic._id},(err,file)=>{
+    School.findOne({_id:club.school}).exec((err,school)=>{
       if(err) throw err;
 
-      const readstream=gfs.createReadStream(file.filename);
-      readstream.pipe(res);
+      console.log(school.clubs);
+      console.log(club._id);
+      school.clubs.splice(school.clubs.indexOf(club._id),1);
+      console.log(school.clubs);
+      school.saveSchool();
     });
+    club.remove();
+    
   });
+  
+  return res.redirect('/admin/club');
 });
 
 module.exports = router;
