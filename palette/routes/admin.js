@@ -1,3 +1,6 @@
+/*
+로그인체크 -> 권한체크 필요!!
+*/
 //router for administration작업중
 //모든 get함수에 admin권한 확인 나중에 추가할것(req.isUnauthenticated부분)
 var express = require('express');
@@ -41,23 +44,29 @@ const storage = new GridFsStorage({
 });
 
 function adminCheck(req,res){
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
   User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
+  if(err) throw err;
 
-    if(user.admin==false){
-      return res.redirect('/main');
-    }
+  if(user.admin==false){
+    console.log('되는겨?');
+    return false;
+  } else{
+    return true;
+  }
   });
 }
 
 const upload = multer({storage});
 
 router.get('/', (req,res)=>{
-  adminCheck(req,res);
-  return res.render('admin');
+  if(req.isUnauthenticated()){
+    return res.redirect('/login');
+  }
+  
+  if(!adminCheck(req,res)){
+    return res.redirect('/main');
+  }
+  return res.render('/admin');
 });
 //admin에서의 exc 목적 : exc를 create&delete하는 데에 있다.
 router.get('/exc', (req,res)=>{
