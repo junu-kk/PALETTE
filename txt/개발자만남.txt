@@ -1,0 +1,4 @@
+20190906 첫만남
+간략한 소개, 방향설정
+15일까지 각자 react, nodejs(+express), mongodb 공부해오기.
+

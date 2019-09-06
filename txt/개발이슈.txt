@@ -135,3 +135,5 @@ first_login/palette에서 선택을 하게 하되 3개를 맥스로 ㄱㄱ.
 uniband에서 enum 쓴거 똑같이 해보자.
 
 이제 진자 palette까지만 넣어주면 본격적인 db확장 시작.
+
+
