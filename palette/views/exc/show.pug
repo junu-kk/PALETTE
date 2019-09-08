@@ -3,14 +3,19 @@ extends ../layout
 block content
   style.
     img{
-      width:10%
+      width:20%
     }
   h2 #{ct.exc.name}
   -if(!(ct.exc.pic==null||ct.exc.pic==''))
     img(src='/exc/hi/'+ct.exc._id alt='')
   h3 information :
   p #{ct.exc.info}
-  br
+  h3 location :
+  p #{ct.exc.location}
+  h3 gu :
+  p #{ct.exc.gu}
+  h3 palette type :
+  p #{ct.exc.palette}
   h3 schedule :
   p #{ct.exc.sch.date.getFullYear()}.#{ct.exc.sch.date.getMonth()+1}.#{ct.exc.sch.date.getDate()}
   p #{ct.exc.sch.event}

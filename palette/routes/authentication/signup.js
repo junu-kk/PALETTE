@@ -21,9 +21,7 @@ router.get('/', (req,res,next)=>{
 router.post('/', passport.authenticate('local-signup',{
   failureRedirect:'/signup',
   failureFlash:true,
-}), function(req,res){
-  console.log("회원가입성공");
-  return res.redirect('/..');
-});
+  successRedirect:'/',
+}));
 
 module.exports = router;

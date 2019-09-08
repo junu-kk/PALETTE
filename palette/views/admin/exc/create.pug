@@ -14,8 +14,12 @@ block content
     label(for='file') Choose File
     p Name :
     input(name="name" type="text")
-    p Info :
+    p Information :
     input(name="info" type="text")
+    p Location :
+    input(name="location" type="text")
+    p Gu :
+    input(name="gu" type="text")
     p Schedule(event) :
     input(name="sche" type="text")
     p Schedule(date) :     
@@ -24,6 +28,23 @@ block content
     input(name="contact" type="text")
     p Due Date :
     input(name="due" type="date")
+    p Price :
+    input(name="price" type="text")
+    br
+    h3 Choose Palette Type : 
+    p Arts
+    input(name="palette" type="radio" value="Arts")
+    p Academic
+    input(name="palette" type="radio" value="Academic")
+    p Media
+    input(name="palette" type="radio" value="Media")
+    p Community
+    input(name="palette" type="radio" value="Community")
+    p STEM
+    input(name="palette" type="radio" value="STEM")
+    p Sports
+    input(name="palette" type="radio" value="Sports")
+    br
     p Questions to ask in Application form :
     p (Max 5 Questions)
     input(type="button" value="Add Question" onclick="addQ()")

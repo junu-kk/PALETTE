@@ -1,4 +1,0 @@
-1. nodejs, mongodb 각각 설치
-2. 터미널 여시고
-npm install : 패키지설치
-npm start : 서버시작
