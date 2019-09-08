@@ -86,6 +86,11 @@ var userSchema = mongoose.Schema({
     type:Boolean,
     default:false,
   },
+  //0 : Arts, 1 : Academic, 2 : Media, 3 : Community, 4 : STEM, 5 : Sports
+  my_palette:[{
+    type:String,
+    enum:["Arts","Academic","Media","Community","STEM","Sports"]
+  }],
 },{collection:"user"});
 
 userSchema.methods = {

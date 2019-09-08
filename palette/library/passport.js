@@ -60,6 +60,7 @@ module.exports = function(){
         newUser.lname = req.body.lname;
         newUser.email = email;
         newUser.password = password;
+        newUser.my_palette = req.body.palette;
 
         newUser.pfolio = newPfolio._id;
         newPfolio.user = newUser._id;
