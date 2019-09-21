@@ -2,3 +2,14 @@
 간략한 소개, 방향설정
 15일까지 각자 react, nodejs(+express), mongodb 공부해오기.
 
+20190920
+
+1주일간 해나갈 것들
+  준우
+    초기환경 구축(client/server/txt)
+    mongodb atlas 구축
+    server쪽 data만 넘겨주는 식으로 작업.
+    redux 및 routing 공부
+
+  재원
+    client쪽 리액트 만들고 pug파일들 react로 변환

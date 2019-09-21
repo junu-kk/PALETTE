@@ -164,3 +164,5 @@ exc 필터 : price, palette, date, location(gu)
 url로 어떻게 구현을 해야할 지 모르겠다.
 /exc/search로 뭉뚱그릴수 없을까?
 
+20190919
+왜 MONGODB ATLAS가 작동안될까..
