@@ -1,0 +1,15 @@
+mongoexport --db palette_test --collection club --out club.json
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\ecert.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\exc.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\pfolio.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\school.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\uploads-chunks.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\uploads-files.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115
+
+mongoimport --host cluster0-shard-00-00-mh67x.mongodb.net:27017 --db palette_test --type json --file C:\Users\brian\Documents\june\Coding\PALETTE\project\user.json --jsonArray --authenticationDatabase admin --ssl --username KangJunewoo --password brian980115

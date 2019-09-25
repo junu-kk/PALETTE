@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 
 function connectDB() {
-  var mongoURI = 'mongodb://localhost:27017/palette_test';
+  var mongoURI = 'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority';
   
   mongoose.connect(mongoURI, function (err) {
     if (err) {

@@ -1,0 +1,9 @@
+[
+  {"_id":{"$oid":"5d71ad228d025b3404b2f5cb"},"length":220534,"chunkSize":261120,"uploadDate":{"$date":"2019-09-06T00:49:38.261Z"},"filename":"91cbf834c9158291a124d25af6adb4a0.JPG","md5":"1c77368f0a34af7f41f61775bd550d9c","contentType":"image/jpeg"},
+  {"_id":{"$oid":"5d74e8c760cfa53b94df645a"},"length":179324,"chunkSize":261120,"uploadDate":{"$date":"2019-09-08T11:40:55.098Z"},"filename":"6a8daf99435b319e65dbca025bc7157f.JPG","md5":"1aa05dd88fd6dc1bc1603873e7c63f4c","contentType":"image/jpeg"},
+  {"_id":{"$oid":"5d74e90260cfa53b94df645f"},"length":192171,"chunkSize":261120,"uploadDate":{"$date":"2019-09-08T11:41:54.165Z"},"filename":"7cd44fab478a3ff99c52c45be1fc4c7b.JPG","md5":"a5bc96cb3cf51a6db9aec516e8614d1c","contentType":"image/jpeg"},
+  {"_id":{"$oid":"5d74e94160cfa53b94df6463"},"length":1886478,"chunkSize":261120,"uploadDate":{"$date":"2019-09-08T11:42:57.744Z"},"filename":"ef93c6f15bb6ff61101e88c522de120c.JPG","md5":"75522ef7e155d7742497a420d7ad9c70","contentType":"image/jpeg"},
+  {"_id":{"$oid":"5d74e96960cfa53b94df646f"},"length":33500,"chunkSize":261120,"uploadDate":{"$date":"2019-09-08T11:43:37.319Z"},"filename":"63d425f47b83376c320afcb1ec484c20.JPG","md5":"76c15d4f1296c4d12a7a603b32a841ef","contentType":"image/jpeg"},
+  {"_id":{"$oid":"5d74fbd3fa794c3ed833896d"},"length":181996,"chunkSize":261120,"uploadDate":{"$date":"2019-09-08T13:02:11.562Z"},"filename":"075d4457cf5ed457f82eb967e0aed46e.JPG","md5":"8d02571030c9a6ea49006017c79c8c51","contentType":"image/jpeg"},
+  {"_id":{"$oid":"5d8425d7bef48436c057d4d2"},"length":296352,"chunkSize":261120,"uploadDate":{"$date":"2019-09-20T01:05:29.290Z"},"filename":"9e25d7b89d7f97dde4eb723e3d3e6b01.PNG","md5":"5cc425ad4115764fda51248df4f70667","contentType":"image/png"}
+]

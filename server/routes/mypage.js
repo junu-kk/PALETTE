@@ -12,7 +12,7 @@ var Grid = require('gridfs-stream');
 
 
 var mongoose = require('mongoose');
-var mongoURI = 'mongodb://localhost:27017/palette_test';
+var mongoURI = 'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority';
 const conn = mongoose.createConnection(mongoURI);
 let gfs;
 conn.once('open', () => {
@@ -21,7 +21,7 @@ conn.once('open', () => {
 });
 
 const storage = new GridFsStorage({
-  url: 'mongodb://localhost:27017/palette_test',
+  url: 'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority',
   file: (req, file) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {

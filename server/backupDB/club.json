@@ -1,0 +1,7 @@
+[
+  {"_id":{"$oid":"5d6f3c7ec8750c0ad8777a52"},"name":"sorisarang","school":{"$oid":"5d6f3cc7c8750c0ad8777a54"},"info":"skku band club"},
+  {"_id":{"$oid":"5d6f3c9ec8750c0ad8777a53"},"name":"debate","school":{"$oid":"5d6f3cccc8750c0ad8777a55"},"info":"yu debate club"},
+  {"_id":{"$oid":"5d74e94160cfa53b94df646c"},"pic":{"$oid":"5d74e94160cfa53b94df6463"},"name":"cheongeum","info":"archery club","school":{"$oid":"5d6f3c37c8750c0ad8777a50"},"__v":0},
+  {"_id":{"$oid":"5d74e96960cfa53b94df6471"},"pic":{"$oid":"5d74e96960cfa53b94df646f"},"name":"hihi","info":"yoyo","school":{"$oid":"5d6f3c4dc8750c0ad8777a51"},"__v":0},
+  {"_id":{"$oid":"5d8425d9bef48436c057d4d5"},"pic":{"$oid":"5d8425d7bef48436c057d4d2"},"name":"as","info":"bigy","school":{"$oid":"5d6f3c4dc8750c0ad8777a51"},"__v":0}
+]
