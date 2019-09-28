@@ -11,7 +11,7 @@ router.get('/', (req, res, next)=> {
     return res.redirect('/login');
   }
   */
-  return res.render('rc');
+  //return res.render('rc');
 });
 
 module.exports = router;

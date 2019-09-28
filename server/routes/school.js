@@ -25,9 +25,12 @@ router.get('/', (req, res, next)=> {
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
+    res.send(schools);
+    /*
     return res.render('school', {ct:{
       schools:schools,
     }});
+    */
   });
 });
 
@@ -43,9 +46,12 @@ router.get('/:id',(req,res,next)=>{
   .populate('clubs')
   .exec((err,school)=>{
     if(err) throw err;
+    res.send(school);
+    /*
     return res.render('school/show', {ct:{
       school:school,
     }});
+    */
   });
 });
 

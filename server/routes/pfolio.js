@@ -18,10 +18,12 @@ router.get('/', (req, res, next)=> {
 
     Pfolio.findOne({user:user._id}).exec((err,pfolio)=>{
       if(err) throw err;
-      
+      res.send(pfolio);
+      /*
       return res.render('pfolio',{ct:{
         pfolio:pfolio,
       }});
+      */
     });
   });
 });

@@ -27,10 +27,12 @@ router.get('/', (req, res, next)=> {
   */
   Exc.find({}).exec((err,excs)=>{
     if(err) throw err;
-
+    res.send(excs);
+    /*
     return res.render('exc', {ct:{
       excs:excs
     }});
+    */
   });
 });
 //show information of an extracurricular activity
@@ -45,9 +47,12 @@ router.get('/:id',(req,res,next)=>{
   Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
     console.log(exc);
+    res.send(exc);
+    /*
     return res.render('exc/show',{ct:{
       exc:exc
     }});
+    */
   });
 });
 
@@ -79,9 +84,12 @@ router.get('/apcn/:id',(req,res,next)=>{
   */
   Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
+    res.send(exc);
+    /*
     return res.render('exc/apcn',{ct:{
       exc:exc
     }});
+    */
   });
 });
 
@@ -98,7 +106,7 @@ router.post('/:id',(req,res,next)=>{
 
     if(exc.due<Date.now()){
       console.log('over due');
-      return res.redirect('/main');
+      //return res.redirect('/main');
     }
 
     var newApcn = new Apcn();
@@ -133,7 +141,7 @@ router.post('/:id',(req,res,next)=>{
     });
     
   });
-  return res.redirect('/main');
+  //return res.redirect('/main');
 });
 
 module.exports = router;

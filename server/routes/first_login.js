@@ -14,7 +14,7 @@ router.get('/', (req,res,next)=>{
     return res.redirect('/login');
   }
   */
-  return res.render('first_login/basic');
+  //return res.render('first_login/basic');
 });
 
 //saves questions of user
@@ -38,7 +38,7 @@ router.post('/', (req,res,next)=>{
     if(err) throw err;
     updateUser.saveUser();
   });
-  return res.redirect('/first_login/pfolio');
+  //return res.redirect('/first_login/pfolio');
 });
 
 //shows questions of portfolio
@@ -49,14 +49,17 @@ router.get('/pfolio', (req,res,next)=>{
     return res.redirect('/login');
   }
   */
-  return res.render('first_login/pfolio');
+  //return res.render('first_login/pfolio');
 });
 
 //saves questions of portfolio
 router.post('/pfolio', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   var l=[], a=[],p=[],i=[];
 
@@ -81,7 +84,7 @@ router.post('/pfolio', (req,res,next)=>{
 
     });
   });
-  return res.redirect('/first_login/smc');
+  //return res.redirect('/first_login/smc');
 });
 
 //shows questions of school, (major,) and club
@@ -98,6 +101,7 @@ router.get('/smc', (req,res,next)=>{
     Club.find({}).exec((err,clubs)=>{
       if(err) throw err;
 
+      res.send([schools,clubs]);
       return res.render('first_login/smc', {ct:{
         schools:schools,
         clubs:clubs,

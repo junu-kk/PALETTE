@@ -63,10 +63,12 @@ router.get('/', (req, res, next)=> {
   .populate('excs')
   .exec((err, user)=> {
     if (err) throw err;
+    res.send(user);
+    /*
     return res.render('mypage',{ct:{
       user:user,
     }});
-    
+    */
   });
 });
 
@@ -99,7 +101,7 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
       if (err) throw err;
     });
     
-    res.redirect('/main');
+    //res.redirect('/main');
   });
 });
 
@@ -118,7 +120,7 @@ router.post('/delete/:id', (req,res,next)=>{
     gfs.remove({_id:req.params.id,root:'uploads'},(err,gridStore)=>{
       if(err) return res.status(404).json({err:err});
 
-      res.redirect('/mypage');
+      //res.redirect('/mypage');
     });
 
   });

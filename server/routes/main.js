@@ -10,7 +10,8 @@ router.get('/', (req, res, next)=> {
     return res.redirect('/login');
   }
   */
-  return res.render('main');
+  
+  //return res.render('main');
 });
 
 module.exports = router;

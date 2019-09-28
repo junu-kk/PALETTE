@@ -63,7 +63,7 @@ router.get('/', (req,res)=>{
     }
     */
   });
-  return res.render('admin');
+  //return res.render('admin');
 });
 //admin에서의 exc 목적 : exc를 create&delete하는 데에 있다.
 router.get('/exc', (req,res)=>{
@@ -87,9 +87,12 @@ router.get('/exc', (req,res)=>{
   Exc.find({}).exec((err,excs)=>{
     if(err) throw err;
 
+    res.send(excs);
+    /*
     return res.render('admin/exc',{ct:{
       excs:excs
     }});
+    */
   });
 });
 
@@ -110,7 +113,7 @@ router.get('/exc/create', (req,res,next)=>{
     }
     */
   });
-  return res.render('admin/exc/create');
+  //return res.render('admin/exc/create');
 
 });
 
@@ -154,7 +157,7 @@ router.post('/exc/create', upload.single('file'), (req,res,next)=>{
     if(err) throw err;
   });
 
-  return res.redirect('/admin/exc');
+  //return res.redirect('/admin/exc');
 
 });
 
@@ -177,7 +180,7 @@ router.get('/exc/delete/:id', (req,res)=>{
     */
   });
   Exc.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
-  return res.redirect('/admin/exc');
+  //return res.redirect('/admin/exc');
 });
 
 router.get('/school', (req,res,next)=>{
@@ -201,9 +204,11 @@ router.get('/school', (req,res,next)=>{
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
+    /*
     return res.render('admin/school',{ct:{
       schools:schools
     }});
+    */
   });
 });
 
@@ -217,11 +222,14 @@ router.get('/school/create', (req,res,next)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
-  return res.render('admin/school/create');
+  //return res.render('admin/school/create');
 
 });
 
@@ -239,7 +247,7 @@ router.post('/school/create', upload.single('file'), (req,res,next)=>{
     if(err) throw err;
     console.log(schools);
   });
-  return res.redirect('/admin/school');
+  //return res.redirect('/admin/school');
 
 });
 
@@ -262,7 +270,7 @@ router.get('/school/delete/:id', (req,res)=>{
     */
   });
   School.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
-  return res.redirect('/admin/school');
+  //return res.redirect('/admin/school');
 });
 
 router.get('/club', (req,res,next)=>{
@@ -286,9 +294,11 @@ router.get('/club', (req,res,next)=>{
   Club.find({}).exec((err,clubs)=>{
     if(err) throw err;
 
+    /*
     return res.render('admin/club',{ct:{
       clubs:clubs
     }});
+    */
   });
 });
 
@@ -312,9 +322,12 @@ router.get('/club/create', (req,res,next)=>{
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
+    res.send(schools);
+    /*
     return res.render('admin/club/create',{ct:{
       schools:schools
     }});
+    */
   });
 });
 
@@ -341,7 +354,7 @@ router.post('/club/create', upload.single('file'), (req,res,next)=>{
     });
   });
   
-  return res.redirect('/admin/club');
+  //return res.redirect('/admin/club');
 
 });
 
@@ -380,7 +393,7 @@ router.get('/club/delete/:id', (req,res)=>{
     
   });
   
-  return res.redirect('/admin/club');
+  //return res.redirect('/admin/club');
 });
 
 module.exports = router;
