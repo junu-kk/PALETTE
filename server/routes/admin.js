@@ -43,20 +43,7 @@ const storage = new GridFsStorage({
     });
   }
 });
-/*
-function adminCheck(req,res){
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-  if(err) throw err;
 
-  if(user.admin==false){
-    console.log('되는겨?');
-    return false;
-  } else{
-    return true;
-  }
-  });
-}
-*/
 const upload = multer({storage});
 
 router.get('/', (req,res)=>{
@@ -89,9 +76,12 @@ router.get('/exc', (req,res)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
 
   Exc.find({}).exec((err,excs)=>{
@@ -113,9 +103,12 @@ router.get('/exc/create', (req,res,next)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
   return res.render('admin/exc/create');
 
@@ -176,9 +169,12 @@ router.get('/exc/delete/:id', (req,res)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
   Exc.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
   return res.redirect('/admin/exc');
@@ -194,9 +190,12 @@ router.get('/school', (req,res,next)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
 
   School.find({}).exec((err,schools)=>{
@@ -255,9 +254,12 @@ router.get('/school/delete/:id', (req,res)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
   School.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
   return res.redirect('/admin/school');
@@ -273,9 +275,12 @@ router.get('/club', (req,res,next)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
 
   Club.find({}).exec((err,clubs)=>{
@@ -297,9 +302,12 @@ router.get('/club/create', (req,res,next)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
@@ -348,9 +356,12 @@ router.get('/club/delete/:id', (req,res)=>{
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
   //Club.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
   Club.findOne({_id:req.params.id}).exec((err,club)=>{
