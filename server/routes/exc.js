@@ -19,9 +19,12 @@ conn.once('open', ()=>{
 
 //show list of extracurricular activities
 router.get('/', (req, res, next)=> {
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   Exc.find({}).exec((err,excs)=>{
     if(err) throw err;
 
@@ -32,9 +35,12 @@ router.get('/', (req, res, next)=> {
 });
 //show information of an extracurricular activity
 router.get('/:id',(req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   console.log('works');
   Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
@@ -65,9 +71,12 @@ router.get('/hi/:id', (req,res,next)=>{
 //shows application form for
 //registering the extracurricular activity
 router.get('/apcn/:id',(req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
     return res.render('exc/apcn',{ct:{
@@ -78,9 +87,12 @@ router.get('/apcn/:id',(req,res,next)=>{
 
 //procedure for registering extracurricular activity
 router.post('/:id',(req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
 

@@ -60,23 +60,32 @@ function adminCheck(req,res){
 const upload = multer({storage});
 
 router.get('/', (req,res)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
+    res.send(user.admin);
+    /*
     if(user.admin==false){
       return res.redirect('/main');
     }
+    */
   });
   return res.render('admin');
 });
 //admin에서의 exc 목적 : exc를 create&delete하는 데에 있다.
 router.get('/exc', (req,res)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -95,9 +104,12 @@ router.get('/exc', (req,res)=>{
 });
 
 router.get('/exc/create', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -155,9 +167,12 @@ router.post('/exc/create', upload.single('file'), (req,res,next)=>{
 
 
 router.get('/exc/delete/:id', (req,res)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -170,9 +185,12 @@ router.get('/exc/delete/:id', (req,res)=>{
 });
 
 router.get('/school', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -191,9 +209,12 @@ router.get('/school', (req,res,next)=>{
 });
 
 router.get('/school/create', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -225,9 +246,12 @@ router.post('/school/create', upload.single('file'), (req,res,next)=>{
 
 
 router.get('/school/delete/:id', (req,res)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -240,9 +264,12 @@ router.get('/school/delete/:id', (req,res)=>{
 });
 
 router.get('/club', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -261,9 +288,12 @@ router.get('/club', (req,res,next)=>{
 });
 
 router.get('/club/create', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
@@ -309,9 +339,12 @@ router.post('/club/create', upload.single('file'), (req,res,next)=>{
 
 
 router.get('/club/delete/:id', (req,res)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;

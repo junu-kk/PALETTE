@@ -6,7 +6,7 @@ var passport = require('passport');
 //for logout
 router.get('/', (req,res,next)=>{
   req.logout();
-  return res.redirect('/');
+  //return res.redirect('/');
 });
 
 module.exports = router;

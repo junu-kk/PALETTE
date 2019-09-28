@@ -16,9 +16,12 @@ conn.once('open', ()=>{
 
 //shows list of schools
 router.get('/', (req, res, next)=> {
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
@@ -30,9 +33,12 @@ router.get('/', (req, res, next)=> {
 
 //shows information of school
 router.get('/:id',(req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   School.findOne({_id:req.params.id})
   .populate('clubs')
   .exec((err,school)=>{
@@ -62,9 +68,12 @@ router.get('/hi/:id', (req,res,next)=>{
 
 //not using
 router.get('/major/:id',(req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   Major.findOne({_id:req.params.id})
   .populate('school')
   .exec((err,major)=>{

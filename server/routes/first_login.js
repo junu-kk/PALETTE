@@ -8,17 +8,23 @@ var Club = require('../models/Club');
 
 //shows questions of user
 router.get('/', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   return res.render('first_login/basic');
 });
 
 //saves questions of user
 router.post('/', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   User.findOneAndUpdate({email:req.user.email}, {
     dob:req.body.dob,
     address:req.body.address,
@@ -37,9 +43,12 @@ router.post('/', (req,res,next)=>{
 
 //shows questions of portfolio
 router.get('/pfolio', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   return res.render('first_login/pfolio');
 });
 
@@ -77,9 +86,12 @@ router.post('/pfolio', (req,res,next)=>{
 
 //shows questions of school, (major,) and club
 router.get('/smc', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   School.find({}).exec((err,schools)=>{
     if(err) throw err;
 
@@ -96,9 +108,12 @@ router.get('/smc', (req,res,next)=>{
 
 //saves questions of school, (major,) and club
 router.post('/smc', (req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   console.log(req.body);
   //console.log(req.body.club);
   User.findOneAndUpdate({email:req.user.email},{

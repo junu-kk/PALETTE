@@ -7,9 +7,12 @@ var Pfolio = require('../models/Pfolio');
 
 //shows portfolio page
 router.get('/', (req, res, next)=> {
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
 

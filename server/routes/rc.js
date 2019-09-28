@@ -5,9 +5,12 @@ var router = express.Router();
 
 //
 router.get('/', (req, res, next)=> {
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   return res.render('rc');
 });
 

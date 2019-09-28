@@ -10,11 +10,14 @@ router.get('/', (req,res,next)=>{
   if(fmsg.error){
     feedback = fmsg.error[0];
   }
+  res.send(feedback);
+  /*
   return res.render('authentication/signup',{
     ct:{
       feedback:feedback,
     }
   });
+  */
 });
 
 //for signup procedure

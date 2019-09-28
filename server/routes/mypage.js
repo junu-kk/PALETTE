@@ -52,9 +52,12 @@ palette, friends, accomplishments, posts, addfriend
 
 //shows mypage
 router.get('/', (req, res, next)=> {
-  if (req.isUnauthenticated()) {
+  res.send(req.isAuthenticated);
+  /*
+  if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   User.findOne({ email: req.user.email })
   .populate('school')
   .populate('excs')

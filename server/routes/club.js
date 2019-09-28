@@ -15,9 +15,12 @@ conn.once('open', ()=>{
 
 //show list of clubs
 router.get('/', (req, res, next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   Club.find({}).exec((err,clubs)=>{
     if(err) throw err;
 
@@ -29,9 +32,12 @@ router.get('/', (req, res, next)=>{
 
 //show information of a club
 router.get('/:id',(req,res,next)=>{
+  res.send(req.isAuthenticated);
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
   Club.findOne({_id:req.params.id})
   .populate('school')
   .exec((err,club)=>{
