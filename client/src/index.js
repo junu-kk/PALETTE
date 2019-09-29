@@ -5,9 +5,17 @@ import * as serviceWorker from './serviceWorker';
 
 import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
+import modules from './modules';
+
+import ReduxThunk from 'redux-thunk';
+
+//TODO: modules import, devtoolsextension import
+//FIXME: dfdsf
+const store = createStore(modules, applyMiddleware(ReduxThunk));
 
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><Root /></Provider>, document.getElementById('root'));
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

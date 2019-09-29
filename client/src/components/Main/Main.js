@@ -1,39 +1,74 @@
 import React, { Component } from 'react'
-import SignIn from '../SignIn';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import {makeStyles} from '@material-ui/core/styles';
+import {Switch, Collapse, Typography} from '@material-ui/core';
 
+import PropTypes from 'prop-types';
 
-export default class Main extends Component {
-    state = {
-        showSignIn: false,
-        showSignUp: false
+const useStyles = makeStyles(theme => ({
+    root: {
+    //   height: 180,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    container: {
+      display: 'flex',
+    },
+    paper: {
+      margin: theme.spacing(1)
+    },
+    svg: {
+      width: 100,
+      height: 100,
+    },
+    polygon: {
+      fill: theme.palette.common.white,
+      stroke: theme.palette.divider,
+      strokeWidth: 1,
+    },
+}));
+
+export default function Main({onSignIn, onSignUp}) {
+    const classes = useStyles();
+
+    const [showSignIn, setSignIn] = React.useState(false);
+    const [showSignUp, setSignUp] = React.useState(false);
+    
+    const handleShowSignIn = () => {
+        setSignIn(!showSignIn);
+        setSignUp(false);
     }
 
-    toggleSignIn = () => {
-        const {showSignIn} = this.state
-        this.setState({
-            showSignIn: !showSignIn
-        })
+    const handleShowSignUP = () => {
+        setSignUp(!showSignUp)
+        setSignIn(false);
     }
 
-    toggleSignUp = () => {
-        const {showSignUp} = this.state
-        this.setState({
-            showSignUp: !showSignUp
-        })
-    }
+    return (
+        <div className={classes.root}>
+            <Typography onClick={handleShowSignIn} component="h1" variant="h5">
+                Sign in
+            </Typography>
+            <div className={classes.container}>
+            <Collapse in={showSignIn}>
+                <SignIn onSignIn={onSignIn}/>
+            </Collapse>
+            </div>
+            <Typography onClick={handleShowSignUP} component="h1" variant="h5">
+                Sign Up
+            </Typography>
+            <div className={classes.container}>
+            <Collapse in={showSignUp}>
+                <SignUp onSignUp={onSignUp}/>
+            </Collapse>
+            </div>
+        </div>
+    )
+}
 
-    render() {
-        const {toggleSignIn} = this;
-        const {showSignIn} = this.state;
-        // TODO: MaterialUI를 이용하여 login과 signup이 슈루룩 하고 나올수있게!
-        return (
-            <div>
-                <h1>Pallette</h1>
-                {!showSignIn && <button onClick={toggleSignIn}>Sign In</button>}
-                {showSignIn && <SignIn/>}
-                {<!showSignUp && <button onClick={toggleSignUp}>Sign Up</button>}
-                {showSignIn && <SignUp/>}
-            </div> 
-        )
-    }
+Main.propTypes = {
+    onSignIn: PropTypes.func,
+    onSignUp: PropTypes.func
 }

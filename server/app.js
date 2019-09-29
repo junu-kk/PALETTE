@@ -34,6 +34,10 @@ var adminRouter = require('./routes/admin');
 
 var app = express();
 
+var cors = require('cors');
+
+app.use(cors());
+
 library.passport();
 library.database();
 
@@ -84,5 +88,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
