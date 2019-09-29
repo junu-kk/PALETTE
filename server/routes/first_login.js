@@ -6,18 +6,6 @@ var Pfolio = require('../models/Pfolio');
 var School = require('../models/School');
 var Club = require('../models/Club');
 
-//shows questions of user
-router.get('/', (req,res,next)=>{
-  res.send(req.isAuthenticated);
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  //return res.render('first_login/basic');
-});
-
-//saves questions of user
 router.post('/', (req,res,next)=>{
   res.send(req.isAuthenticated);
   /*
@@ -39,17 +27,6 @@ router.post('/', (req,res,next)=>{
     updateUser.saveUser();
   });
   //return res.redirect('/first_login/pfolio');
-});
-
-//shows questions of portfolio
-router.get('/pfolio', (req,res,next)=>{
-  res.send(req.isAuthenticated);
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  //return res.render('first_login/pfolio');
 });
 
 //saves questions of portfolio
@@ -87,29 +64,6 @@ router.post('/pfolio', (req,res,next)=>{
   //return res.redirect('/first_login/smc');
 });
 
-//shows questions of school, (major,) and club
-router.get('/smc', (req,res,next)=>{
-  res.send(req.isAuthenticated);
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  School.find({}).exec((err,schools)=>{
-    if(err) throw err;
-
-    Club.find({}).exec((err,clubs)=>{
-      if(err) throw err;
-
-      res.send([schools,clubs]);
-      return res.render('first_login/smc', {ct:{
-        schools:schools,
-        clubs:clubs,
-      }});
-    });
-  });
-});
-
 //saves questions of school, (major,) and club
 router.post('/smc', (req,res,next)=>{
   res.send(req.isAuthenticated);
@@ -129,7 +83,7 @@ router.post('/smc', (req,res,next)=>{
     updateUser.saveUser();
     
   });
-  return res.redirect('/main');
+  //return res.redirect('/main');
 });
 
 module.exports = router;

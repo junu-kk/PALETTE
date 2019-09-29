@@ -3,24 +3,6 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-//for login page
-router.get('/', (req,res,next)=>{
-  var fmsg = req.flash();
-  var feedback = '';
-  if(fmsg.error){
-    feedback = fmsg.error[0];
-  }
-  
-  res.send(feedback);
-  /*
-  return res.render('authentication/login',{
-    ct:{
-      feedback:feedback,
-    }
-  });
-  */
-});
-
 //for login procedure
 router.post('/', passport.authenticate('local-login',{
   //successRedirect:'/',

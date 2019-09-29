@@ -15,18 +15,14 @@ var flash = require('connect-flash');
 //for img
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var Grid = require('gridfs-stream');
 
 //routers
-var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/authentication/login'),
 logoutRouter = require('./routes/authentication/logout'),
 signupRouter = require('./routes/authentication/signup');
 var first_loginRouter = require('./routes/first_login');
-var mainRouter = require('./routes/main');
 var excRouter = require('./routes/exc');
 var schoolRouter = require('./routes/school');
-var rcRouter = require('./routes/rc');
 var clubRouter = require('./routes/club');
 var pfolioRouter = require('./routes/pfolio');
 var mypageRouter = require('./routes/mypage');
@@ -55,15 +51,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.use('/', indexRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRouter);
 app.use('/signup', signupRouter);
 app.use('/first_login', first_loginRouter);
-app.use('/main', mainRouter);
 app.use('/exc', excRouter);
 app.use('/school', schoolRouter);
-app.use('/rc', rcRouter);
 app.use('/club', clubRouter);
 app.use('/pfolio', pfolioRouter);
 app.use('/mypage', mypageRouter);
