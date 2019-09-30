@@ -4,10 +4,6 @@ var router = express.Router();
 var passport = require('passport');
 
 //for signup procedure
-router.post('/', passport.authenticate('local-signup',{
-  failureRedirect:'/signup',
-  failureFlash:true,
-  successRedirect:'/',
-}));
+router.post('/', passport.authenticate('local-signup',(req,res)=>console.log(res)));
 
 module.exports = router;

@@ -4,9 +4,8 @@ var router = express.Router();
 var passport = require('passport');
 
 //for logout
-router.get('/', (req,res,next)=>{
+router.post('/', (req,res,next)=>{
   req.logout();
-  //return res.redirect('/');
 });
 
 module.exports = router;

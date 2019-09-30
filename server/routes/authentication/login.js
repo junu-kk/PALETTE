@@ -5,7 +5,7 @@ var passport = require('passport');
 
 //for login procedure
 
-router.post('/', passport.authenticate('local-login',(req)=>console.log(req)));
+router.post('/', passport.authenticate('local-login',(req,res)=>console.log(res)));
 
 /*
 router.post('/', passport.authenticate('local-login',{
