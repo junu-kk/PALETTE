@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import {makeStyles} from '@material-ui/core/styles';
-import {Switch, Collapse, Typography} from '@material-ui/core';
+import {Collapse, Typography, Button} from '@material-ui/core';
 
 import PropTypes from 'prop-types';
 
@@ -21,18 +21,9 @@ const useStyles = makeStyles(theme => ({
     paper: {
       margin: theme.spacing(1)
     },
-    svg: {
-      width: 100,
-      height: 100,
-    },
-    polygon: {
-      fill: theme.palette.common.white,
-      stroke: theme.palette.divider,
-      strokeWidth: 1,
-    },
 }));
 
-export default function Start({onSignIn, onSignUp, signInStatus, signUpStatus}) {
+export default function Main({onSignIn, onSignUp, signInStatus, signUpStatus, setSignInStatus, setSignUpStatus}) {
     const classes = useStyles();
 
     const [showSignIn, setSignIn] = React.useState(false);
@@ -45,27 +36,39 @@ export default function Start({onSignIn, onSignUp, signInStatus, signUpStatus}) 
         setSignUp(false);
     };
 
-    const handleShowSignUP = () => {
+    const handleShowSignUp = () => {
         setSignUp(!showSignUp);
         setSignIn(false);
     };
 
+    const redirect = () => {
+        if(signInStatus.isSuccess) {
+            setSignInStatus(false);
+            return <Redirect to='/mypage'/>
+        } else if(signUpStatus.isSuccess) {
+            setSignUpStatus(false);
+            return <Redirect to='/firstsignin'/>
+        } else return null;
+    };
+
     return (
         <div className={classes.root}>
-            {signInStatus.isSuccess && <Redirect to='/mypage'/>}
-            {signUpStatus.isSuccess && <Redirect to='/firstsignin'/>}
-            {}
-            <Typography onClick={handleShowSignIn} component="h1" variant="h5">
-                Sign in
-            </Typography>
+            {redirect()}
+            <Collapse in={!showSignIn}>
+                <Button fullWidth borderRadius='50%' onClick={handleShowSignIn}>
+                    Sign In
+                </Button>
+            </Collapse>
             <div className={classes.container}>
             <Collapse in={showSignIn}>
                 <SignIn onSignIn={onSignIn}/>
             </Collapse>
             </div>
-            <Typography onClick={handleShowSignUP} component="h1" variant="h5">
-                Sign Up
-            </Typography>
+            <Collapse in={!showSignUp}>
+                <Button fullWidth borderRadius='50%' onClick={handleShowSignUp}>
+                    Sign Up
+                </Button>
+            </Collapse>
             <div className={classes.container}>
             <Collapse in={showSignUp}>
                 <SignUp onSignUp={onSignUp}/>
@@ -75,7 +78,7 @@ export default function Start({onSignIn, onSignUp, signInStatus, signUpStatus}) 
     )
 }
 
-Start.propTypes = {
+Main.propTypes = {
     onSignIn: PropTypes.func,
     onSignUp: PropTypes.func
 }

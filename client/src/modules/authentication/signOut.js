@@ -7,11 +7,12 @@ function signOutAPI() {
 const initialState = {
     isFetching: false,
     isSuccess: false
-}
+};
 
 const SIGN_OUT_REQUEST = 'SIGN_IN_REQUEST';
 const SIGN_OUT_SUCCESS = 'SIGN_IN_SUCCESS';
 const SIGN_OUT_FAILURE = 'SIGN_IN_FAILURE';
+const SET_SIGN_OUT_STATUS = 'SET_SIGN_OUT_STATUS';
 
 export const signOutRequest = () => ({
     type: SIGN_OUT_REQUEST,
@@ -22,7 +23,12 @@ export const signOutSuccess = () => ({
 });
 
 export const signOutFailure = () => ({
-    type: SIGN_OUT_SUCCESS,
+    type: SIGN_OUT_FAILURE,
+});
+
+export const setSignOutStatus = (isSuccess) => ({
+    type: SET_SIGN_OUT_STATUS,
+    isSuccess
 });
 
 //FIXME: console.log 나중에 삭제
@@ -34,7 +40,6 @@ export const signOut = () => dispatch => {
         return response;
     }).catch(error => {
         console.log(error);
-        alert('sign out failed. please check your email or password.');
         dispatch(signOutFailure());
         throw(error);
     })
@@ -46,19 +51,24 @@ export default function reducer(state=initialState, action) {
             return {
                 ...state,
                 isFetching: true,
-            }
+            };
         case SIGN_OUT_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
                 isSuccess: true
-            }
+            };
         case SIGN_OUT_FAILURE:
             return {
                 ...state,
                 isFetching: false,
-            }
+            };
+        case SET_SIGN_OUT_STATUS:
+            return {
+                ...state,
+                isSuccess: action.isSuccess
+            };
         default:
-            return state;
+            return initialState;
     }
 }

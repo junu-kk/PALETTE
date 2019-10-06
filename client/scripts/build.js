@@ -61,7 +61,7 @@ checkBrowsers(paths.appPath, isInteractive)
     fs.emptyDirSync(paths.appBuild);
     // Merge with the public folder
     copyPublicFolder();
-    // Start the webpack build
+    // Main the webpack build
     return build(previousFileSizes);
   })
   .then(

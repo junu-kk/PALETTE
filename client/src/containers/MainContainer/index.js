@@ -1,1 +1,1 @@
-export {default} from './StartContainer';
+export {default} from './MainContainer';

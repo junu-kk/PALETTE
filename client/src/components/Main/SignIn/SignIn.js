@@ -4,7 +4,6 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
@@ -45,7 +44,7 @@ export default function SignIn({onSignIn}) {
       case 'password':
         setPassword(e.target.value);
     }
-  }
+  };
 
   const handleKeyPress = (e) => {
     if(e.key === 'Enter') {
@@ -56,7 +55,7 @@ export default function SignIn({onSignIn}) {
   const handleSubmit = () => {
     onSignIn(email, password);
     setPassword('');
-  }
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -102,9 +101,6 @@ export default function SignIn({onSignIn}) {
           >
             Sign In
           </Button>
-              <Link href="/" variant="body2">
-                Forgot password?
-              </Link>
         </form>
       </div>
     </Container>

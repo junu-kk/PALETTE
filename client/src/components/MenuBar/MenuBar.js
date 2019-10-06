@@ -11,6 +11,8 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import {Redirect} from 'react-router-dom';
+import {signOut} from "../../modules/authentication/signOut";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -24,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function MenuBar() {
+export default function MenuBar({onSignOut, signOutStatus, setSignOutStatus}) {
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -37,10 +39,23 @@ export default function MenuBar() {
         setAnchorEl(null);
     };
 
+    const handleSignOut = () => {
+        onSignOut();
+        handleClose();
+    };
+
+    const redirect = () => {
+        if(signOutStatus.isSuccess) {
+            setSignOutStatus(false);
+            return <Redirect to='/'/>
+        }
+    };
+
     return (
         <div className={classes.root}>
+            {redirect()}
             <AppBar>
-                <Toolbar variant>
+                <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
@@ -74,6 +89,7 @@ export default function MenuBar() {
                         >
                             <MenuItem onClick={handleClose}>Profile</MenuItem>
                             <MenuItem onClick={handleClose}>My account</MenuItem>
+                            <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
                         </Menu>
                     </div>
                 </Toolbar>
