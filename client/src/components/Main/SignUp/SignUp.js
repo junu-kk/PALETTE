@@ -1,5 +1,6 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
+
+// material-ui
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -60,13 +61,7 @@ export default function SignUp({onSignUp}) {
             setPassword(e.target.value);
             break;
       }
-  }
-
-  const handleKeyPress = (e) => {
-    if(e.key === 'Enter') {
-        handleSubmit();
-    }
-  }
+  };
 
   const handleSubmit = () => {
     // 8글자 이상, 대문자 소문자 숫자 최소 한개.
@@ -77,9 +72,9 @@ export default function SignUp({onSignUp}) {
     if(firstName !== '' && lastName !== '' && passwordRegex.test(password) && emailRegex.test(email)) {
       onSignUp(firstName, lastName, email, password);
     } else {
-      console.log('not a valid format');
+      alert('not a valid format');
     }
-  }
+  };
 
   return (
     <Container component="main" maxWidth="xs">

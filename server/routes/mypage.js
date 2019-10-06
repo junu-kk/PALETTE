@@ -1,4 +1,5 @@
 //router of my page
+
 //파일업로드 관련은 나중에 주석달자.
 var express = require('express');
 var router = express.Router();

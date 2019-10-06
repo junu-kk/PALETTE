@@ -6,6 +6,7 @@ function signInAPI(email, password) {
 
 const initialState = {
     isFetching: false,
+    isSuccess: false
 }
 
 const SIGN_IN_REQUEST = 'SIGN_IN_REQUEST';
@@ -14,17 +15,17 @@ const SIGN_IN_FAILURE = 'SIGN_IN_FAILURE';
 
 export const signInRequest = () => ({
     type: SIGN_IN_REQUEST,
-})
+});
 
-export const signInSuccess = (response) => ({
+export const signInSuccess = () => ({
     type: SIGN_IN_SUCCESS,
-    response
-})
+});
 
 export const signInFailure = () => ({
     type: SIGN_IN_SUCCESS,
-})
+});
 
+//FIXME: console.log 나중에 삭제
 export const signIn = (email, password) => dispatch => {
     dispatch(signInRequest());
     return signInAPI(email, password).then(response => {
@@ -37,19 +38,20 @@ export const signIn = (email, password) => dispatch => {
         dispatch(signInFailure());
         throw(error);
     })
-}
+};
 
 export default function reducer(state=initialState, action) {
     switch(action.type) {
         case SIGN_IN_REQUEST:
             return {
                 ...state,
-                isFetching: true
+                isFetching: true,
             }
         case SIGN_IN_SUCCESS:
             return {
                 ...state,
                 isFetching: false,
+                isSuccess: true
             }
         case SIGN_IN_FAILURE:
             return {
@@ -57,6 +59,6 @@ export default function reducer(state=initialState, action) {
                 isFetching: false,
             }
         default:
-            return initialState
+            return state;
     }
 }

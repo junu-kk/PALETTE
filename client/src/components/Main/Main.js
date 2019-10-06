@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Redirect} from 'react-router-dom'
+
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import {makeStyles} from '@material-ui/core/styles';
@@ -30,24 +32,29 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Main({onSignIn, onSignUp}) {
+export default function Start({onSignIn, onSignUp, signInStatus, signUpStatus}) {
     const classes = useStyles();
 
     const [showSignIn, setSignIn] = React.useState(false);
     const [showSignUp, setSignUp] = React.useState(false);
+
+    const [test, setTest] = React.useState(false);
     
     const handleShowSignIn = () => {
         setSignIn(!showSignIn);
         setSignUp(false);
-    }
+    };
 
     const handleShowSignUP = () => {
-        setSignUp(!showSignUp)
+        setSignUp(!showSignUp);
         setSignIn(false);
-    }
+    };
 
     return (
         <div className={classes.root}>
+            {signInStatus.isSuccess && <Redirect to='/mypage'/>}
+            {signUpStatus.isSuccess && <Redirect to='/firstsignin'/>}
+            {}
             <Typography onClick={handleShowSignIn} component="h1" variant="h5">
                 Sign in
             </Typography>
@@ -68,7 +75,7 @@ export default function Main({onSignIn, onSignUp}) {
     )
 }
 
-Main.propTypes = {
+Start.propTypes = {
     onSignIn: PropTypes.func,
     onSignUp: PropTypes.func
 }
