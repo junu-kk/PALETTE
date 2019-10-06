@@ -19,8 +19,7 @@ var excSchema = mongoose.Schema({
   },
   //pic upload
   pic:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Upload',
+    type:String,
   },
   //schedule : 일단 하나만 구현.
   sch:{

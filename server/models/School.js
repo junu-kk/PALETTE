@@ -12,8 +12,7 @@ var schoolSchema = mongoose.Schema({
   },
   //역시 나중에 넣을 예정
   pic:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Upload',
+    type:String,
   },
   info:{
     type:String,
