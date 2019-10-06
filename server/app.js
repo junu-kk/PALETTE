@@ -15,6 +15,7 @@ var flash = require('connect-flash');
 //for img
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var multer = require('multer');
 
 //routers
 var loginRouter = require('./routes/authentication/login'),
@@ -27,6 +28,7 @@ var clubRouter = require('./routes/club');
 var pfolioRouter = require('./routes/pfolio');
 var mypageRouter = require('./routes/mypage');
 var adminRouter = require('./routes/admin');
+var indexRouter = require('./routes/index');
 
 var app = express();
 
@@ -45,10 +47,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
 //for img
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
+app.use('/image',express.static('./upload'));
 
 app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
 app.use(passport.initialize());
@@ -65,6 +68,7 @@ app.use('/club', clubRouter);
 app.use('/pfolio', pfolioRouter);
 app.use('/mypage', mypageRouter);
 app.use('/admin', adminRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

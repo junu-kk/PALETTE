@@ -8,40 +8,9 @@ var Exc = require('../models/Exc');
 var School = require('../models/School');
 var Club = require('../models/Club');
 
-var path = require('path');
-var crypto = require('crypto');
 var multer = require('multer');
-var GridFsStorage = require('multer-gridfs-storage');
-require('../models/Upload');
-var Grid = require('gridfs-stream');
+var upload = multer({dest:'./upload'});
 
-var mongoose = require('mongoose');
-var mongoURI = 'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority';
-const conn = mongoose.createConnection(mongoURI);
-let gfs;
-conn.once('open', ()=>{
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
-});
-
-const storage = new GridFsStorage({
-  url:'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority',
-  file:(req,file)=>{
-    return new Promise((resolve, reject)=>{
-      crypto.randomBytes(16, (err,buf)=>{
-        if(err) return reject(err);
-        const filename = buf.toString('hex')+path.extname(file.originalname);
-        const fileInfo = {
-          filename:filename,
-          bucketName:'uploads',
-        };
-        resolve(fileInfo);
-      });
-    });
-  }
-});
-
-const upload = multer({storage});
 
 router.get('/', (req,res)=>{
   res.send(req.isAuthenticated);
@@ -65,12 +34,9 @@ router.get('/', (req,res)=>{
 
 
 router.post('/exc/create', upload.single('file'), (req,res,next)=>{
+  let image='/image/'+req.file.filename;
   var newExc = new Exc();
-  //console.log(res.req); 여기서 file이 없음.
-  //왜 이게 안되는가.
-  //다른거는 mypage는 file만 보내는거고 여기는 다 보내는건데.
-  //mypage처럼 하나만 딱 해보자.
-  newExc.pic = res.req.file.id;
+  newExc.pic = image;
   
   newExc.name = req.body.name;
   newExc.info = req.body.info;
@@ -132,8 +98,10 @@ router.get('/exc/delete/:id', (req,res)=>{
 
 
 router.post('/school/create', upload.single('file'), (req,res,next)=>{
+  let image='/image/'+req.file.filename;
   var newSchool = new School();
-  newSchool.pic = res.req.file.id;
+
+  newSchool.pic = image;
   newSchool.name = req.body.name;
   newSchool.address = req.body.address;
   newSchool.info = req.body.info;
@@ -173,8 +141,9 @@ router.get('/school/delete/:id', (req,res)=>{
 
 
 router.post('/club/create', upload.single('file'), (req,res,next)=>{
+  let image='/image/'+req.file.filename;
   var newClub = new Club();
-  newClub.pic = res.req.file.id;
+  newClub.pic = image;
 
   newClub.name = req.body.name;
   newClub.info = req.body.info;
