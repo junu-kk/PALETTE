@@ -17,7 +17,7 @@ router.post('/', passport.authenticate('local-login',{
   var feedback='';
   if(fmsg.error){
     feedback=fmsg.error[0];
-    res.json(0,fmsg);
+    res.json(0,feedback);
   } else{
     res.json(1);
   }
