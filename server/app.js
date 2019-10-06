@@ -47,11 +47,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+
 //for img
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
-app.use('/images', express.static('./public'));
+app.use('/image',express.static('./upload'));
 
 app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
 app.use(passport.initialize());

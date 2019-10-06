@@ -3,8 +3,8 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
-var path = require('path');
 var multer = require('multer');
+var upload= multer({dest:'./upload'});
 
 /*
 들어가야 할걸로는
@@ -40,12 +40,12 @@ router.get('/', (req, res, next)=> {
 
 //uploads new profile picture
 router.post('/upload', upload.single('file'), (req, res, next) => {
-  let file='/images/'+req.file.filename;
+  let image='/image/'+req.file.filename;
 
   
   User.findOne({ email: req.user.email }).exec((err, user)=> {
     if (err) throw err;
-    user.pic = file;
+    user.pic = image;
     user.saveUser((err) => {
       if (err) throw err;
     });
@@ -56,9 +56,11 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
 
 //deletes the profile picture
 router.post('/delete/:id', (req,res,next)=>{
+  /*
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  */
 
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;

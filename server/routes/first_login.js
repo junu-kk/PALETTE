@@ -1,10 +1,9 @@
+//대폭 수정해야함.
 //router for first logged-in user
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var Pfolio = require('../models/Pfolio');
-var School = require('../models/School');
-var Club = require('../models/Club');
 
 router.post('/', (req,res,next)=>{
   res.send(req.isAuthenticated);

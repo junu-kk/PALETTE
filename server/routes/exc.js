@@ -6,17 +6,6 @@ var Apcn = require('../models/Apcn');
 var User = require('../models/User');
 
 
-var Grid = require('gridfs-stream');
-var mongoose = require('mongoose');
-var mongoURI = 'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority';
-const conn = mongoose.createConnection(mongoURI);
-let gfs;
-conn.once('open', ()=>{
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
-});
-
-
 //show list of extracurricular activities
 router.get('/', (req, res, next)=> {
   res.send(req.isAuthenticated);
@@ -56,22 +45,6 @@ router.get('/:id',(req,res,next)=>{
   });
 });
 
-router.get('/hi/:id', (req,res,next)=>{
-
-  Exc.findOne({_id:req.params.id}).populate('pic').exec((err,exc)=>{
-    if(err) throw err;
-
-    if(exc.pic==null||exc.pic==''){
-      return;
-    }
-    gfs.files.findOne({_id:exc.pic._id},(err,file)=>{
-      if(err) throw err;
-
-      const readstream=gfs.createReadStream(file.filename);
-      readstream.pipe(res);
-    });
-  });
-});
 
 //shows application form for
 //registering the extracurricular activity
