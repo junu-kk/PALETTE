@@ -1,15 +1,24 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 
-// TODO: 나중에 다 container들로 바꿔줘야함!
-import {Route} from 'react-router-dom';
+// FIXME: 나중에 다 container들로 바꿔줘야함!
 import MainContainer from './containers/MainContainer/MainContainer';
+import MenuBarContainer from './containers/MenuBarContainer';
+
+import MyPage from './components/MyPage';
+import FirstSignInContainer from "./containers/FirstSignInContainer";
 
 
 
 function App() {
   return (
     <div>
-      <Route exact path='/' component={MainContainer}/>
+        <Switch>
+            <Route exact path='/' component={MainContainer}/>
+            <Route exact path='/firstsignin' component={FirstSignInContainer}/>
+            <Route path='/' component={MenuBarContainer}/>
+        </Switch>
+        <Route exact path='/mypage' component={MyPage}/>
     </div>
   );
 }

@@ -7,7 +7,6 @@ var passport = require('passport');
 //router.post('/', passport.authenticate('local-signup',(req,res)=>console.log(res)));
 
 router.post('/', passport.authenticate('local-signup',{
-  failureRedirect:'/login',
   failureFlash:true,
 }),(req,res)=>{
   var fmsg=req.flash();

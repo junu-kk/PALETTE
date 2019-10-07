@@ -9,8 +9,7 @@ import modules from './modules';
 
 import ReduxThunk from 'redux-thunk';
 
-//TODO: modules import, devtoolsextension import
-//FIXME: dfdsf
+//TODO: devtoolsextension import
 const store = createStore(modules, applyMiddleware(ReduxThunk));
 
 

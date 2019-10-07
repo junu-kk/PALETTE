@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
-import Start from '../../components/Start';
+import Main from '../../components/Main';
 
-import * as signUpActions from '../../modules/signUp';
-import * as signInActions from '../../modules/signIn';
+import * as signUpActions from '../../modules/authentication/signUp';
+import * as signInActions from '../../modules/authentication/signIn';
 
 export default connect(
     (state) => ({
@@ -16,6 +16,12 @@ export default connect(
         },
         onSignIn: (email, password) => {
             dispatch(signInActions.signIn(email, password))
+        },
+        setSignInStatus: (isSuccess) => {
+            dispatch(signInActions.setSignInStatus(isSuccess))
+        },
+        setSignUpStatus: (isSuccess) => {
+            dispatch(signUpActions.setSignUpStatus(isSuccess))
         }
     })
-)(Start);
+)(Main);
