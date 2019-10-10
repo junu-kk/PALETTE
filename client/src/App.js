@@ -8,6 +8,7 @@ import MenuBarContainer from './containers/MenuBarContainer';
 import MyPage from './components/MyPage';
 import FirstSignInContainer from "./containers/FirstSignInContainer";
 
+import School from './components/School';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path='/' component={MenuBarContainer}/>
         </Switch>
         <Route exact path='/mypage' component={MyPage}/>
+        <Route exact path='/school' component={School}/>
     </div>
   );
 }
