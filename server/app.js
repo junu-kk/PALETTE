@@ -29,6 +29,7 @@ var pfolioRouter = require('./routes/pfolio');
 var mypageRouter = require('./routes/mypage');
 var adminRouter = require('./routes/admin');
 var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
 
 var app = express();
 
@@ -69,6 +70,7 @@ app.use('/pfolio', pfolioRouter);
 app.use('/mypage', mypageRouter);
 app.use('/admin', adminRouter);
 app.use('/', indexRouter);
+app.use('/user', userRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
