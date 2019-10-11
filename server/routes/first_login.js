@@ -16,7 +16,7 @@ var User = require('../models/User');
 
 router.post('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
-    res.json(0,"not logged in");
+    res.status(404).json({status:'not logged in'});
   } else{
     User.findOneAndUpdate({email:req.user.email}, {
       dob:req.body.dob,
@@ -30,14 +30,7 @@ router.post('/', (req,res,next)=>{
       if(err) throw err;
       updateUser.saveUser();
     });
-    res.json(1);
-  }
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  
+  }  
 });
 
 

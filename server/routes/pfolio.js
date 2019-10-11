@@ -6,26 +6,19 @@ var User = require('../models/User');
 var Pfolio = require('../models/Pfolio');
 
 //shows portfolio page
-router.get('/', (req, res, next)=> {
-  res.send(req.isAuthenticated);
-  /*
+router.get('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-
-    Pfolio.findOne({user:user._id}).exec((err,pfolio)=>{
+    res.status(404).json({status:'not logged in'});
+  } else{
+    User.findOne({email:req.user.email},(err,user)=>{
       if(err) throw err;
-      res.send(pfolio);
-      /*
-      return res.render('pfolio',{ct:{
-        pfolio:pfolio,
-      }});
-      */
+      Pfolio.findOne({user:user._id}, (err,pfolio)=>{
+        if(err) throw err;
+
+        res.status(200).json(pfolio)
+      });
     });
-  });
+  }
 });
 
 module.exports = router;

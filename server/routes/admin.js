@@ -1,5 +1,4 @@
-//이미지처리
-//나동빈 강의 참고해서 서버 public에 저장하는 식으로 바꿀것.
+//어드민체크 통일할 방법이 없을까?
 
 var express = require('express');
 var router = express.Router();
@@ -13,23 +12,18 @@ var upload = multer({dest:'./upload'});
 
 
 router.get('/', (req,res)=>{
-  res.send(req.isAuthenticated);
-  /*
   if(req.isUnauthenticated()){
-    return res.redirect('/login');
+    res.status(404).json({status:"not logged in"});
+  } else{
+    User.findOne({email:req.user.email}).exec((err,user)=>{
+      if(err) throw err;
+      if(user.admin==false){
+        res.status(404).json({status:"not logged in"});
+      } else{
+        res.status(200).json({status:"you are administrator!"});
+      }
+    });
   }
-  */
-  
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-    res.send(user.admin);
-    /*
-    if(user.admin==false){
-      return res.redirect('/main');
-    }
-    */
-  });
-  //return res.render('admin');
 });
 
 
@@ -70,30 +64,15 @@ router.post('/exc/create', upload.single('file'), (req,res,next)=>{
     if(err) throw err;
   });
 
-  //return res.redirect('/admin/exc');
-
 });
 
 
 router.get('/exc/delete/:id', (req,res)=>{
-  res.send(req.isAuthenticated);
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  
   User.findOne({email:req.user.email}).exec((err,user)=>{
     if(err) throw err;
     res.send(user.admin);
-    /*
-    if(user.admin==false){
-      return res.redirect('/main');
-    }
-    */
   });
   Exc.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
-  //return res.redirect('/admin/exc');
 });
 
 
@@ -119,24 +98,8 @@ router.post('/school/create', upload.single('file'), (req,res,next)=>{
 
 
 router.get('/school/delete/:id', (req,res)=>{
-  res.send(req.isAuthenticated);
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
-  
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-    res.send(user.admin);
-    /*
-    if(user.admin==false){
-      return res.redirect('/main');
-    }
-    */
-  });
   School.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
-  //return res.redirect('/admin/school');
+  
 });
 
 
@@ -164,29 +127,12 @@ router.post('/club/create', upload.single('file'), (req,res,next)=>{
     });
   });
   
-  //return res.redirect('/admin/club');
 
 });
 
 
 router.get('/club/delete/:id', (req,res)=>{
-  res.send(req.isAuthenticated);
-  /*
-  if(req.isUnauthenticated()){
-    return res.redirect('/login');
-  }
-  */
   
-  User.findOne({email:req.user.email}).exec((err,user)=>{
-    if(err) throw err;
-    res.send(user.admin);
-    /*
-    if(user.admin==false){
-      return res.redirect('/main');
-    }
-    */
-  });
-  //Club.findOneAndDelete({_id:req.params.id},(err)=>{if(err) throw err;});
   Club.findOne({_id:req.params.id}).exec((err,club)=>{
     if(err) throw err;
 
@@ -203,7 +149,7 @@ router.get('/club/delete/:id', (req,res)=>{
     
   });
   
-  //return res.redirect('/admin/club');
+  
 });
 
 module.exports = router;
