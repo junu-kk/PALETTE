@@ -1,27 +1,41 @@
-import {connect} from 'react-redux';
+import React from 'react'
 import Main from '../../components/Main';
 
-import * as signUpActions from '../../modules/authentication/signUp';
-import * as signInActions from '../../modules/authentication/signIn';
+import axios from 'axios';
 
-export default connect(
-    (state) => ({
-        signUpStatus: state.signUp,
-        signInStatus: state.signIn,
+const MainContainer = ({history}) => {
+    const handleSignIn = (email, password) => {
+        return axios.post('http://127.0.0.1:5000/login', {email: email, password: password}).then(response => {
+            console.log(response.data);
+            history.push('/mypage');
+            return response;
+        }).catch(error => {
+            console.log(error);
+            alert('Sign in failed. Please check your email or password.');
+            throw error;
+        })
+    };
 
-    }),
-    (dispatch) => ({
-        onSignUp: (firstName, lastName, email, password) => {
-            dispatch(signUpActions.signUp(firstName, lastName, email, password))
-        },
-        onSignIn: (email, password) => {
-            dispatch(signInActions.signIn(email, password))
-        },
-        setSignInStatus: (isSuccess) => {
-            dispatch(signInActions.setSignInStatus(isSuccess))
-        },
-        setSignUpStatus: (isSuccess) => {
-            dispatch(signUpActions.setSignUpStatus(isSuccess))
-        }
-    })
-)(Main);
+    const handleSignUp = (firstName, lastName, email, password) => {
+        return axios.post('http://127.0.0.1:5000/signup', {email: email, password: password, fname: firstName, lname: lastName}).then(response => {
+            console.log(response.data);
+            axios.post('http://127.0.0.1:5000/login',{email:email, password: password}).then(response => {
+                console.log(response.data);
+                return response;
+            }).catch(error => {
+                console.log(error);
+                alert('Why does it fail even though I succeed sign up?');
+            });
+            history.push('/firstsignin');
+            return response;
+        }).catch(error => {
+            console.log(error);
+            alert('Sign up failed. Please check fields you filled in.');
+            throw error;
+        })
+    };
+
+    return (<Main onSignIn={handleSignIn} onSignUp={handleSignUp}/>)
+};
+
+export default MainContainer;

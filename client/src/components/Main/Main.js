@@ -1,14 +1,18 @@
-import React, { Component } from 'react'
-import {Redirect} from 'react-router-dom'
+import React from 'react'
 
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import {makeStyles} from '@material-ui/core/styles';
-import {Collapse, Typography, Button} from '@material-ui/core';
+import {Collapse, Container, Button} from '@material-ui/core';
 
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
+    '@global': {
+        body: {
+            backgroundColor: theme.palette.common.white,
+        }
+    },
     root: {
     //   height: 180,
       display: 'flex',
@@ -18,19 +22,18 @@ const useStyles = makeStyles(theme => ({
     container: {
       display: 'flex',
     },
-    paper: {
-      margin: theme.spacing(1)
+    submit: {
+        backgroundColor: theme.palette.primary,
+        margin: theme.spacing(3, 0, 3),
     },
 }));
 
-export default function Main({onSignIn, onSignUp, signInStatus, signUpStatus, setSignInStatus, setSignUpStatus}) {
+export default function Main({onSignIn, onSignUp}) {
     const classes = useStyles();
 
     const [showSignIn, setSignIn] = React.useState(false);
     const [showSignUp, setSignUp] = React.useState(false);
 
-    const [test, setTest] = React.useState(false);
-    
     const handleShowSignIn = () => {
         setSignIn(!showSignIn);
         setSignUp(false);
@@ -41,22 +44,11 @@ export default function Main({onSignIn, onSignUp, signInStatus, signUpStatus, se
         setSignIn(false);
     };
 
-    const redirect = () => {
-        if(signInStatus.isSuccess) {
-            setSignInStatus(false);
-            return <Redirect to='/mypage'/>
-        } else if(signUpStatus.isSuccess) {
-            setSignUpStatus(false);
-            return <Redirect to='/firstsignin'/>
-        } else return null;
-    };
-
     return (
-        <div className={classes.root}>
-            {redirect()}
+        <Container component='main' maxWidth='xs'>
             <Collapse in={!showSignIn}>
-                <Button fullWidth borderRadius='50%' onClick={handleShowSignIn}>
-                    Sign In
+                <Button className={classes.submit} variant='contained' color='primary' fullWidth onClick={handleShowSignIn}>
+                    Click to Sign In
                 </Button>
             </Collapse>
             <div className={classes.container}>
@@ -65,8 +57,8 @@ export default function Main({onSignIn, onSignUp, signInStatus, signUpStatus, se
             </Collapse>
             </div>
             <Collapse in={!showSignUp}>
-                <Button fullWidth borderRadius='50%' onClick={handleShowSignUp}>
-                    Sign Up
+                <Button fullWidth className={classes.submit} variant='contained' color='primary' onClick={handleShowSignUp}>
+                    Click to Sign Up
                 </Button>
             </Collapse>
             <div className={classes.container}>
@@ -74,7 +66,7 @@ export default function Main({onSignIn, onSignUp, signInStatus, signUpStatus, se
                 <SignUp onSignUp={onSignUp}/>
             </Collapse>
             </div>
-        </div>
+        </Container>
     )
 }
 

@@ -8,29 +8,20 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
   paper: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(2),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -76,7 +67,7 @@ export default function SignUp({onSignUp}) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+      <>
       <CssBaseline />
       <div className={classes.paper}>
         <form className={classes.form} noValidate>
@@ -138,18 +129,18 @@ export default function SignUp({onSignUp}) {
               />
             </Grid>
           </Grid>
-          <Button
+        </form>
+        <Button
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             onClick={handleSubmit}
-          >
-            Sign Up
-          </Button>
-        </form>
+        >
+          Sign Up
+        </Button>
       </div>
-    </Container>
+    </>
   );
 }
 

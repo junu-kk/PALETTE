@@ -5,7 +5,7 @@ import {Route, Switch} from 'react-router-dom';
 import MainContainer from './containers/MainContainer/MainContainer';
 import MenuBarContainer from './containers/MenuBarContainer';
 
-import MyPage from './components/MyPage';
+import MyPageContainer from './containers/MyPageContainer';
 import FirstSignInContainer from "./containers/FirstSignInContainer";
 
 import School from './components/School';
@@ -19,7 +19,7 @@ function App() {
             <Route exact path='/firstsignin' component={FirstSignInContainer}/>
             <Route path='/' component={MenuBarContainer}/>
         </Switch>
-        <Route exact path='/mypage' component={MyPage}/>
+        <Route exact path='/mypage' component={MyPageContainer}/>
         <Route exact path='/school' component={School}/>
     </div>
   );

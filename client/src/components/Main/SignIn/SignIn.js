@@ -5,19 +5,13 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
-  '@global': {
-    body: {
-      backgroundColor: theme.palette.common.white,
-    },
-  },
   paper: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(5),
+    marginBottom: theme.spacing(0),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -58,7 +52,7 @@ export default function SignIn({onSignIn}) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+      <>
       <CssBaseline />
       <div className={classes.paper}>
         <form className={classes.form} noValidate>
@@ -103,7 +97,7 @@ export default function SignIn({onSignIn}) {
           </Button>
         </form>
       </div>
-    </Container>
+        </>
   );
 }
 

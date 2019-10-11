@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 
-class MyPage extends Component {
-    render() {
-        return (
-            <div>
-                Hi
-            </div>
-        );
-    }
+function MyPage({onGetUserInfo}) {
+    useEffect(() => {
+        onGetUserInfo()
+    });
+    return (
+        <div>
+
+        </div>
+    );
 }
 
 export default MyPage;

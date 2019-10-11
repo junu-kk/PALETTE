@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button, CssBaseline, TextField, Container, Grid, Typography} from '@material-ui/core';
-import {Redirect} from 'react-router-dom';
 import {makeStyles} from "@material-ui/core/styles";
 import DateFnsUtils from '@date-io/date-fns';
 
@@ -31,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function FirstSignIn({onSubmit, status}) {
+function FirstSignIn({onSubmit}) {
     const classes = useStyles();
     const [state, setState] = React.useState({
         dateOfBirth: new Date(2000, 1,1),
@@ -47,25 +46,21 @@ function FirstSignIn({onSubmit, status}) {
         setState({...state, [e.target.name]: e.target.value})
     };
 
+    const handleDateChange = date => {
+        setState({...state, dateOfBirth: date})
+    }
+
     const handleSubmit = () => {
         onSubmit(state.dateOfBirth, state.address, state.introduction, state.grade, state.class, state.workExperience, state.funFacts);
-        if(status.isFetching) console.log('request sended')
-    };
-
-    const redirect = () => {
-        if(status.isSuccess) {
-
-        }
     };
 
     return (
-        <div>
-            <Typography variant='h4' component='h1'>
-                Almost done! you can fill in additional fields to specify you more.
-                You don't have to fill everything.
-            </Typography>
             <Container component="main" maxWidth="sm">
                 <CssBaseline />
+                <Typography variant='h6' component='h1'>
+                    Almost done! you can fill in additional fields to specify you more.
+                    You don't have to fill everything.
+                </Typography>
                 <div className={classes.paper}>
                     <form className={classes.form} noValidate>
                         <Grid container spacing={3}>
@@ -74,11 +69,12 @@ function FirstSignIn({onSubmit, status}) {
                                     <KeyboardDatePicker
                                         margin='normal'
                                         fullWidth
-                                        id='date_of_birth'
+                                        id='dateOfBirth'
+                                        name='dateOfBirth'
                                         label='Date of birth'
                                         format='mm/dd/yyyy'
                                         value={state.dateOfBirth}
-                                        onChange={handleChange}
+                                        onChange={handleDateChange}
                                         KeyboardButtonProps={{
                                             'aria-label': 'change date'
                                         }}
@@ -134,9 +130,9 @@ function FirstSignIn({onSubmit, status}) {
                                     fullWidth
                                     multiline
                                     variant='outlined'
-                                    id="work_experience"
+                                    id="workExperience"
                                     label="Your work experience"
-                                    name="work_experience"
+                                    name="workExperience"
                                     onChange={handleChange}
                                 />
                             </Grid>
@@ -146,9 +142,9 @@ function FirstSignIn({onSubmit, status}) {
                                     fullWidth
                                     multiline
                                     variant='outlined'
-                                    id="fun_facts"
+                                    id="funFacts"
                                     label="Fun facts about yourself"
-                                    name="fun_facts"
+                                    name="funFacts"
                                     onChange={handleChange}
                                 />
                             </Grid>
@@ -177,7 +173,6 @@ function FirstSignIn({onSubmit, status}) {
                     </form>
                 </div>
             </Container>
-        </div>
     );
 }
 //TODO: bio가 뭔지 알아내야해...!
