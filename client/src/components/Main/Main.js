@@ -1,20 +1,21 @@
 import React from 'react'
-
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import {makeStyles} from '@material-ui/core/styles';
 import {Collapse, Container, Button} from '@material-ui/core';
+import Logo from './logo.png';
 
 import PropTypes from 'prop-types';
+
 
 const useStyles = makeStyles(theme => ({
     '@global': {
         body: {
+            // backgroundColor: theme.palette.common.white,
             backgroundColor: theme.palette.common.white,
-        }
+        },
     },
     root: {
-    //   height: 180,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -45,28 +46,31 @@ export default function Main({onSignIn, onSignUp}) {
     };
 
     return (
-        <Container component='main' maxWidth='xs'>
-            <Collapse in={!showSignIn}>
-                <Button className={classes.submit} variant='contained' color='primary' fullWidth onClick={handleShowSignIn}>
-                    Click to Sign In
-                </Button>
-            </Collapse>
-            <div className={classes.container}>
-            <Collapse in={showSignIn}>
-                <SignIn onSignIn={onSignIn}/>
-            </Collapse>
-            </div>
-            <Collapse in={!showSignUp}>
-                <Button fullWidth className={classes.submit} variant='contained' color='primary' onClick={handleShowSignUp}>
-                    Click to Sign Up
-                </Button>
-            </Collapse>
-            <div className={classes.container}>
-            <Collapse in={showSignUp}>
-                <SignUp onSignUp={onSignUp}/>
-            </Collapse>
-            </div>
-        </Container>
+        <div className={classes.root}>
+            <img src={Logo} style={{marginTop: '5rem', marginBottom: '2rem'}}/>
+            <Container component='main' maxWidth='xs'>
+                <Collapse in={!showSignIn}>
+                    <Button className={classes.submit} variant='contained' color='primary' fullWidth onClick={handleShowSignIn}>
+                        Click to Sign In
+                    </Button>
+                </Collapse>
+                <div className={classes.container}>
+                <Collapse in={showSignIn}>
+                    <SignIn onSignIn={onSignIn}/>
+                </Collapse>
+                </div>
+                <Collapse in={!showSignUp}>
+                    <Button fullWidth className={classes.submit} variant='contained' color='primary' onClick={handleShowSignUp}>
+                        Click to Sign Up
+                    </Button>
+                </Collapse>
+                <div className={classes.container}>
+                <Collapse in={showSignUp}>
+                    <SignUp onSignUp={onSignUp}/>
+                </Collapse>
+                </div>
+            </Container>
+        </div>
     )
 }
 

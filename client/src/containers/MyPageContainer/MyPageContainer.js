@@ -4,7 +4,7 @@ import MyPage from '../../components/MyPage';
 
 const MyPageContainer = ({userInfo}) => {
     const getUserInfo = () => {
-        return axios.get('http://127.0.0.1:5000/mypage').then(response => {
+        return axios.get('http://127.0.0.1:5000/user/').then(response => {
             console.log(response);
             return response;
         }).catch(error => {
