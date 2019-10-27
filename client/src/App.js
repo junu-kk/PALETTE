@@ -8,7 +8,7 @@ import MenuBarContainer from './containers/MenuBarContainer';
 import MyPageContainer from './containers/MyPageContainer';
 import FirstSignInContainer from "./containers/FirstSignInContainer";
 
-import School from './components/School';
+import School from './containers/SchoolContainer';
 
 
 function App() {

@@ -8,14 +8,9 @@ function School({onGetSchoolInfo}){
   });
   
   return(
-    <TableRow>
-      <TableCell>{this.props.name}</TableCell>
-      <TableCell><img src={this.props.pic} alt ="pic"/> </TableCell>
-      <TableCell>{this.props.address}</TableCell>
-      <TableCell>{this.props.info}</TableCell>
-      <TableCell>{this.props.clubs}</TableCell>
-      <TableCell>{this.props.name}</TableCell>
-    </TableRow>
+    <div>
+
+    </div>
   );
 }
 
