@@ -6,7 +6,7 @@ var Club = require('../models/Club');
 //show list of clubs
 router.get('/', (req, res, next)=>{
   if(req.isUnauthenticated()){
-    res.status(404).json({status:"not logged in"});
+    res.status(401).json({status:"not logged in"});
   } else{
     Club.find({}).exec((err,clubs)=>{
       if(err) throw err;

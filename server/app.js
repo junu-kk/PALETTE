@@ -17,6 +17,9 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var multer = require('multer');
 
+//for cors
+var cors = require('cors');
+
 //routers
 var loginRouter = require('./routes/authentication/login'),
 logoutRouter = require('./routes/authentication/logout'),
@@ -32,8 +35,6 @@ var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 
 var app = express();
-
-var cors = require('cors');
 
 app.use(cors());
 
@@ -54,7 +55,7 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use('/image',express.static('./upload'));
 
-app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
+app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:true, cookie:{secure:false}}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

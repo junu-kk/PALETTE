@@ -7,7 +7,7 @@ var School = require('../models/School');
 //shows list of schools
 router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
-    res.status(404).json({status:"not logged in"});
+    res.status(401).json({status:"not logged in"});
   } else{
     School.find({}).exec((err,schools)=>{
       if(err) throw err;

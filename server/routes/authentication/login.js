@@ -23,6 +23,6 @@ router.post('/', passport.authenticate('local-login',{
   }
 });
 
-router.post('/',passport.authenticate('local-login',))
+router.post('/',passport.authenticate('local-login',));
 
 module.exports = router;
