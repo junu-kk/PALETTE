@@ -13,7 +13,7 @@ var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
   if(req.isUnauthenticated()){
-    res.status(404).json({status:"not logged in"});
+    res.status(401).json({status:"not logged in"});
   } else{
     User.findOne({email:req.user.email}).exec((err,user)=>{
       if(err) throw err;

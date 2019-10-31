@@ -8,7 +8,7 @@ var Pfolio = require('../models/Pfolio');
 //shows portfolio page
 router.get('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
-    res.status(404).json({status:'not logged in'});
+    res.status(401).json({status:'not logged in'});
   } else{
     User.findOne({email:req.user.email},(err,user)=>{
       if(err) throw err;

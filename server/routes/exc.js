@@ -9,7 +9,7 @@ var User = require('../models/User');
 //show list of extracurricular activities
 router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
-    res.status(404).json({status:'not logged in'});
+    res.status(401).json({status:'not logged in'});
   } else{
     Exc.find({}).exec((err,excs)=>{
       if(err) throw err;
