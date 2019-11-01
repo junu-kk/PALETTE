@@ -5,6 +5,11 @@ var User = require('../models/User');
 var Pfolio = require('../models/Pfolio');
 var Ecert = require('../models/Ecert');
 
+var passportJWT = require('passport-jwt');
+var JWTStrategy = passportJWT.Strategy;
+var ExtractJWT = passportJWT.ExtractJwt;
+
+
 module.exports = function(){
   passport.serializeUser(function(user,done){
     done(null,user);
@@ -34,7 +39,7 @@ module.exports = function(){
           message:'Incorrect Password.'
         });
       }
-      return done(null,user);//성공
+      return done(null,user, {message: 'Logged In Successfully.'});//성공
     });
   }));
 
@@ -92,4 +97,19 @@ module.exports = function(){
       }
     });
   }));
-}
+
+  passport.use(new JWTStrategy({
+        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+        secretOrKey   : 'testsecret'
+      },
+      function (jwtPayload, done) {
+        return User.findOne({email:jwtPayload.email})
+            .then(user => {
+              return done(null, user);
+            })
+            .catch(err => {
+              return done(err);
+            });
+      }
+  ));
+};
