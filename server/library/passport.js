@@ -55,45 +55,28 @@ module.exports = function(){
           message:'Email already exists.'
         });
       } else{//성공
-        /*
         var newUser = new User();
-        var newPfolio = new Pfolio();
-        var newEcert = new Ecert();
-        
-        newUser.fname = req.body.fname;
-        newUser.lname = req.body.lname;
-        newUser.email = email;
-        newUser.password = password;
-        newUser.my_palette = req.body.palette;
 
-        newUser.pfolio = newPfolio._id;
-        newPfolio.user = newUser._id;
+        newUser.isStudent = req.body.isStudent;
+        newUser.firstName = req.body.firstName;
+        newUser.lastName = req.body.lastName;
+        newUser.email = req.body.email;
+        newUser.password = req.body.password;
+        newUser.introduce = req.body.introduce;
+        newUser.fun_facts = req.body.fun_facts;
+        newUser.palette = req.body.palette;
+        newUser.dob = req.body.dob;
+        newUser.s_i = req.body.s_i;
+        newUser.photo = req.body.photo;
+        newUser.school = req.body.school;
+        newUser.club = req.body.club;
+        newUser.subscribedCompetitions = req.body.subscribedCompetitions;
+        newUser.subscribedEvents = req.body.subscribedEvents;
 
-        newEcert.pfolio = newPfolio._id;
-        newPfolio.ecert = newEcert._id;
-        newEcert.save(function(err){
-          if(err){
-            console.log(err);
-          } else{
-            return done(null, newEcert);
-          }
+        newUser.saveUser((err)=>{
+          if(err) res.status(500).json(err);
+          else res.status(200).json({status:'user create complete'});
         });
-        newPfolio.save(function(err){
-          if(err){
-            console.log(err);
-          } else{
-            return done(null, newPfolio);
-          }
-        });
-
-        newUser.save(function(err){
-          if(err){
-            console.log(err);
-          } else{
-            return done(null, newUser);
-          }
-        });
-        */
       }
     });
   }));
