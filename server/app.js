@@ -21,18 +21,15 @@ var multer = require('multer');
 var cors = require('cors');
 
 //routers
-var loginRouter = require('./routes/authentication/login'),
-logoutRouter = require('./routes/authentication/logout'),
-signupRouter = require('./routes/authentication/signup');
-var first_loginRouter = require('./routes/first_login');
-var excRouter = require('./routes/exc');
-var schoolRouter = require('./routes/school');
-var clubRouter = require('./routes/club');
-var pfolioRouter = require('./routes/pfolio');
-var mypageRouter = require('./routes/mypage');
-var adminRouter = require('./routes/admin');
-var indexRouter = require('./routes/index');
-var userRouter = require('./routes/user');
+var applicationRouter = require('./newroutes/application');
+var certificateRouter = require('./newroutes/certificate');
+var clubRouter = require('./newroutes/club');
+var eventRouter = require('./newroutes/event');
+var joinRouter = require('./newroutes/join');
+var noticeRouter = require('./newroutes/notice');
+var portfolioRouter = require('./newroutes/portfolio');
+var schoolRouter = require('./newroutes/school');
+var userRouter = require('./newroutes/user');
 
 var app = express();
 
@@ -60,17 +57,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.use('/login', loginRouter);
-app.use('/logout', logoutRouter);
-app.use('/signup', signupRouter);
-app.use('/first_login', first_loginRouter);
-app.use('/exc', excRouter);
-app.use('/school', schoolRouter);
+app.use('/application', applicationRouter);
+app.use('/certificate', certificateRouter);
 app.use('/club', clubRouter);
-app.use('/pfolio', pfolioRouter);
-app.use('/mypage', mypageRouter);
-app.use('/admin', adminRouter);
-app.use('/', indexRouter);
+app.use('/event', eventRouter);
+app.use('/join', joinRouter);
+app.use('/notice', noticeRouter);
+app.use('/portfolio', portfolioRouter);
+app.use('/school', schoolRouter);
 app.use('/user', userRouter);
 
 // catch 404 and forward to error handler

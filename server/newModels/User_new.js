@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var userSchema = mongoose.Schema({
+var user_newSchema = mongoose.Schema({
   isStudent:{
     type:Boolean,
   },
@@ -57,7 +57,7 @@ var userSchema = mongoose.Schema({
   }
 },{collection:"user"});
 
-userSchema.methods = {
+user_newSchema.methods = {
   saveUser: function(callback){
     var self = this;
 
@@ -78,4 +78,4 @@ userSchema.methods = {
   },
 }
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('User_new', user_newSchema);

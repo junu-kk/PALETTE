@@ -1,9 +1,7 @@
 //code for authentication by using passport
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('../models/User');
-var Pfolio = require('../models/Pfolio');
-var Ecert = require('../models/Ecert');
+var User = require('../newModels/User_new');
 
 var passportJWT = require('passport-jwt');
 var JWTStrategy = passportJWT.Strategy;
@@ -57,6 +55,7 @@ module.exports = function(){
           message:'Email already exists.'
         });
       } else{//성공
+        /*
         var newUser = new User();
         var newPfolio = new Pfolio();
         var newEcert = new Ecert();
@@ -94,6 +93,7 @@ module.exports = function(){
             return done(null, newUser);
           }
         });
+        */
       }
     });
   }));
