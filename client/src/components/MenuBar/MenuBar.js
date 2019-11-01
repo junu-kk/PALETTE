@@ -91,7 +91,7 @@ export default function MenuBar({onSignOut, container}) {
                 <List>
                     { MenuList[selected].map((item) => (
                         <ListItem key={item.name}>
-                            <NavLink exact onClick to={item.url}>{item.name}</NavLink>
+                            <NavLink exact to={item.url}>{item.name}</NavLink>
                         </ListItem>
                     ))}
                 </List>
