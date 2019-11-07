@@ -31,6 +31,7 @@ var portfolioRouter = require('./newroutes/portfolio');
 var schoolRouter = require('./newroutes/school');
 var userRouter = require('./newroutes/user');
 var loginRouter = require('./newroutes/login');
+var indexRouter = require('./newroutes/index');
 
 var app = express();
 
@@ -70,6 +71,7 @@ app.use('/portfolio', portfolioRouter);
 app.use('/school', schoolRouter);
 app.use('/user', userRouter);
 app.use('/login', loginRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

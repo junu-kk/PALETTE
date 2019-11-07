@@ -4,7 +4,7 @@ var eventSchema=mongoose.Schema({
   name:{
     type:String,
   },
-  photo:[{
+  photos:[{
     type:String,
   }],
   description:{
