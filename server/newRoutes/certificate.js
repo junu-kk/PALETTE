@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Certificate = require('../newModels/Certificate');
+var multer = require('multer');
+var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
   if(req.query.id){
@@ -16,13 +18,15 @@ router.get('/', (req,res)=>{
   }
 });
 
-router.post('/create', (req,res)=>{
+router.post('/create', upload.single('file'),(req,res)=>{
+  let image = '/image/'+req.file.filename;
+
   var newCertificate = new Certificate();
   newCertificate.type = req.body.type;
   newCertificate.description = req.body.description;
   newCertificate.issue_date = req.body.issue_date;
   //사진업로드처리 잊지말자.
-  newCertificate.photo = req.body.photo;
+  newCertificate.photo = image;
   newCertificate.portfolio = req.body.portfolio;
   newCertificate.issuer = req.body.issuer;
 

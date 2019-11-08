@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var Notice = require('../newModels/Notice');
+var multer = require('multer');
+var upload = multer({dest:"./upload"});
+
 
 router.get('/', (req,res)=>{
   if(req.query.id){
@@ -14,15 +17,16 @@ router.get('/', (req,res)=>{
       else res.status(200).json(notices);
     });
   }
+  
 });
 
-router.post('/create', (req,res)=>{
+router.post('/create', upload.array('files'),(req,res)=>{
   var newNotice = new Notice();
   newNotice.priority = req.body.priority;
   newNotice.title = req.body.title;
   newNotice.text = req.body.text;
   //다중이미지처리?
-  newNotice.photos = req.body.photos;
+  newNotice.photos = req.files;
   newNotice.author = req.body.author;
   newNotice.created = req.body.created;
   newNotice.writer = req.body.writer;

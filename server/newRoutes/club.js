@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Club = require('../newModels/Club_new');
+var multer = require('multer');
+var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
   if(req.query.id){
@@ -16,11 +18,12 @@ router.get('/', (req,res)=>{
   }
 });
 
-router.post('/create', (req,res)=>{
+router.post('/create', upload.array('files'),(req,res)=>{
+  
   var newClub = new Club();
   newClub.name = req.body.name;
-  //다중이미지처리?
-  newClub.photos = req.body.photos;
+  //다중이미지처리? 일단 이렇게 함.
+  newClub.photos = req.files;
   newClub.description = req.body.description;
   newClub.logo = req.body.logo;
   newClub.school = req.body.school;

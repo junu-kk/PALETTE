@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var School = require('../newModels/School_new');
+var multer = require('multer');
+var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
   if(req.query.id){
@@ -16,12 +18,12 @@ router.get('/', (req,res)=>{
   }
 });
 
-router.post('/create', (req,res)=>{
+router.post('/create', upload.array('files'),(req,res)=>{
   var newSchool = new School();
   newSchool.name = req.body.name;
   newSchool.introduce = req.body.introduce;
   //다중이미지처리?
-  newSchool.photos = req.body.photos;
+  newSchool.photos = req.files;
   //원래 school이 먼저 있고 그다음에 클럽이 있는게 아닌가?
   newSchool.clubs = req.body.clubs;
 

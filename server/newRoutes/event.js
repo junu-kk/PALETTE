@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var Event = require('../newModels/Event');
+var multer = require('multer');
+var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
   if(req.query.id){
@@ -16,11 +18,11 @@ router.get('/', (req,res)=>{
   }
 });
 
-router.post('/create', (req,res)=>{
+router.post('/create', upload.array('files'),(req,res)=>{
   var newEvent = new Event();
   newEvent.name = req.body.name;
   //다중이미지처리?
-  newEvent.photos = req.body.photos;
+  newEvent.photos = req.files;
   newEvent.description = req.body.description;
   newEvent.start_date = req.body.start_date;
   newEvent.end_date = req.body.end_date;
