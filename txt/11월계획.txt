@@ -1,0 +1,27 @@
+앞으로의 개발 계획
+  8
+    토큰기반 인증방식 구현, 라우터 확정, 계획수립 및 개발자공고
+  15
+    컨테이너 작업
+  22
+    컨테이너 작업
+  29
+    컨테이너 작업
+
+개발자가 더 필요한가?
+  ㅇㅇ
+  필요한 경험 : 리액트&리덕스&리액트라우터 짜본 사람.
+  할 일 : components 짜기
+
+Web Development Schedule
+  ~8 : Authentication&Backend Complete
+  8~29 : Working on container(frontend)
+    first week : user&mypage
+    second week : school&club&exc
+    last week : etc
+
+Looking for new Developer
+  Requirement : React & Redux & React Router experience
+  What to do in our project : code components(frontend)
+
+

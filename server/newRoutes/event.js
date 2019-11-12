@@ -5,17 +5,17 @@ var multer = require('multer');
 var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
-  if(req.query.id){
-    Event.findOne({_id:req.query.id}).exec((err,event)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(event);
-    })
-  } else{
-    Event.find({}).exec((err,events)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(events);
-    });
-  }
+  Event.find(req.query).exec((err,events)=>{
+    if(err) throw err;
+    else res.status(200).json(events);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  Event.findById(req.params.id).exec((err,event)=>{
+    if(err) throw err;
+    else res.status(200).json(event);
+  });
 });
 
 router.post('/create', upload.array('files'),(req,res)=>{

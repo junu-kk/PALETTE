@@ -6,18 +6,17 @@ var upload = multer({dest:"./upload"});
 
 
 router.get('/', (req,res)=>{
-  if(req.query.id){
-    Notice.findOne({_id:req.query.id}).exec((err,notice)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(notice);
-    })
-  } else{
-    Notice.find({}).exec((err,notices)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(notices);
-    });
-  }
-  
+  Notice.find(req.query).exec((err,notices)=>{
+    if(err) throw err;
+    else res.status(200).json(notices);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  Notice.findById(req.params.id).exec((err,notice)=>{
+    if(err) throw err;
+    else res.status(200).json(notice);
+  });
 });
 
 router.post('/create', upload.array('files'),(req,res)=>{

@@ -2,18 +2,22 @@ var express = require('express');
 var router = express.Router();
 var Application = require('../newModels/Application_new');
 
+// 슬래쉬 다음에 쿼리나오는건 ㄹㅇ루다가 조건에 맞는 검색
+// 슬래쉬 :id는 그 아이디로 user 상세조회
+
+
 router.get('/', (req,res)=>{
-  if(req.query.id){
-    Application.findOne({_id:req.query.id}).exec((err,application)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(application);
-    })
-  } else{
-    Application.find({}).exec((err,applications)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(applications);
-    });
-  }
+  Application.find(req.query).exec((err,applications)=>{
+    if(err) throw err;
+    else res.status(200).json(applications);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  Application.findById(req.params.id).exec((err,application)=>{
+    if(err) throw err;
+    else res.status(200).json(application);
+  });
 });
 
 router.post('/create', (req,res)=>{

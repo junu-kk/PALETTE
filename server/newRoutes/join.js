@@ -3,17 +3,17 @@ var router = express.Router();
 var Join = require('../newModels/Join');
 
 router.get('/', (req,res)=>{
-  if(req.query.id){
-    Join.findOne({_id:req.query.id}).exec((err,join)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(join);
-    })
-  } else{
-    Join.find({}).exec((err,joins)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(joins);
-    });
-  }
+  Join.find(req.query).exec((err,joins)=>{
+    if(err) throw err;
+    else res.status(200).json(joins);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  Join.findById(req.params.id).exec((err,join)=>{
+    if(err) throw err;
+    else res.status(200).json(join);
+  });
 });
 
 //일단 지금은 단순하게 만들었지만, join은 언제 만들어야 하는지 생각해보자.

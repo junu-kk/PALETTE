@@ -5,17 +5,17 @@ var multer = require('multer');
 var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
-  if(req.query.id){
-    Certificate.findOne({_id:req.query.id}).exec((err,certificate)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(certificate);
-    })
-  } else{
-    Certificate.find({}).exec((err,certificates)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(certificates);
-    });
-  }
+  Certificate.find(req.query).exec((err,certificates)=>{
+    if(err) throw err;
+    else res.status(200).json(certificates);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  Certificate.findById(req.params.id).exec((err,certificate)=>{
+    if(err) throw err;
+    else res.status(200).json(certificate);
+  });
 });
 
 router.post('/create', upload.single('file'),(req,res)=>{

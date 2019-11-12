@@ -3,17 +3,17 @@ var router = express.Router();
 var Portfolio = require('../newModels/Portfolio');
 
 router.get('/', (req,res)=>{
-  if(req.query.id){
-    Portfolio.findOne({_id:req.query.id}).exec((err,portfolio)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(portfolio);
-    })
-  } else{
-    Portfolio.find({}).exec((err,portfolios)=>{
-      if(err) res.status(500).json(err);
-      else res.status(200).json(portfolios);
-    });
-  }
+  Portfolio.find(req.query).exec((err,portfolios)=>{
+    if(err) throw err;
+    else res.status(200).json(portfolios);
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  Portfolio.findById(req.params.id).exec((err,portfolio)=>{
+    if(err) throw err;
+    else res.status(200).json(portfolio);
+  });
 });
 
 router.post('/create', (req,res)=>{
