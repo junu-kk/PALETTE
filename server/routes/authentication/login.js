@@ -26,6 +26,4 @@ router.post('/', function (req, res, next) {
   })(req, res);
 });
 
-router.post('/',passport.authenticate('local-login',));
-
 module.exports = router;
