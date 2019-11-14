@@ -1,0 +1,5 @@
+for Shell
+  mongo "mongodb+srv://cluster0-mh67x.mongodb.net/test"  --username KangJunewoo
+
+for Compass
+  mongodb+srv://KangJunewoo:<password>@cluster0-mh67x.mongodb.net/test

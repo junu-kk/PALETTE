@@ -74,8 +74,8 @@ module.exports = function(){
         newUser.subscribedEvents = req.body.subscribedEvents;
 
         newUser.saveUser((err)=>{
-          if(err) res.status(500).json(err);
-          else res.status(200).json({status:'user create complete'});
+          if(err) console.log(err);
+          else return done(null, newUser);
         });
       }
     });

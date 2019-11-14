@@ -17,7 +17,7 @@ const MainContainer = ({history}) => {
     };
 
     const handleSignUp = (firstName, lastName, email, password) => {
-        return axios.post('http://127.0.0.1:5000/signup', {email: email, password: password, fname: firstName, lname: lastName}).then(response => {
+        return axios.post('http://127.0.0.1:5000/signup', {email: email, password: password, firstName: firstName, lastName: lastName}).then(response => {
             console.log(response.data);
             axios.post('http://127.0.0.1:5000/login',{email:email, password: password}).then(response => {
                 console.log(response.data);

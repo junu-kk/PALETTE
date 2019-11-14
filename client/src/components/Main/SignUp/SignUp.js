@@ -74,7 +74,7 @@ export default function SignUp({onSignUp}) {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
+                autoComplete="firstName"
                 name="firstName"
                 variant="outlined"
                 required
@@ -93,7 +93,7 @@ export default function SignUp({onSignUp}) {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                autoComplete="lname"
+                autoComplete="lastName"
                 onChange={handleChange}
               />
             </Grid>

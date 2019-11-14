@@ -1,0 +1,36 @@
+{ ValidationError: User_new validation failed: lastName: Path `lastName` is required.
+    at ValidationError.inspect (C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\error\validation.js:59:24)
+    at formatValue (util.js:399:38)       
+    at inspect (util.js:293:10)
+    at format (util.js:160:12)
+    at Console.log (console.js:130:21)    
+    at newUser.saveUser (C:\Users\brian\Documents\june\Coding\PALETTE\project\server\library\passport.js:77:27)
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\newModels\User_new.js:65:22
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\utils.js:256:11
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\document.js:1918:5
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\document.js:2119:9
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\kareem\index.js:135:16
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+  errors:
+   { lastName:
+      { ValidatorError: Path `lastName` is required.
+    at new ValidatorError (C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\error\validator.js:29:11)
+    at validate (C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\schematype.js:1034:13) 
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\schematype.js:1088:11
+    at Array.forEach (<anonymous>)        
+    at SchemaString.SchemaType.doValidate 
+(C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\schematype.js:1043:14)
+    at C:\Users\brian\Documents\june\Coding\PALETTE\project\server\node_modules\mongoose\lib\document.js:2159:9
+    at _combinedTickCallback (internal/process/next_tick.js:132:7)
+    at process._tickCallback (internal/process/next_tick.js:181:9)
+        message: 'Path `lastName` is required.',
+        name: 'ValidatorError',
+        properties: [Object],
+        kind: 'required',
+        path: 'lastName',
+        value: undefined,
+        reason: undefined,
+        [Symbol(mongoose:validatorError)]: true } },
+  _message: 'User_new validation failed',
+  name: 'ValidationError' }
