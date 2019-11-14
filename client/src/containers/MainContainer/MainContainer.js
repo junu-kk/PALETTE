@@ -6,7 +6,10 @@ import axios from 'axios';
 const MainContainer = ({history}) => {
     const handleSignIn = (email, password) => {
         return axios.post('http://127.0.0.1:5000/login', {email: email, password: password}).then(response => {
-            console.log(response.data);
+            sessionStorage.setItem(
+                'token',
+                `Bearer ${response.data.token}`
+            );
             history.push('/mypage');
             return response;
         }).catch(error => {
@@ -21,10 +24,17 @@ const MainContainer = ({history}) => {
             console.log(response.data);
             axios.post('http://127.0.0.1:5000/login',{email:email, password: password}).then(response => {
                 console.log(response.data);
+                sessionStorage.setItem(
+                    "userinfo",
+                    JSON.stringify({
+                        token: `Bearer ${response.data.token}`
+                    })
+                );
                 return response;
             }).catch(error => {
                 console.log(error);
                 alert('Why does it fail even though I succeed sign up?');
+                throw error;
             });
             history.push('/firstsignin');
             return response;
