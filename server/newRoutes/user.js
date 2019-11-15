@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../newModels/User_new');
+var passport = require('passport');
 
 //이걸로 나중에 리팩토링 할때 코딩스타일 통일하자.
 router.get('/', (req,res)=>{
@@ -10,6 +11,16 @@ router.get('/', (req,res)=>{
   });
 });
 
+<<<<<<< HEAD
+=======
+router.get('/my', (req,res) => {
+  if(!req.isAuthenticated()){
+    res.status(401).json({'message': 'not logged in'})
+  } else {
+    res.status(200).json(req.user)
+  }
+});
+>>>>>>> 6ac301be8b26a2300ef93bda9688c6c44c10d636
 
 router.post('/update', (req,res)=>{
   User.findOneandUpdate({_id:req.query.id},{

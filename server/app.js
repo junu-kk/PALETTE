@@ -71,7 +71,7 @@ app.use('/join', joinRouter);
 app.use('/notice', noticeRouter);
 app.use('/portfolio', portfolioRouter);
 app.use('/school', schoolRouter);
-app.use('/user', userRouter);
+app.use('/user', passport.authenticate('jwt', {session:false}), userRouter);
 app.use('/login', loginRouter);
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
