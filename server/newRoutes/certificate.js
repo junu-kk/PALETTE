@@ -11,13 +11,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Certificate.findById(req.params.id).exec((err,certificate)=>{
-    if(err) throw err;
-    else res.status(200).json(certificate);
-  });
-});
-
 router.post('/create', upload.single('file'),(req,res)=>{
   let image = '/image/'+req.file.filename;
 
@@ -52,6 +45,14 @@ router.post('/delete', (req,res)=>{
   Certificate.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'certificate delete complete'});
+  });
+});
+
+
+router.get('/:id', (req,res)=>{
+  Certificate.findById(req.params.id).exec((err,certificate)=>{
+    if(err) throw err;
+    else res.status(200).json(certificate);
   });
 });
 

@@ -11,12 +11,7 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  School.findById(req.params.id).exec((err,school)=>{
-    if(err) throw err;
-    else res.status(200).json(school);
-  });
-});
+
 
 router.post('/create', upload.array('files'),(req,res)=>{
   var newSchool = new School();
@@ -49,6 +44,13 @@ router.post('/delete', (req,res)=>{
   School.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'school delete complete'});
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  School.findById(req.params.id).exec((err,school)=>{
+    if(err) throw err;
+    else res.status(200).json(school);
   });
 });
 

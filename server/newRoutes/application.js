@@ -13,12 +13,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Application.findById(req.params.id).exec((err,application)=>{
-    if(err) throw err;
-    else res.status(200).json(application);
-  });
-});
 
 router.post('/create', (req,res)=>{
   var newApplication = new Application();
@@ -50,6 +44,14 @@ router.post('/delete', (req,res)=>{
   Application.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'application delete complete'});
+  });
+});
+
+
+router.get('/:id', (req,res)=>{
+  Application.findById(req.params.id).exec((err,application)=>{
+    if(err) throw err;
+    else res.status(200).json(application);
   });
 });
 

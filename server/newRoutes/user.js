@@ -10,12 +10,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  User.findById(req.params.id).exec((err,user)=>{
-    if(err) throw err;
-    else res.status(200).json(user);
-  });
-});
 
 router.post('/update', (req,res)=>{
   User.findOneandUpdate({_id:req.query.id},{
@@ -33,6 +27,13 @@ router.post('/delete', (req,res)=>{
   User.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'user delete complete'});
+  });
+});
+
+router.get('/:id', (req,res)=>{
+  User.findById(req.params.id).exec((err,user)=>{
+    if(err) throw err;
+    else res.status(200).json(user);
   });
 });
 

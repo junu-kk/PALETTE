@@ -12,13 +12,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Notice.findById(req.params.id).exec((err,notice)=>{
-    if(err) throw err;
-    else res.status(200).json(notice);
-  });
-});
-
 router.post('/create', upload.array('files'),(req,res)=>{
   var newNotice = new Notice();
   newNotice.priority = req.body.priority;
@@ -54,5 +47,14 @@ router.post('/delete', (req,res)=>{
     else res.status(200).json({status:'notice delete complete'});
   });
 });
+
+
+router.get('/:id', (req,res)=>{
+  Notice.findById(req.params.id).exec((err,notice)=>{
+    if(err) throw err;
+    else res.status(200).json(notice);
+  });
+});
+
 
 module.exports = router;

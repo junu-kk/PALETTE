@@ -9,12 +9,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Join.findById(req.params.id).exec((err,join)=>{
-    if(err) throw err;
-    else res.status(200).json(join);
-  });
-});
 
 //일단 지금은 단순하게 만들었지만, join은 언제 만들어야 하는지 생각해보자.
 router.post('/create', (req,res)=>{
@@ -45,6 +39,14 @@ router.post('/delete', (req,res)=>{
   Join.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'join delete complete'});
+  });
+});
+
+
+router.get('/:id', (req,res)=>{
+  Join.findById(req.params.id).exec((err,join)=>{
+    if(err) throw err;
+    else res.status(200).json(join);
   });
 });
 

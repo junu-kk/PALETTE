@@ -11,12 +11,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Event.findById(req.params.id).exec((err,event)=>{
-    if(err) throw err;
-    else res.status(200).json(event);
-  });
-});
 
 router.post('/create', upload.array('files'),(req,res)=>{
   var newEvent = new Event();
@@ -53,6 +47,14 @@ router.post('/delete', (req,res)=>{
   Event.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'event delete complete'});
+  });
+});
+
+
+router.get('/:id', (req,res)=>{
+  Event.findById(req.params.id).exec((err,event)=>{
+    if(err) throw err;
+    else res.status(200).json(event);
   });
 });
 

@@ -11,12 +11,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Club.findById(req.params.id).exec((err,club)=>{
-    if(err) throw err;
-    else res.status(200).json(club);
-  });
-});
 
 router.post('/create', upload.array('files'),(req,res)=>{
   
@@ -50,6 +44,14 @@ router.post('/delete', (req,res)=>{
   Club.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'club delete complete'});
+  });
+});
+
+
+router.get('/:id', (req,res)=>{
+  Club.findById(req.params.id).exec((err,club)=>{
+    if(err) throw err;
+    else res.status(200).json(club);
   });
 });
 

@@ -9,12 +9,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-router.get('/:id', (req,res)=>{
-  Portfolio.findById(req.params.id).exec((err,portfolio)=>{
-    if(err) throw err;
-    else res.status(200).json(portfolio);
-  });
-});
 
 router.post('/create', (req,res)=>{
   var newPortfolio = new Portfolio();
@@ -42,6 +36,14 @@ router.post('/delete', (req,res)=>{
   Portfolio.findOneAndDelete({_id:req.query.id},(err)=>{
     if(err) res.status(500).json(err);
     else res.status(200).json({status:'portfolio delete complete'});
+  });
+});
+
+
+router.get('/:id', (req,res)=>{
+  Portfolio.findById(req.params.id).exec((err,portfolio)=>{
+    if(err) throw err;
+    else res.status(200).json(portfolio);
   });
 });
 
