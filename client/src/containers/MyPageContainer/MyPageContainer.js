@@ -4,7 +4,12 @@ import MyPage from '../../components/MyPage';
 
 const MyPageContainer = ({userInfo}) => {
     const getUserInfo = () => {
-        return axios.get('http://127.0.0.1:5000/user/').then(response => {
+        const token = sessionStorage.getItem('token');
+        return axios.get('http://127.0.0.1:5000/user/my', {
+            headers: {
+                'Authorization': token
+            }
+        }).then(response => {
             console.log(response);
             return response;
         }).catch(error => {
