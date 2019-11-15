@@ -16,13 +16,15 @@ router.post('/', function (req, res, next) {
         user   : user
       });
     }
-    req.login(user, {session: false}, (err) => {
-      if (err) {
-        res.send(err);
-      }
-      const token = jwt.sign(user.toJSON(), 'testsecret');
-      return res.json({user, token});
-    });
+    const token = jwt.sign(user.toJSON(), 'testsecret');
+    return res.json({user,token});
+    // req.login(user, {session: false}, (err) => {
+    //   if (err) {
+    //     res.send(err);
+    //   }
+    //   const token = jwt.sign(user.toJSON(), 'testsecret');
+    //   return res.json({user, token});
+    // });
   })(req, res);
 });
 

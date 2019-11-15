@@ -11,10 +11,11 @@ router.get('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
     res.status(401).json({status:'not logged in'});
   } else{
-    User.findOne({email:req.user.email},(err,user)=>{
-      if(err) throw err;
-      res.status(200).json(user);
-    })
+    res.status(200).json(req.user);
+    // User.findOne({email:req.user.email},(err,user)=>{
+    //   if(err) throw err;
+    //   res.status(200).json(user);
+    // })
   }
 });
 
