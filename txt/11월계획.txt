@@ -25,3 +25,21 @@ Looking for new Developer
   What to do in our project : code components(frontend)
 
 
+정리를 하자면
+백 - 그때그때 생겨나는 자잘한 문제를 고치자.
+  update는 put으로도 돌아감. 일단 지금 post로도 되니까 냅두자.
+  이미지업로드 : 그때 생각.
+  필터 : pagination(나중에 생각)
+  db구매 : 나중에 생각.
+프런트 - 집중
+  템플릿 : 얼른 정하는게 좋을듯.
+  준우 : 프런트라우팅 + 컨테이너 필요한 기능들 짜오기.
+  재원 : 로그아웃, firstsignin 쪽 post 구현.
+
+일단 되어야 하는 라우팅
+/login, signup, logout
+/firstsignin
+/competition
+/school
+/club
+/mypage

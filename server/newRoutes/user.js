@@ -11,8 +11,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-<<<<<<< HEAD
-=======
 router.get('/my', (req,res) => {
   if(!req.isAuthenticated()){
     res.status(401).json({'message': 'not logged in'})
@@ -20,7 +18,6 @@ router.get('/my', (req,res) => {
     res.status(200).json(req.user)
   }
 });
->>>>>>> 6ac301be8b26a2300ef93bda9688c6c44c10d636
 
 router.post('/update', (req,res)=>{
   User.findOneandUpdate({_id:req.query.id},{
