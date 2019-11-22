@@ -1,0 +1,13 @@
+일단 인증 다 되어있다고 가정하면
+mypage school club competition 11월말까지 ㄱㄱ.
+admin페이지는 일단 만들지 말고, DB에 직접 데이터 넣어주는 식으로 해서 테스트해보자.
+
+
+/mypage
+  / : 자기정보 조회(get)
+  /update : 자기정보 수정(get, post)
+  /picupdate : 프사 변경(post)
+
+/school, /club, /competition
+  / : 전체조회 및 필터가동(get) -> 비동기 가능?!
+  /:id : 상세조회(get)

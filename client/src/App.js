@@ -8,7 +8,9 @@ import MenuBarContainer from './containers/MenuBarContainer';
 import MyPageContainer from './containers/MyPageContainer';
 import FirstSignInContainer from "./containers/FirstSignInContainer";
 
-import School from './containers/SchoolContainer';
+import SchoolContainer from './containers/SchoolContainer';
+import ClubContainer from './containers/ClubContainer';
+import CompetitionContainer from './containers/CompetitionContainer';
 
 
 function App() {
@@ -20,7 +22,10 @@ function App() {
             <Route path='/' component={MenuBarContainer}/>
         </Switch>
         <Route exact path='/mypage' component={MyPageContainer}/>
-        <Route exact path='/school' component={School}/>
+        <Route exact path='/school' component={SchoolContainer}/>
+        <Route exact path='/club' component={ClubContainer}/>
+        <Route exact path='/competition' component={CompetitionContainer}/>
+
     </div>
   );
 }
