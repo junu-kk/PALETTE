@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function FirstSignIn({onSubmit}) {
+function FirstSignIn({onSubmit, onSkip}) {
     const classes = useStyles();
     const [state, setState] = React.useState({
         dateOfBirth: new Date(2000, 1,1),
@@ -165,6 +165,7 @@ function FirstSignIn({onSubmit}) {
                                     variant='contained'
                                     color='primary'
                                     className={classes.submit}
+                                    onClick={onSkip}
                                 >
                                     I'll do it later
                                 </Button>

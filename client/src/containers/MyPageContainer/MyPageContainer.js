@@ -1,8 +1,16 @@
 import axios from 'axios';
-import React from 'react';
+import React, {useEffect} from 'react';
 import MyPage from '../../components/MyPage';
+import {isAuthenticated} from "../../modules/authentication";
 
-const MyPageContainer = () => {
+const MyPageContainer = ({history}) => {
+    useEffect(()=>{
+        if(!isAuthenticated()) {
+            alert('You\'re not logged in!');
+            history.push('/')
+        }
+    },[]);
+
     const [userInfo, setUserInfo] = React.useState();
 
     const getUserInfo = async () => {
@@ -13,8 +21,7 @@ const MyPageContainer = () => {
                     'Authorization': token
                 }
             });
-            console.log(temp);
-            setUserInfo(temp)
+            setUserInfo(temp.data)
         } catch(error) {
             console.log(error)
         }
