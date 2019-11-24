@@ -20,8 +20,16 @@ router.get('/my', (req,res) => {
 });
 
 router.post('/update', (req,res)=>{
-  User.findOneandUpdate({_id:req.user.id},{
-    //쿼리를 어떻게 넘길건지 결정해야.
+  console.log(req.body);
+  console.log(req.user);
+  User.findOneandUpdate({_id:req.user._id},{
+    dob:req.body.dob,
+    address:req.body.address,
+    introduce:req.body.introduce,
+    grade:req.body.grade,
+    class:req.body.class,
+    work_exp:req.body.work_exp,
+    fun_facts:req.body.fun_facts,
   }, (err, updatedUser)=>{
     if(err) res.status(500).json(err);
     else{
