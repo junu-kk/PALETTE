@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 
-function MyPage({onGetUserInfo}) {
+function MyPage({onGetUserInfo, userInfo}) {
     useEffect(() => {
         onGetUserInfo()
-    });
+    },[]);
     return (
         <div>
 
