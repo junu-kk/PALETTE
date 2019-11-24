@@ -26,6 +26,7 @@ const MainContainer = ({history}) => {
                     'token',
                     `Bearer ${response.data.token}`
                 );
+                history.push('/firstsignin');
                 alert(response.data.token);
                 return response;
             }).catch(error => {
@@ -33,7 +34,6 @@ const MainContainer = ({history}) => {
                 alert('Why does it fail even though I succeed sign up?');
                 throw error;
             });
-            history.push('/firstsignin');
             return response;
         }).catch(error => {
             console.log(error);
