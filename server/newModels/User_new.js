@@ -12,6 +12,18 @@ var user_newSchema = mongoose.Schema({
     type:String,
     required:true,
   },
+  address:{
+    type:String,
+  },
+  grade:{
+    type:Number,
+  },
+  class:{
+    type:String,
+  },
+  work_exp:{
+    type:String,
+  },
   email:{
     type:String,
     required:true,
