@@ -5,7 +5,7 @@ var multer = require('multer');
 var upload = multer({dest:'./upload'});
 
 router.get('/', (req,res)=>{
-  School.find(req.query).exec((err,schools)=>{
+  School.find({}).exec((err,schools)=>{
     if(err) throw err;
     else res.status(200).json(schools);
   });
