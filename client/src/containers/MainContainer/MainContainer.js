@@ -3,43 +3,26 @@ import Main from '../../components/Main';
 
 import axios from 'axios';
 
-import {signIn} from '../../modules/authentication';
+import {signIn, signUp} from '../../modules/authentication';
 
 const MainContainer = ({history}) => {
     const handleSignIn = async (email, password) => {
         try {
             await signIn(email, password);
+            history.push('/mypage')
         } catch(error) {
-            alert('fuck you!');
-            console.log(error.response.status)
+            alert('Sign In failed. Please check your email or password.');
         }
-
-        history.push('/mypage')
+        // TODO: 여기 try쪽으로 올리기
     };
 
-    const handleSignUp = (firstName, lastName, email, password) => {
-        return axios.post('http://127.0.0.1:5000/signup', {email: email, password: password, firstName: firstName, lastName: lastName}).then(response => {
-            console.log(response.data);
-            axios.post('http://127.0.0.1:5000/login',{email:email, password: password}).then(response => {
-                console.log(response.data);
-                sessionStorage.setItem(
-                    'token',
-                    `Bearer ${response.data.token}`
-                );
-                history.push('/firstsignin');
-                alert(response.data.token);
-                return response;
-            }).catch(error => {
-                console.log(error);
-                alert('Why does it fail even though I succeed sign up?');
-                throw error;
-            });
-            return response;
-        }).catch(error => {
-            console.log(error);
-            alert('Sign up failed. Please check fields you filled in.');
-            throw error;
-        })
+    const handleSignUp = async (firstName, lastName, email, password) => {
+        try {
+            await signUp(firstName, lastName, email, password);
+            history.push('/firstsignin')
+        } catch(error) {
+            alert(error.response.message)
+        }
     };
 
     return (<Main onSignIn={handleSignIn} onSignUp={handleSignUp}/>)

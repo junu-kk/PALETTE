@@ -33,7 +33,6 @@ var userRouter = require('./newroutes/user');
 var loginRouter = require('./newroutes/login');
 var indexRouter = require('./newroutes/index');
 var signupRouter = require('./newroutes/signup');
-var logoutRouter = require('./newroutes/logout');
 
 var app = express();
 
@@ -75,7 +74,6 @@ app.use('/user', passport.authenticate('jwt', {session:false}), userRouter);
 app.use('/login', loginRouter);
 app.use('/', indexRouter);
 app.use('/signup', signupRouter);
-app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -22,7 +22,7 @@ router.get('/my', (req,res) => {
 router.post('/update', (req,res)=>{
   console.log(req.body);
   console.log(req.user);
-  User.findOneandUpdate({_id:req.user._id},{
+  User.findOneAndUpdate({email:req.user.email},{
     dob:req.body.dob,
     address:req.body.address,
     introduce:req.body.introduce,

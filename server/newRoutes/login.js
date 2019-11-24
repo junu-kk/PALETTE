@@ -1,4 +1,3 @@
-//쓰이는건지 잘 몰라서 일단 냅둡니다!
 //router for login
 var express = require('express');
 var router = express.Router();
@@ -9,7 +8,8 @@ var jwt = require('jsonwebtoken');
 // router.post('/', passport.authenticate('local-login'), (req,res)=>console.log(res));
 
 
-router.post('/', function (req, res) {
+router.post('/', function (req, res, next) {
+  console.log(req)
   passport.authenticate('local-login', {session: false}, (err, user, info) => {
     if (err || !user) {
       return res.status(400).json({
@@ -17,16 +17,9 @@ router.post('/', function (req, res) {
         user   : user
       });
     }
-    req.login(user, {session: false}, (err) => {
-      if (err) {
-        res.send(err);
-      }
-      const token = jwt.sign(user.toJSON(), 'testsecret');
-      return res.json({user, token});
-    });
+    const token = jwt.sign(user.toJSON(), 'testsecret');
+    return res.json({user,token});
   })(req, res);
 });
-
-//router.post('/',passport.authenticate('local-login',));
 
 module.exports = router;
