@@ -3,17 +3,13 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 function School({onGetSchoolInfo, schoolInfo}){
-  useEffect(()=>{
-    onGetSchoolInfo()
-    console.log('hihihihi\n\n\n\n\n\n\n\n');
-    console.log(schoolInfo);
-  },[]);
-  
+  const schools = schoolInfo.map((school) => {
+    return <li>{school.introduction}</li>
+  });
+
   return(
     <div>
-      <ul>
-      {schoolInfo}
-      </ul>
+      {schools}
     </div>
   );
 }
