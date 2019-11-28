@@ -28,6 +28,7 @@ const SchoolContainer = ({history})=>{
       });
       setSchoolInfo(temp.data);
       console.log('setSchoolInfo');
+
     } catch(err) {
       console.log(err)
     }
