@@ -23,7 +23,7 @@ const SchoolContainer = ({history})=>{
         }
       });
       console.log(temp.data);
-      setSchoolInfo(temp.data)
+      setSchoolInfo(temp.data);
     } catch(err) {
       console.log(err)
     }
