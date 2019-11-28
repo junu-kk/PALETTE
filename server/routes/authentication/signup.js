@@ -10,7 +10,7 @@ router.get('/', (req,res,next)=>{
   if(fmsg.error){
     feedback = fmsg.error[0];
   }
-  return res.render('authentication/signup',{
+  return res.render('authentication/newsignup',{
     ct:{
       feedback:feedback,
     }
