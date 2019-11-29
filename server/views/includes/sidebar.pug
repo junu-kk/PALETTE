@@ -1,0 +1,191 @@
+.sidebar(data-background-color='brown' data-active-color='danger')
+    //
+      Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
+      Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+    .logo
+        a.simple-text.logo-mini(href='https://www.creative-tim.com')
+            | CT
+        a.simple-text.logo-normal(href='https://www.creative-tim.com')
+            | Creative Tim
+    .sidebar-wrapper
+        .user
+            .info
+                .photo
+                    img(src='../../assets/img/faces/face-2.jpg')
+                a.collapsed(data-toggle='collapse' href='#collapseExample')
+                    span
+                        | Chet Faker
+                        b.caret
+                .clearfix
+                #collapseExample.collapse
+                    ul.nav
+                        li
+                            a(href='#profile')
+                                span.sidebar-mini Mp
+                                span.sidebar-normal My Profile
+                        li
+                            a(href='#edit')
+                                span.sidebar-mini Ep
+                                span.sidebar-normal Edit Profile
+                        li
+                            a(href='#settings')
+                                span.sidebar-mini S
+                                span.sidebar-normal Settings
+        ul.nav
+            li.active
+                a(data-toggle='collapse' href='#dashboardOverview' aria-expanded='true')
+                    i.ti-panel
+                    p
+                        | Dashboard
+                        b.caret
+                #dashboardOverview.collapse.in
+                    ul.nav
+                        li.active
+                            a(href='../dashboard/overview.html')
+                                span.sidebar-mini O
+                                span.sidebar-normal Overview
+                        li
+                            a(href='../dashboard/stats.html')
+                                span.sidebar-mini S
+                                span.sidebar-normal Stats
+            li
+                a(data-toggle='collapse' href='#componentsExamples')
+                    i.ti-package
+                    p
+                        | Components
+                        b.caret
+                #componentsExamples.collapse
+                    ul.nav
+                        li
+                            a(href='../components/buttons.html')
+                                span.sidebar-mini B
+                                span.sidebar-normal Buttons
+                        li
+                            a(href='../components/grid.html')
+                                span.sidebar-mini GS
+                                span.sidebar-normal Grid System
+                        li
+                            a(href='../components/panels.html')
+                                span.sidebar-mini P
+                                span.sidebar-normal Panels
+                        li
+                            a(href='../components/sweet-alert.html')
+                                span.sidebar-mini SA
+                                span.sidebar-normal Sweet Alert
+                        li
+                            a(href='../components/notifications.html')
+                                span.sidebar-mini N
+                                span.sidebar-normal Notifications
+                        li
+                            a(href='../components/icons.html')
+                                span.sidebar-mini I
+                                span.sidebar-normal Icons
+                        li
+                            a(href='../components/typography.html')
+                                span.sidebar-mini
+                                    i.ti-panel
+                                span.sidebar-normal Typography
+            li
+                a(data-toggle='collapse' href='#formsExamples')
+                    i.ti-clipboard
+                    p
+                        | Forms
+                        b.caret
+                #formsExamples.collapse
+                    ul.nav
+                        li
+                            a(href='../forms/regular.html')
+                                span.sidebar-mini Rf
+                                span.sidebar-normal Regular Forms
+                        li
+                            a(href='../forms/extended.html')
+                                span.sidebar-mini Ef
+                                span.sidebar-normal Extended Forms
+                        li
+                            a(href='../forms/validation.html')
+                                span.sidebar-mini Vf
+                                span.sidebar-normal Validation Forms
+                        li
+                            a(href='../forms/wizard.html')
+                                span.sidebar-mini W
+                                span.sidebar-normal Wizard
+            li
+                a(data-toggle='collapse' href='#tablesExamples')
+                    i.ti-view-list-alt
+                    p
+                        | Table list
+                        b.caret
+                #tablesExamples.collapse
+                    ul.nav
+                        li
+                            a(href='../tables/regular.html')
+                                span.sidebar-mini RT
+                                span.sidebar-normal Regular Tables
+                        li
+                            a(href='../tables/extended.html')
+                                span.sidebar-mini ET
+                                span.sidebar-normal Extended Tables
+                        li
+                            a(href='../tables/bootstrap-table.html')
+                                span.sidebar-mini BT
+                                span.sidebar-normal Bootstrap Table
+                        li
+                            a(href='../tables/datatables.net.html')
+                                span.sidebar-mini DT
+                                span.sidebar-normal DataTables.net
+            li
+                a(data-toggle='collapse' href='#mapsExamples')
+                    i.ti-map
+                    p
+                        | Maps
+                        b.caret
+                #mapsExamples.collapse
+                    ul.nav
+                        li
+                            a(href='../maps/google.html')
+                                span.sidebar-mini GM
+                                span.sidebar-normal Google Maps
+                        li
+                            a(href='../maps/vector.html')
+                                span.sidebar-mini VM
+                                span.sidebar-normal Vector maps
+                        li
+                            a(href='../maps/fullscreen.html')
+                                span.sidebar-mini FSM
+                                span.sidebar-normal Full Screen Map
+            li
+                a(href='../charts.html')
+                    i.ti-bar-chart-alt
+                    p Charts
+            li
+                a(href='../calendar.html')
+                    i.ti-calendar
+                    p Calendar
+            li
+                a(data-toggle='collapse' href='#pagesExamples')
+                    i.ti-gift
+                    p
+                        | Pages
+                        b.caret
+                #pagesExamples.collapse
+                    ul.nav
+                        li
+                            a(href='../pages/timeline.html')
+                                span.sidebar-mini TP
+                                span.sidebar-normal Timeline Page
+                        li
+                            a(href='../pages/user.html')
+                                span.sidebar-mini UP
+                                span.sidebar-normal User Page
+                        li
+                            a(href='../pages/login.html')
+                                span.sidebar-mini LP
+                                span.sidebar-normal Login Page
+                        li
+                            a(href='../pages/register.html')
+                                span.sidebar-mini RP
+                                span.sidebar-normal Register Page
+                        li
+                            a(href='../pages/lock.html')
+                                span.sidebar-mini LSP
+                                span.sidebar-normal Lock Screen Page
