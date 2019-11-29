@@ -15,7 +15,6 @@ var path = require('path');
 var crypto = require('crypto');
 var multer = require('multer');
 var GridFsStorage = require('multer-gridfs-storage');
-require('../models/Upload');
 var Grid = require('gridfs-stream');
 
 var mongoose = require('mongoose');

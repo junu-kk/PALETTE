@@ -163,26 +163,6 @@ head
                   span.sidebar-mini DT
                   span.sidebar-normal DataTables.net
         li
-          a(data-toggle='collapse' href='#mapsExamples')
-            i.ti-map
-            p
-              | Maps
-              b.caret
-          #mapsExamples.collapse
-            ul.nav
-              li
-                a(href='../maps/google.html')
-                  span.sidebar-mini GM
-                  span.sidebar-normal Google Maps
-              li
-                a(href='../maps/vector.html')
-                  span.sidebar-mini VM
-                  span.sidebar-normal Vector maps
-              li
-                a(href='../maps/fullscreen.html')
-                  span.sidebar-mini FSM
-                  span.sidebar-normal Full Screen Map
-        li
           a(href='../charts.html')
             i.ti-bar-chart-alt
             p Charts
@@ -272,116 +252,99 @@ head
             #wizardCard.card.card-wizard
               form#wizardForm(method='' action='')
                 .card-header.text-center
-                  h4.card-title Awesome Wizard
-                  p.category Split a complicated flow in multiple steps
-                .card-content
-                  ul.nav
-                    li
-                      a(href='#tab1' data-toggle='tab') First Tab
-                    li
-                      a(href='#tab2' data-toggle='tab') Second Tab
-                    li
-                      a(href='#tab3' data-toggle='tab') Third Tab
-                    
-                  .tab-content
-                    #tab1.tab-pane
-                      h5.text-center Please tell us more about yourself.
-                      .row
-                        .col-md-5.col-md-offset-1
-                          .form-group
-                            label.control-label
-                              | First Name
-                            input.form-control(type='text' name='first_name' placeholder='ex: Mike')
-                        .col-md-5
-                          .form-group
-                            label.control-label
-                              | Last Name
-                            input.form-control(type='text' name='last_name' required='true' placeholder='ex: Andrew')
-                      .row
-                        .col-md-10.col-md-offset-1
-                          .form-group
-                            label.control-label
-                              | Email
-                              star *
-                            input.form-control(type='text' name='email' email='true' placeholder='ex: hello@creative-tim.com')
-                    #tab2.tab-pane
-                      h5.text-center Please give us more details about your platform.
-                      .row
-                        .col-md-10.col-md-offset-1
-                          .form-group
-                            label.control-label
-                              | Your Website
-                              star *
-                            input.form-control(type='text' name='website' url='true' placeholder='ex: https://www.creative-tim.com')
-                      .row
-                        .col-md-5.col-md-offset-1
-                          .form-group
-                            label.control-label Framework Type
-                            input.form-control(type='text' name='framework' placeholder='ex: https://www.creative-tim.com')
-                        .col-md-5
-                          .form-group
-                            label.control-label
-                              | Language
-                              star *
-                            //
-                              IMPORTANT! - the "bootstrap select picker" is not compatible with jquery.validation.js, that's why we use the "default select" inside this wizard. We will try to contact the guys who are responsibble for the "bootstrap select picker" to find a solution. Thank you for your patience.
-                            select.form-control(name='cities')
-                              option(selected='' disabled='') - language -
-                              option(value='ms') Bahasa Melayu
-                              option(value='ca') Catal&agrave;
-                              option(value='da') Dansk
-                              option(value='de') Deutsch
-                              option(value='en') English
-                              option(value='es') Espa&ntilde;ol
-                              option(value='el') E&lambda;&lambda;&eta;&nu;&iota;&kappa;&#x3AC;
-                              option(value='fr') Fran&ccedil;ais
-                              option(value='it') Italiano
-                              option(value='hu') Magyar
-                              option(value='nl') Nederlands
-                              option(value='no') Norsk
-                              option(value='pl') Polski
-                              option(value='pt') Portugu&ecirc;s
-                              option(value='fi') Suomi
-                              option(value='sv') Svenska
-                              option(value='tr') T&uuml;rk&ccedil;e
-                              option(value='is') &Iacute;slenska
-                              option(value='cs') &Ccaron;e&scaron;tina
-                              option(value='ru') &Rcy;&ucy;&scy;&scy;&kcy;&icy;&jcy;
-                              option(value='th') &#xE20;&#xE32;&#xE29;&#xE32;&#xE44;&#xE17;&#xE22;
-                              option(value='zh') &#x4E2D;&#x6587; (&#x7B80;&#x4F53;)
-                              option(value='zh-TW') &#x4E2D;&#x6587; (&#x7E41;&#x9AD4;)
-                              option(value='ja') &#x65E5;&#x672C;&#x8A9E;
-                              option(value='ko') &#xD55C;&#xAD6D;&#xC5B4;
-                      .row
-                        .col-md-5.col-md-offset-1
-                          .form-group
-                            label.control-label
-                              | Bootstrap Version
-                            //
-                              IMPORTANT! - the "bootstrap select picker" is not compatible with jquery.validation.js, that's why we use the "default select" inside this wizard. We will try to contact the guys who are responsibble for the "bootstrap select picker" to find a solution. Thank you for your patience.
-                            select.form-control(name='cities')
-                              option(selected='' disabled='') - version -
-                              option(value='1.1') Bootstrap 1.1
-                              option(value='2.0') Bootstrap 2.0
-                              option(value='3.0') Bootstrap 3.0
-                              option(value='4.0') Bootstrap 4.0(alpha)
-                        .col-md-5
-                          .form-group
-                            label.control-label Price
-                            input.form-control(type='text' name='price' placeholder='ex: 19.00')
-                    #tab3.tab-pane
-                      h2.text-center.text-space
-                        | Yuhuuu! 
-                        br
-                        small
-                          | Click on &quot;
-                          b Finish
-                          | &quot; to join our community
-                .card-footer
-                  button.btn.btn-default.btn-fill.btn-wd.btn-back.pull-left(type='button') Back
-                  button.btn.btn-info.btn-fill.btn-wd.btn-next.pull-right(type='button') Next
-                  button.btn.btn-info.btn-fill.btn-wd.btn-finish.pull-right(type='button' onclick='onFinishWizard()') Finish
-                  .clearfix
+                  h4.card-title First Logged in to PALETTE?
+                  p.category Enter your information, before using it!
+                form(method='POST' action='/first_login')
+                  .card-content
+                    ul.nav
+                      li
+                        a(href='#tab1' data-toggle='tab') Basic Info
+                      li
+                        a(href='#tab2' data-toggle='tab') School and Club
+                      li
+                        a(href='#tab3' data-toggle='tab') Complete!
+                      
+                    .tab-content
+                      #tab1.tab-pane
+                        h5.text-center Please tell us more about yourself.
+                        .row
+                          .col-md-5.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | Date of birth
+                              input.form-control(type='date' name='dob' placeholder='date of birth')
+                          .col-md-5
+                            .form-group
+                              label.control-label
+                                | address
+                              input.form-control(type='text' name='address' placeholder='address')
+                        .row
+                          .col-md-10.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | Bio
+                                star *
+                              input.form-control(type='text' name='bio' placeholder='tell me your bio!')
+                        .row
+                          .col-md-5.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | grade
+                              input.form-control(type='number' name='number' placeholder='your grade')
+                          .col-md-5
+                            .form-group
+                              label.control-label
+                                | class
+                              input.form-control(type='text' name='class' placeholder='your class')
+                        .row
+                          .col-md-5.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | Working Experience
+                              input.form-control(type='text' name='work_exp' placeholder='working experience')
+                          .col-md-5
+                            .form-group
+                              label.control-label
+                                | Fun Facts
+                              input.form-control(type='text' name='fun_facts' placeholder='fun facts!')
+                        .row
+                          .col-md-10.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | Skills and Interests :
+                                star *
+                              input.form-control(type='text' name='s_i' placeholder='tell me your skills and interests!')
+                      #tab2.tab-pane
+                        h5.text-center Please give us more details about your platform.
+                        .row
+                          .col-md-10.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | Your School
+                                star *
+                              input.form-control(type='text' name='school' placeholder='tell me your school')
+                        .row
+                          .col-md-10.col-md-offset-1
+                            .form-group
+                              label.control-label
+                                | Your Club
+                                star *
+                              input.form-control(type='text' name='club' placeholder='tell me your club')
+                        //일단은 이렇게 하고, 나중에 드롭다운, 동적검색 등 더 나은 방법을 찾아보자.
+                        
+                      #tab3.tab-pane
+                        h2.text-center.text-space
+                          | Yuhuuu! 
+                          br
+                          small
+                            | Click on &quot;
+                            b Finish
+                            | &quot; to join PALETTE
+                  .card-footer
+                    button.btn.btn-default.btn-fill.btn-wd.btn-back.pull-left(type='button') Back
+                    button.btn.btn-info.btn-fill.btn-wd.btn-next.pull-right(type='button') Next
+                    button.btn.btn-info.btn-fill.btn-wd.btn-finish.pull-right(type='submit' onclick='onFinishWizard()') Finish
+                    .clearfix
     footer.footer
       .container-fluid
         nav.pull-left
@@ -430,8 +393,6 @@ script(src='/assets/js/bootstrap-notify.js')
 script(src='/assets/js/sweetalert2.js')
 // Vector Map plugin
 script(src='/assets/js/jquery-jvectormap.js')
-// Google Maps Plugin
-script(src='https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE')
 // Wizard Plugin
 script(src='/assets/js/jquery.bootstrap.wizard.min.js')
 // Bootstrap Table Plugin

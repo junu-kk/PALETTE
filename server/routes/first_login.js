@@ -11,7 +11,8 @@ router.get('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  return res.render('first_login/basic');
+
+  return res.render('first_login/newbasic');
 });
 
 //saves questions of user
