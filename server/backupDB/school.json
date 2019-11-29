@@ -1,4 +1,0 @@
-[
-  {"_id":{"$oid":"5d6f3c37c8750c0ad8777a50"},"name":"skku","address":"hyehwa","info":"sungkyunkwan university","clubs":[{"$oid":"5d6f3c7ec8750c0ad8777a52"},{"$oid":"5d74e94160cfa53b94df646c"}],"__v":1,"majors":[]},
-  {"_id":{"$oid":"5d6f3c4dc8750c0ad8777a51"},"name":"yu","address":"sinchon","info":"yonsei university","clubs":["5d6f3c9ec8750c0ad8777a53",{"$oid":"5d74e96960cfa53b94df6471"},{"$oid":"5d8425d9bef48436c057d4d5"}],"__v":2,"majors":[]}
-]

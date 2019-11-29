@@ -11,8 +11,7 @@ var clubSchema = mongoose.Schema({
     ref:'School',
   },
   pic:{
-    type:mongoose.Schema.Types.ObjectId,
-    ref:'Upload',
+    type:String,
   },
   info:{
     type:String,

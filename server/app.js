@@ -15,7 +15,6 @@ var flash = require('connect-flash');
 //for img
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var Grid = require('gridfs-stream');
 
 //routers
 var indexRouter = require('./routes/index');
@@ -49,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //for img
 app.use(methodOverride('_method'));
 app.use(bodyParser.json());
+app.use('/image',express.static('./upload'));
 
 app.use(session({secret:'@$!#!D1!@#%!(^)$@#', resave:true, saveUninitialized:false}));
 app.use(passport.initialize());
@@ -86,3 +86,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+

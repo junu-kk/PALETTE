@@ -1,3 +1,0 @@
-[
-  {"_id":{"$oid":"5d74fbd3fa794c3ed833896f"},"sch":{"event":"hi","date":{"$date":"2020-02-02T00:00:00.000Z"}},"apcnqs":["able to join?","oh yeah"],"apcns":[],"pic":{"$oid":"5d74fbd3fa794c3ed833896d"},"name":"hi","info":"hi","contact":"01088887777","due":{"$date":"2020-01-01T00:00:00.000Z"},"price":10000,"palette":"Arts","gu":"종로구","location":"hyehwa","__v":0}
-]
