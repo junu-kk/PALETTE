@@ -17,7 +17,7 @@ router.get('/', (req, res, next)=> {
   .populate('excs')
   .exec((err, user)=> {
     if (err) throw err;
-    return res.render('mypage',{ct:{
+    return res.render('mypage/new',{ct:{
       user:user,
     }});
     

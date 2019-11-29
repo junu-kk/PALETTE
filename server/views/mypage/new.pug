@@ -362,20 +362,20 @@ head
                     .col-md-3
                       .form-group
                         label School
-                        input.form-control.border-input(type='text' placeholder='Username' value='michael23')
+                        input.form-control.border-input(type='text' placeholder='School' value=ct.user.school.name)
                     .col-md-4
                       .form-group
                         label(for='exampleInputEmail1') Email address
-                        input.form-control.border-input(type='email' placeholder='Email')
+                        input.form-control.border-input(type='email' placeholder='Email' value=ct.user.email)
                   .row
                     .col-md-6
                       .form-group
-                        label First Name
-                        input.form-control.border-input(type='text' placeholder='Company' value='Chet')
+                        label Work Experience
+                        input.form-control.border-input(type='text' placeholder='Work Experience' value=ct.user.work_exp)
                     .col-md-6
                       .form-group
-                        label Last Name
-                        input.form-control.border-input(type='text' placeholder='Last Name' value='Faker')
+                        label Skills and Interests
+                        input.form-control.border-input(type='text' placeholder='Skills and Interests' value=ct.user.s_i)
                   .row
                     .col-md-12
                       .form-group
@@ -384,16 +384,16 @@ head
                   .row
                     .col-md-4
                       .form-group
-                        label City
-                        input.form-control.border-input(type='text' placeholder='City' value='Melbourne')
+                        label PA
+                        input.form-control.border-input(type='text' placeholder='your first palette' value=ct.user.my_palette[0])
                     .col-md-4
                       .form-group
-                        label Country
-                        input.form-control.border-input(type='text' placeholder='Country' value='Australia')
+                        label LE
+                        input.form-control.border-input(type='text' placeholder='your second palette' value=ct.user.my_palette[1])
                     .col-md-4
                       .form-group
-                        label Postal Code
-                        input.form-control.border-input(type='number' placeholder='ZIP Code')
+                        label TTE
+                        input.form-control.border-input(type='text' placeholder='your third palette' value=ct.user.my_palette[2])
                   .row
                     .col-md-12
                       .form-group

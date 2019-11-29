@@ -36,6 +36,7 @@ router.post('/', (req,res,next)=>{
         user.s_i = req.body.s_i;
         user.school = school._id;
         user.clubs.push(club._id);
+        user.is_new = false;
 
         user.saveUser((err)=>{
           if(err) throw err;
