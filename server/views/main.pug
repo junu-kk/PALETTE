@@ -1,5 +1,7 @@
+// 앞에 꼭 써주기
 doctype html
 
+// head include를 해줍니다.
 head
   include includes/head.pug
 
@@ -8,6 +10,7 @@ head
   .main-panel
     include includes/navbar.pug
     .content
+      // 여기서부터 페이지 디자인 들어가면 됩니다.
       block content
         p PALETTE main page
         br
@@ -27,4 +30,5 @@ head
         br
         a(href='/logout') Sign Out
 
+// 이것도 까먹지 않고 include해주기!
 include includes/scripts.pug
