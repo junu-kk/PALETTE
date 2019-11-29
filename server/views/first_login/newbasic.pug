@@ -250,101 +250,101 @@ head
         .row
           .col-md-8.col-md-offset-2
             #wizardCard.card.card-wizard
-              form#wizardForm(method='' action='')
+              form#wizardForm(method='POST' action='/first_login')
                 .card-header.text-center
                   h4.card-title First Logged in to PALETTE?
                   p.category Enter your information, before using it!
-                form(method='POST' action='/first_login')
-                  .card-content
-                    ul.nav
-                      li
-                        a(href='#tab1' data-toggle='tab') Basic Info
-                      li
-                        a(href='#tab2' data-toggle='tab') School and Club
-                      li
-                        a(href='#tab3' data-toggle='tab') Complete!
+                
+                .card-content
+                  ul.nav
+                    li
+                      a(href='#tab1' data-toggle='tab') Basic Info
+                    li
+                      a(href='#tab2' data-toggle='tab') School and Club
+                    li
+                      a(href='#tab3' data-toggle='tab') Complete!
+                    
+                  .tab-content
+                    #tab1.tab-pane
+                      h5.text-center Please tell us more about yourself.
+                      .row
+                        .col-md-5.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | Date of birth
+                            input.form-control(type='date' name='dob' placeholder='date of birth')
+                        .col-md-5
+                          .form-group
+                            label.control-label
+                              | address
+                            input.form-control(type='text' name='address' placeholder='address')
+                      .row
+                        .col-md-10.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | Bio
+                              star *
+                            input.form-control(type='text' name='bio' placeholder='tell me your bio!')
+                      .row
+                        .col-md-5.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | grade
+                            input.form-control(type='number' name='grade' placeholder='your grade')
+                        .col-md-5
+                          .form-group
+                            label.control-label
+                              | class
+                            input.form-control(type='text' name='class' placeholder='your class')
+                      .row
+                        .col-md-5.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | Working Experience
+                            input.form-control(type='text' name='work_exp' placeholder='working experience')
+                        .col-md-5
+                          .form-group
+                            label.control-label
+                              | Fun Facts
+                            input.form-control(type='text' name='fun_facts' placeholder='fun facts!')
+                      .row
+                        .col-md-10.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | Skills and Interests :
+                              star *
+                            input.form-control(type='text' name='s_i' placeholder='tell me your skills and interests!')
+                    #tab2.tab-pane
+                      h5.text-center Please give us more details about your platform.
+                      .row
+                        .col-md-10.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | Your School
+                              star *
+                            input.form-control(type='text' name='school' placeholder='tell me your school')
+                      .row
+                        .col-md-10.col-md-offset-1
+                          .form-group
+                            label.control-label
+                              | Your Club
+                              star *
+                            input.form-control(type='text' name='club' placeholder='tell me your club')
+                      //일단은 이렇게 하고, 나중에 드롭다운, 동적검색 등 더 나은 방법을 찾아보자.
                       
-                    .tab-content
-                      #tab1.tab-pane
-                        h5.text-center Please tell us more about yourself.
-                        .row
-                          .col-md-5.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | Date of birth
-                              input.form-control(type='date' name='dob' placeholder='date of birth')
-                          .col-md-5
-                            .form-group
-                              label.control-label
-                                | address
-                              input.form-control(type='text' name='address' placeholder='address')
-                        .row
-                          .col-md-10.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | Bio
-                                star *
-                              input.form-control(type='text' name='bio' placeholder='tell me your bio!')
-                        .row
-                          .col-md-5.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | grade
-                              input.form-control(type='number' name='number' placeholder='your grade')
-                          .col-md-5
-                            .form-group
-                              label.control-label
-                                | class
-                              input.form-control(type='text' name='class' placeholder='your class')
-                        .row
-                          .col-md-5.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | Working Experience
-                              input.form-control(type='text' name='work_exp' placeholder='working experience')
-                          .col-md-5
-                            .form-group
-                              label.control-label
-                                | Fun Facts
-                              input.form-control(type='text' name='fun_facts' placeholder='fun facts!')
-                        .row
-                          .col-md-10.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | Skills and Interests :
-                                star *
-                              input.form-control(type='text' name='s_i' placeholder='tell me your skills and interests!')
-                      #tab2.tab-pane
-                        h5.text-center Please give us more details about your platform.
-                        .row
-                          .col-md-10.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | Your School
-                                star *
-                              input.form-control(type='text' name='school' placeholder='tell me your school')
-                        .row
-                          .col-md-10.col-md-offset-1
-                            .form-group
-                              label.control-label
-                                | Your Club
-                                star *
-                              input.form-control(type='text' name='club' placeholder='tell me your club')
-                        //일단은 이렇게 하고, 나중에 드롭다운, 동적검색 등 더 나은 방법을 찾아보자.
-                        
-                      #tab3.tab-pane
-                        h2.text-center.text-space
-                          | Yuhuuu! 
-                          br
-                          small
-                            | Click on &quot;
-                            b Finish
-                            | &quot; to join PALETTE
-                  .card-footer
-                    button.btn.btn-default.btn-fill.btn-wd.btn-back.pull-left(type='button') Back
-                    button.btn.btn-info.btn-fill.btn-wd.btn-next.pull-right(type='button') Next
-                    button.btn.btn-info.btn-fill.btn-wd.btn-finish.pull-right(type='submit' onclick='onFinishWizard()') Finish
-                    .clearfix
+                    #tab3.tab-pane
+                      h2.text-center.text-space
+                        | Yuhuuu! 
+                        br
+                        small
+                          | Click on &quot;
+                          b Finish
+                          | &quot; to join PALETTE
+                .card-footer
+                  button.btn.btn-default.btn-fill.btn-wd.btn-back.pull-left(type='button') Back
+                  button.btn.btn-info.btn-fill.btn-wd.btn-next.pull-right(type='button') Next
+                  button.btn.btn-info.btn-fill.btn-wd.btn-finish.pull-right(type='submit') Finish
+                  .clearfix
     footer.footer
       .container-fluid
         nav.pull-left

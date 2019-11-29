@@ -20,6 +20,17 @@ router.post('/', (req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
+  
+  var school_id, club_id;
+
+  School.findOne({name:req.body.school},(err,school)=>{
+    if(err) throw err;
+    school_id = school._id;
+  });
+  Club.findOne({name:req.body.club}, (err,club)=>{
+    if(err) throw err;
+    club_id = club._id;
+  });
   User.findOneAndUpdate({email:req.user.email}, {
     dob:req.body.dob,
     address:req.body.address,
@@ -29,11 +40,16 @@ router.post('/', (req,res,next)=>{
     work_exp:req.body.work_exp,
     fun_facts:req.body.fun_facts,
     s_i:req.body.s_i,
+    school:school_id,
+    club:club_id
   }, (err,updateUser)=>{
     if(err) throw err;
     updateUser.saveUser();
   });
-  return res.redirect('/first_login/pfolio');
+
+  
+  
+  return res.redirect('/main');
 });
 
 //shows questions of portfolio

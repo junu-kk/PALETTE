@@ -1,0 +1,12 @@
+{ dob: '1313-12-13',
+  address: '13',
+  bio: '1313',
+  number: '13',
+  class: '13',
+  work_exp: '13',
+  fun_facts: '13',
+  s_i: '13',
+  school: '1313',
+  club: '13' }
+  school: '1313',
+  club: '13' }
