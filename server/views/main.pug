@@ -1,20 +1,30 @@
-extends layout
+doctype html
 
-block content
-  p PALETTE main page
-  br
-  a(href='/exc') Browse Extracurricular Database
-  br
-  a(href='/school') School
-  br
-  a(href='/rc') RC(not now)
-  br
-  a(href='/club') Clubs
-  br
-  a(href='/pfolio') My Portfolio
-  br
-  a(href='/mypage') My Page
-  br
-  p inbox, widgets, postfeeds, notifications not yet.
-  br
-  a(href='/logout') Sign Out
+head
+  include includes/head.pug
+
+.wrapper
+  include includes/sidebar.pug
+  .main-panel
+    include includes/navbar.pug
+    .content
+      block content
+        p PALETTE main page
+        br
+        a(href='/exc') Browse Extracurricular Database
+        br
+        a(href='/school') School
+        br
+        a(href='/rc') RC(not now)
+        br
+        a(href='/club') Clubs
+        br
+        a(href='/pfolio') My Portfolio
+        br
+        a(href='/mypage') My Page
+        br
+        p inbox, widgets, postfeeds, notifications not yet.
+        br
+        a(href='/logout') Sign Out
+
+include includes/scripts.pug

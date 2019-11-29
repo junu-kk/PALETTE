@@ -1,31 +1,33 @@
-extends ../layout
+//extends ../layout
 
-block content
-  h2 Thank you for signing up!
-  h3 Please give us more infos.
-  //사진, 학교, 동아리, pfolio, 전공
-  //사진은 기본사진으로 넣고, multer로 표시하자
-  //pfolio는 ecert 제외 본인이 입력하게 하자.
-  //학교 동아리 전공은 어떻게 할까
-  //리스트중에서 선택하게 하자.
-  //그럼 일단 학교스키마->전공스키마, 동아리스키마 짜고
-  //샘플로 몇 개 입력해야겠다.
-  //first_login 페이지도 좀 분화시켜야지.
-  form(action="/first_login" method="POST")
-    p Date of Birth : 
-    input(name="dob" type="date")
-    p Address :
-    input(name="address" type="text")
-    p bio :
-    input(name="bio" type = "text")
-    p grade :
-    input(name="grade" type = "number")
-    p class :
-    input(name="class" type="text")
-    p Working Experience :
-    input(name="work_exp" type="text")
-    p Fun Facts about You :
-    input(name="fun_facts" type="text")
-    p Skills and Interests :
-    input(name="s_i" type="text")
-    button.submit confirm
+// 이런식으로 head에 include해주면 core file들을 가져와줍니다.
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar
+  .content
+    block content
+      h2 Thank you for signing up!
+      h3 Please give us more infos.
+
+    form(action="/first_login" method="POST")
+      p Date of Birth :
+      input(name="dob" type="date")
+      p Address :
+      input(name="address" type="text")
+      p bio :
+      input(name="bio" type = "text")
+      p grade :
+      input(name="grade" type = "number")
+      p class :
+      input(name="class" type="text")
+      p Working Experience :
+      input(name="work_exp" type="text")
+      p Fun Facts about You :
+      input(name="fun_facts" type="text")
+      p Skills and Interests :
+      input(name="s_i" type="text")
+      button.submit confirm
+
+include ../includes/scripts.pug

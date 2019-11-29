@@ -10,7 +10,6 @@ var User = require('../models/User');
 var Exc = require('../models/Exc');
 var School = require('../models/School');
 var Club = require('../models/Club');
-
 var path = require('path');
 var crypto = require('crypto');
 var multer = require('multer');
