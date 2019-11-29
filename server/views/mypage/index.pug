@@ -11,7 +11,7 @@ block content
     label(for='file') Choose file
     input(type='submit' value='submit')
   -if(!(ct.user.pic==null||ct.user.pic==''))
-    img(src='/mypage/hi' alt='')
+    img(src=ct.user.pic alt='')
   form(method='POST' action='/mypage/delete/'+ct.user.pic)
     button.submit Delete
   br
