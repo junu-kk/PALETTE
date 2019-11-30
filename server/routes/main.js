@@ -7,7 +7,7 @@ router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  return res.redirect('/main');
+  return res.render('main');
 });
 
 module.exports = router;
