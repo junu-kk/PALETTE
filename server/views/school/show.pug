@@ -7,7 +7,7 @@ block content
     }
   h2 #{ct.school.name}
   -if(!(ct.school.pic==null||ct.school.pic==''))
-    img(src='/school/hi/'+ct.school._id alt='')
+    img(src=ct.school.pic alt='')
   h3 information :
   p #{ct.school.info}
   h3 address :
