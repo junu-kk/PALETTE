@@ -12009,6 +12009,10 @@ star {
     background-color: rgba(205, 71, 19, 0.7);
 }
 
+.full-page[data-color="primary"]:after {
+    background-color: rgba(244, 243, 239, 0.7);
+}
+
 .full-page .footer nav > ul a:not(.btn),
 .full-page .footer .copyright,
 .full-page .footer .copyright a {

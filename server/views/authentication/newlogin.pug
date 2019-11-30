@@ -26,23 +26,10 @@ head
   link(href='https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' rel='stylesheet')
   link(href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css')
   link(href='/assets/css/themify-icons.css' rel='stylesheet')
-nav.navbar.navbar-transparent.navbar-absolute
-  .container
-    .navbar-header
-      button.navbar-toggle(type='button' data-toggle='collapse' data-target='#navigation-example-2')
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
 
-    .collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        li
-          a(href='/signup')
-            | Register
 .wrapper.wrapper-full-page
-  .full-page.login-page(data-color='azure')
-    // you can change the color of the filter page using: data-color="blue | azure | green | orange | red | purple"
+  .full-page.login-page(data-color='primary')
+    // you can change the color of the filter page using: data-color="blue | azure | green | orange | red | purple | primary"
     .content
       a(href='/')
         img(src='/assets/img/transparent-logo.png' ).center-block
@@ -62,8 +49,13 @@ nav.navbar.navbar-transparent.navbar-absolute
                     input.form-control.input-no-border(name = 'password' type='password' placeholder='Password')
                 .card-footer.text-center
                   button.btn.btn-fill.btn-wd(type='submit') Let&apos;s go
-                  .forgot
-                    a(href='#pablo') Forgot your password?
+                .row
+                  .col-sm-5.text-center
+                      a(href='/signup')
+                        h5 sign up
+                  .col-sm-7.text-center
+                    a(href='#pablo')
+                        h5 Forgot password?
     footer.footer.footer-transparent
       .container
         .copyright
