@@ -4,7 +4,11 @@ var router = express.Router();
 
 //shows index page
 router.get('/', (req, res, next)=> {
-  res.render('index', { title: 'PALETTE' });
+  if(req.isAuthenticated()) {
+    return res.redirect('/main');
+  } else {
+    return res.redirect('/login');
+  }
 });
 
 module.exports = router;
