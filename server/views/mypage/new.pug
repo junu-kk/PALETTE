@@ -349,63 +349,76 @@ head
                         btn.btn.btn-sm.btn-success.btn-icon
                           i.fa.fa-envelope
           .col-lg-8.col-md-7
-            .card
-              .card-header
-                h4.card-title Edit Profile
-              .card-content
-                form
-                  .row
-                    .col-md-5
-                      .form-group
-                        label Name
-                        input.form-control.border-input(type='text' disabled='' placeholder='Company' value=ct.user.fname+' '+ct.user.lname)
-                    .col-md-3
-                      .form-group
-                        label School
-                        input.form-control.border-input(type='text' placeholder='School' value=ct.user.school.name)
-                    .col-md-4
-                      .form-group
-                        label(for='exampleInputEmail1') Email address
-                        input.form-control.border-input(type='email' placeholder='Email' value=ct.user.email)
-                  .row
-                    .col-md-6
-                      .form-group
-                        label Work Experience
-                        input.form-control.border-input(type='text' placeholder='Work Experience' value=ct.user.work_exp)
-                    .col-md-6
-                      .form-group
-                        label Skills and Interests
-                        input.form-control.border-input(type='text' placeholder='Skills and Interests' value=ct.user.s_i)
-                  .row
-                    .col-md-12
-                      .form-group
-                        label Address
-                        input.form-control.border-input(type='text' placeholder='Home Address' value='Melbourne, Australia')
-                  .row
-                    .col-md-4
-                      .form-group
-                        label PA
-                        input.form-control.border-input(type='text' placeholder='your first palette' value=ct.user.my_palette[0])
-                    .col-md-4
-                      .form-group
-                        label LE
-                        input.form-control.border-input(type='text' placeholder='your second palette' value=ct.user.my_palette[1])
-                    .col-md-4
-                      .form-group
-                        label TTE
-                        input.form-control.border-input(type='text' placeholder='your third palette' value=ct.user.my_palette[2])
-                  .row
-                    .col-md-12
-                      .form-group
-                        label About Me
-                        textarea.form-control.border-input(rows='5' placeholder='Here can be your description' value='Mike')
-                          | Oh so, your weak rhyme
-                          | You doubt I&apos;ll bother, reading into it
-                          | I&apos;ll probably won&apos;t, left to my own devices
-                          | But that&apos;s the difference in our opinions.
-                  .text-center
-                    button.btn.btn-info.btn-fill.btn-wd(type='submit') Update Profile
-                  .clearfix
+            form(method='POST' action='/mypage/upload' enctype='multipart/form-data')
+              .card
+                .card-header
+                  h4.card-title Update Profile Picture
+                .card-content
+                  form
+                    .row
+                      .col-md-12
+                        .form-group
+                          input.form-control.border-input(type='file' name='file')
+                    .text-center
+                      button.btn.btn-info.btn-fill.btn-wd(type='submit') Update Profile Picture
+                    .clearfix
+                          
+            form(method='POST' action='/mypage/update')
+              .card
+                .card-header
+                  h4.card-title Edit Profile
+                .card-content
+                  form
+                    .row
+                      .col-md-5
+                        .form-group
+                          label Name
+                          input.form-control.border-input(type='text' disabled='' placeholder='Name' value=ct.user.fname+' '+ct.user.lname)
+                      .col-md-3
+                        .form-group
+                          label School
+                          input.form-control.border-input(type='text' disabled='' placeholder='School' value=ct.user.school.name)
+                      .col-md-4
+                        .form-group
+                          label(for='exampleInputEmail1') Email address
+                          input.form-control.border-input(type='email' disabled='' placeholder='Email' value=ct.user.email)
+                    .row
+                      .col-md-6
+                        .form-group
+                          label Work Experience
+                          input.form-control.border-input(name='work_exp' type='text' placeholder='Work Experience' value=ct.user.work_exp)
+                      .col-md-6
+                        .form-group
+                          label Skills and Interests
+                          input.form-control.border-input(name='s_i' type='text' placeholder='Skills and Interests' value=ct.user.s_i)
+                    .row
+                      .col-md-12
+                        .form-group
+                          label Address
+                          input.form-control.border-input(name='address' type='text' placeholder='Home Address' value=ct.user.address)
+                    .row
+                      .col-md-4
+                        .form-group
+                          label PA
+                          input.form-control.border-input(name='pa' type='text' placeholder='your first palette' value=ct.user.my_palette[0])
+                      .col-md-4
+                        .form-group
+                          label LE
+                          input.form-control.border-input(name='le' type='text' placeholder='your second palette' value=ct.user.my_palette[1])
+                      .col-md-4
+                        .form-group
+                          label TTE
+                          input.form-control.border-input(name='tte' type='text' placeholder='your third palette' value=ct.user.my_palette[2])
+                    .row
+                      .col-md-12
+                        .form-group
+                          label About Me
+                          input.form-control.border-input(name='bio' type='text' placeholder='your bio' value=ct.user.bio)
+                          input.form-control.border-input(name='fun_facts' type='text' placeholder='your fun facts' value=ct.user.fun_facts)
+                  
+                    .text-center
+                      button.btn.btn-info.btn-fill.btn-wd(type='submit') Update Profile
+                    .clearfix
     footer.footer
       .container-fluid
         nav.pull-left

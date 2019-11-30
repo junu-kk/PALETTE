@@ -24,6 +24,27 @@ router.get('/', (req, res, next)=> {
   });
 });
 
+//updates user info
+router.post('/update', (req,res)=>{
+  User.findOne({email:req.user.email}).exec((err,user)=>{
+    if(err) throw err;
+    user.work_exp = req.body.work_exp;
+    user.s_i = req.body.s_i;
+    user.address = req.body.address;
+    user.my_palette[0] = req.body.pa;
+    user.my_palette[1] = req.body.le;
+    user.my_palette[2] = req.body.tte;
+    user.bio = req.body.bio;
+    user.fun_facts = req.body.fun_facts;
+    
+    user.saveUser((err)=>{
+      if(err) throw err;
+    });
+
+    res.redirect('/main');
+  })
+})
+
 //uploads new profile picture
 router.post('/upload', upload.single('file'), (req, res, next) => {
   let image='/image/'+req.file.filename;
