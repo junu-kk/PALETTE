@@ -17,12 +17,12 @@
                 .clearfix
                 #collapseExample.collapse
                     ul.nav
-                        li
+                        li#mypage
                             a(href='/mypage')
                                 span.sidebar-mini
                                     i.ti-user
                                 span.sidebar-normal My Profile
-                        li
+                        li#pfolio
                             a(href='/pfolio')
                                 span.sidebar-mini
                                     i.ti-pencil-alt
@@ -33,13 +33,8 @@
                                     i.ti-key
                                 span.sidebar-normal Sign Out
         ul.nav
-            li.active
-                //a(href='/exc' aria-expanded='true')
-                //    i.ti-panel
-                //    p
-                //        | Extracurricular
-                //        //b.caret
-                a(data-toggle='collapse' href='#dashboardOverview' aria-expanded='true')
+            li#exc
+                a(data-toggle='collapse' href='#dashboardOverview')
                     i.ti-music
                     p
                         | Extracurricular
@@ -47,15 +42,15 @@
 
                 #dashboardOverview.collapse.in
                     ul.nav
-                        li.active
+                        li#my_exc
                             a(href='/exc?my=true')
                                 span.sidebar-mini My
                                 span.sidebar-normal My Activities
-                        li
+                        li#search_exc
                             a(href='/exc')
                                 span.sidebar-mini S
                                 span.sidebar-normal Search Activities
-            li
+            li#school
                 a(data-toggle='collapse' href='#schoolOptions')
                     i.ti-book
                     p
@@ -63,37 +58,16 @@
                         b.caret
                 #schoolOptions.collapse
                     ul.nav
-                        li
+                        li#my_school
                             a(href='/school?my=true')
                                 span.sidebar-mini my
                                 span.sidebar-normal My School
-                        li
+                        li#search_school
                             a(href='/school')
                                 span.sidebar-mini S
                                 span.sidebar-normal Search Schools
-                        //li
-                        //    a(href='../components/panels.html')
-                        //        span.sidebar-mini P
-                        //        span.sidebar-normal Panels
-                        //li
-                        //    a(href='../components/sweet-alert.html')
-                        //        span.sidebar-mini SA
-                        //        span.sidebar-normal Sweet Alert
-                        //li
-                        //    a(href='../components/notifications.html')
-                        //        span.sidebar-mini N
-                        //        span.sidebar-normal Notifications
-                        //li
-                        //    a(href='../components/icons.html')
-                        //        span.sidebar-mini I
-                        //        span.sidebar-normal Icons
-                        //li
-                        //    a(href='../components/typography.html')
-                        //        span.sidebar-mini
-                        //            i.ti-panel
-                        //        span.sidebar-normal Typography
             
-            li
+            li#club
                 a(data-toggle='collapse' href='#tablesExamples')
                     i.ti-basketball
                     p
@@ -101,15 +75,15 @@
                         b.caret
                 #tablesExamples.collapse
                     ul.nav
-                        li
+                        li#my_club
                             a(href='/club?my=true')
                                 span.sidebar-mini My
                                 span.sidebar-normal My Clubs
-                        li
+                        li#search_club
                             a(href='/club')
                                 span.sidebar-mini S
                                 span.sidebar-normal Search Clubs
-            li
+            li#rc
                 a(data-toggle='collapse' href='#formsExamples')
                     i.ti-home
                     p
@@ -121,48 +95,3 @@
                             a(href='/rc')
                                 span.sidebar-mini Rc
                                 span.sidebar-normal Residential College
-                        //li
-                        //    a(href='../tables/bootstrap-table.html')
-                        //        span.sidebar-mini BT
-                        //        span.sidebar-normal Bootstrap Table
-                        //li
-                        //    a(href='../tables/datatables.net.html')
-                        //        span.sidebar-mini DT
-                        //        span.sidebar-normal DataTables.net
-            
-            //li
-            //    a(href='../charts.html')
-            //        i.ti-bar-chart-alt
-            //        p Charts
-            //li
-            //    a(href='../calendar.html')
-            //        i.ti-calendar
-            //        p Calendar
-            //li
-            //    a(data-toggle='collapse' href='#pagesExamples')
-            //        i.ti-gift
-            //        p
-            //            | My Profile
-            //            b.caret
-            //    #pagesExamples.collapse
-            //        ul.nav
-            //            li
-            //                a(href='../pages/timeline.html')
-            //                    span.sidebar-mini TP
-            //                    span.sidebar-normal Timeline Page
-            //            li
-            //                a(href='../pages/user.html')
-            //                    span.sidebar-mini UP
-            //                    span.sidebar-normal User Page
-            //            li
-            //                a(href='../pages/login.html')
-            //                    span.sidebar-mini LP
-            //                    span.sidebar-normal Login Page
-            //            li
-            //                a(href='../pages/register.html')
-            //                    span.sidebar-mini RP
-            //                    span.sidebar-normal Register Page
-            //            li
-            //                a(href='../pages/lock.html')
-            //                    span.sidebar-mini LSP
-            //                    span.sidebar-normal Lock Screen Page

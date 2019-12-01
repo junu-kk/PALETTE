@@ -15,7 +15,7 @@ router.get('/', (req, res, next)=> {
           if(err) throw err;
           return res.render('school/newshow', {ct:{
               school:school,
-            }})
+            }, active: ['school', 'my_school']})
         });
   } else {
     School.find({}).exec((err, schools) => {
@@ -24,7 +24,8 @@ router.get('/', (req, res, next)=> {
           return res.render('school/new', {
             ct: {
               schools: schools,
-            }
+            },
+            active: ['school', 'search_school']
           });
         }
     );
@@ -42,7 +43,7 @@ router.get('/:id',(req,res,next)=>{
     if(err) throw err;
     return res.render('school/newshow', {ct:{
       school:school,
-    }});
+    }, ids: ['school']});
   });
 });
 

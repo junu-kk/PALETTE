@@ -19,7 +19,7 @@ router.get('/', (req, res, next)=> {
     if (err) throw err;
     return res.render('mypage/new',{ct:{
       user:user,
-    }});
+    }, active: ['mypage']});
     
   });
 });

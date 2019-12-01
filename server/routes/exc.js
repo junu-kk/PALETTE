@@ -11,12 +11,12 @@ router.get('/', (req, res, next)=> {
     return res.redirect('/login');
   }
   Exc.find({}).exec((err,excs)=>{
-    if(err) throw err;
+  if(err) throw err;
 
-    return res.render('exc/new', {ct:{
+  return res.render('exc/new', {ct:{
       excs:excs
-    }});
-  });
+    }, active: ['exc', 'search_exc']});
+});
 });
 
 //show information of an extracurricular activity
@@ -29,7 +29,7 @@ router.get('/:id',(req,res,next)=>{
     console.log(exc);
     return res.render('exc/newshow',{ct:{
       exc:exc
-    }});
+    }, active: ['exc']});
   });
 });
 

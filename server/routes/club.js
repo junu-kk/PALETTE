@@ -17,7 +17,8 @@ router.get('/', (req, res, next)=>{
       return res.render('club/new', {
         ct: {
           clubs: clubs,
-        }
+        },
+        active: ['club', 'my_club']
       })
     })
   } else {
@@ -27,7 +28,8 @@ router.get('/', (req, res, next)=>{
       return res.render('club/new', {
         ct: {
           clubs: clubs,
-        }
+        },
+        active: ['club', 'search_club']
       });
     });
   }
@@ -44,7 +46,7 @@ router.get('/:id',(req,res,next)=>{
     if(err) throw err;
     return res.render('club/newshow', {ct:{
       club:club,
-    }});
+    }, ids: ['club']});
   });
 });
 
