@@ -9,6 +9,50 @@ head
     include ../includes/navbar.pug
     .content
       block content
+        .container-fluid
+          .row
+            .col-lg-4.col-md-5
+              .card
+                -if(!(ct.exc.pic==null||ct.exc.pic==''))
+                  .image
+                    img(src=ct.exc.pic alt='')
+                .card-content
+                  h2 #{ct.exc.name}
+                  h4 #{ct.exc.info}
+            
+            .col-lg-8.col-md-7  
+              .card
+                .card-header
+                  h4.card-title location
+                .card-content
+                  p #{ct.exc.location}
+              .card
+                .card-header
+                  h4.card-title gu
+                .card-content
+                  p #{ct.exc.gu}
+              .card
+                .card-header
+                  h4.card-title palette type
+                .card-content
+                  p #{ct.exc.palette}
+              .card
+                .card-header
+                  h4.card-title schedule
+                .card-content
+                  p #{ct.exc.sch.date.getFullYear()}.#{ct.exc.sch.date.getMonth()+1}.#{ct.exc.sch.date.getDate()} : #{ct.exc.sch.event}
+              .card
+                .card-header
+                  h4.card-title due
+                .card-content
+                  p #{ct.exc.due.getFullYear()}.#{ct.exc.due.getMonth()+1}.#{ct.exc.due.getDate()}
+              .card
+                .card-content
+                  p For more information, contact to
+                  p #{ct.exc.contact}
+
+      
+      //block content
         style.
           img{
             width:20%

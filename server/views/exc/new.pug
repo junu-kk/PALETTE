@@ -9,12 +9,41 @@ head
     include ../includes/navbar.pug
     .content
       block content
-        style.
-          img{
-            width:10%
-          }
         p palette extracurricular page
-        -for(var i=0;i<ct.excs.length;i++)
+        //이쯤 들어가야 하는 필터
+        -var rows = parseInt(ct.excs.length/3)+1
+        -for(var i=0;i<rows;i++)
+          .row
+            -if(!(ct.excs[3*i]==null || ct.excs[3*i] ==''))
+              .col-lg-3.col-sm-6
+                .card
+                  .card-header
+                    a(href='exc/'+ct.excs[3*i]._id) #{ct.excs[3*i].name}
+                  .image
+                    img(src=ct.excs[3*i].pic alt='')
+                  
+            -if(!(ct.excs[3*i+1]==null || ct.excs[3*i+1] ==''))
+              .col-lg-3.col-sm-6
+                .card
+                  .card-header
+                    a(href='exc/'+ct.excs[3*i+1]._id) #{ct.excs[3*i+1].name}
+                  .image
+                    img(src=ct.excs[3*i+1].pic alt='') 
+                  
+            -if(!(ct.excs[3*i+2]==null || ct.excs[3*i+2] ==''))
+              .col-lg-3.col-sm-6
+                .card
+                  .card-header
+                    a(href='exc/'+ct.excs[3*i+2]._id) #{ct.excs[3*i+2].name}
+                  .image
+                    img(src=ct.excs[3*i+2].pic alt='') 
+                  
+                  
+          
+
+
+
+        //-for(var i=0;i<ct.excs.length;i++)
           img(src=ct.excs[i].pic alt='') 
           a(href='exc/'+ct.excs[i]._id) #{ct.excs[i].name}
           br

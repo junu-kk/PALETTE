@@ -9,20 +9,41 @@ head
     include ../includes/navbar.pug
     .content
       block content
-        style.
-          img{
-            width:20%
-          }
-        h2 #{ct.school.name}
-        -if(!(ct.school.pic==null||ct.school.pic==''))
+        .container-fluid
+          .row
+            .col-lg-4.col-md-5
+              .card
+                -if(!(ct.school.pic==null||ct.school.pic==''))
+                  .image
+                    img(src=ct.school.pic alt='')
+                .card-content
+                  h2 #{ct.school.name}
+                  h4 #{ct.school.info}
+                  h4 #{ct.school.address}
+            
+            .col-lg-8.col-md-7
+              .card
+                .card-header
+                  h4.card-title Clubs in #{ct.school.name}
+                  -for(var i=0;i<ct.school.clubs.length;i++)
+                    a(href='/club/'+ct.school.clubs[i]._id) #{ct.school.clubs[i].name}
+                    p : #{ct.school.clubs[i].info}
+                    br
+                    //이미지를 넣을까 말까
+                    //img(src=ct.school.clubs[i].pic alt='')
+                    
+            
+            
+        //h2 #{ct.school.name}
+        //-if(!(ct.school.pic==null||ct.school.pic==''))
           img(src=ct.school.pic alt='')
-        h3 information :
-        p #{ct.school.info}
-        h3 address :
-        p #{ct.school.address}
+        //h3 information :
+        //p #{ct.school.info}
+        //h3 address :
+        //p #{ct.school.address}
         
-        h3 Clubs in #{ct.school.name} :
-        -for(var i=0;i<ct.school.clubs.length;i++)
+        //h3 Clubs in #{ct.school.name} :
+        //-for(var i=0;i<ct.school.clubs.length;i++)
           img(src=ct.school.clubs[i].pic alt='')
           a(href='/club/'+ct.school.clubs[i]._id) #{ct.school.clubs[i].name}
 
