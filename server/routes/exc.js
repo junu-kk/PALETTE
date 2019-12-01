@@ -5,18 +5,6 @@ var Exc = require('../models/Exc');
 var Apcn = require('../models/Apcn');
 var User = require('../models/User');
 
-
-var Grid = require('gridfs-stream');
-var mongoose = require('mongoose');
-var mongoURI = 'mongodb+srv://KangJunewoo:brian980115@cluster0-mh67x.mongodb.net/palette_test?retryWrites=true&w=majority';
-const conn = mongoose.createConnection(mongoURI);
-let gfs;
-conn.once('open', ()=>{
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('uploads');
-});
-
-
 //show list of extracurricular activities
 router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
@@ -25,40 +13,23 @@ router.get('/', (req, res, next)=> {
   Exc.find({}).exec((err,excs)=>{
     if(err) throw err;
 
-    return res.render('exc', {ct:{
+    return res.render('exc/new', {ct:{
       excs:excs
     }});
   });
 });
+
 //show information of an extracurricular activity
 router.get('/:id',(req,res,next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  console.log('works');
   Exc.findOne({_id:req.params.id}).exec((err,exc)=>{
     if(err) throw err;
     console.log(exc);
-    return res.render('exc/show',{ct:{
+    return res.render('exc/newshow',{ct:{
       exc:exc
     }});
-  });
-});
-
-router.get('/hi/:id', (req,res,next)=>{
-
-  Exc.findOne({_id:req.params.id}).populate('pic').exec((err,exc)=>{
-    if(err) throw err;
-
-    if(exc.pic==null||exc.pic==''){
-      return;
-    }
-    gfs.files.findOne({_id:exc.pic._id},(err,file)=>{
-      if(err) throw err;
-
-      const readstream=gfs.createReadStream(file.filename);
-      readstream.pipe(res);
-    });
   });
 });
 

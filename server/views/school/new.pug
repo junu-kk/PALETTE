@@ -1,0 +1,22 @@
+doctype html
+
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        style.
+          img{
+            width:10%
+          }
+        p palette school page
+        -for(var i=0;i<ct.schools.length;i++)
+          img(src=ct.schools[i].pic alt='') 
+          a(href='school/'+ct.schools[i]._id) #{ct.schools[i].name}
+          br
+
+include ../includes/scripts.pug

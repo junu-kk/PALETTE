@@ -1,0 +1,24 @@
+doctype html
+
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        style.
+          img{
+            width:20%
+          }
+        h2 #{ct.club.name}
+        -if(!(ct.club.school==null||ct.club.school==''))
+          p from #{ct.club.school.name}
+        -if(!(ct.club.pic==null||ct.club.pic==''))
+          img(src=ct.club.pic alt='')
+        h3 information :
+        p #{ct.club.info}
+
+include ../includes/scripts.pug

@@ -1,0 +1,22 @@
+doctype html
+
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        style.
+          img{
+            width:10%
+          }
+        p palette extracurricular page
+        -for(var i=0;i<ct.excs.length;i++)
+          img(src=ct.excs[i].pic alt='') 
+          a(href='exc/'+ct.excs[i]._id) #{ct.excs[i].name}
+          br
+
+include ../includes/scripts.pug

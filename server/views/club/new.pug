@@ -1,0 +1,22 @@
+doctype html
+
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        style.
+          img{
+            width:10%
+          }
+        p palette club page
+        -for(var i=0;i<ct.clubs.length;i++)
+          img(src=ct.clubs[i].pic alt='') 
+          a(href='club/'+ct.clubs[i]._id) #{ct.clubs[i].name}
+          br
+
+include ../includes/scripts.pug

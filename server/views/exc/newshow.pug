@@ -1,0 +1,39 @@
+doctype html
+
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        style.
+          img{
+            width:20%
+          }
+        h2 #{ct.exc.name}
+        -if(!(ct.exc.pic==null||ct.exc.pic==''))
+          img(src=ct.exc.pic alt='')
+        h3 information :
+        p #{ct.exc.info}
+        h3 location :
+        p #{ct.exc.location}
+        h3 gu :
+        p #{ct.exc.gu}
+        h3 palette type :
+        p #{ct.exc.palette}
+        h3 schedule :
+        p #{ct.exc.sch.date.getFullYear()}.#{ct.exc.sch.date.getMonth()+1}.#{ct.exc.sch.date.getDate()}
+        p #{ct.exc.sch.event}
+        br
+        h3 due :
+        p #{ct.exc.due.getFullYear()}.#{ct.exc.due.getMonth()+1}.#{ct.exc.due.getDate()}
+        br
+        h4 for more information, please contact to
+        p #{ct.exc.contact}
+        br
+        a(href="/exc/apcn/"+ct.exc._id) enroll
+
+include ../includes/scripts.pug
