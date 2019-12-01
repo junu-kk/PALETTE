@@ -142,15 +142,33 @@ head
                       .col-md-4
                         .form-group
                           label PA
-                          input.form-control.border-input(name='pa' type='text' placeholder='your first palette' value=ct.user.my_palette[0])
+                          select.selectpicker(name='pa' data-style='btn-danger' data-size='6' value=ct.user.my_palette[0])
+                            option(value='Arts') Arts
+                            option(value='Academic') Academic
+                            option(value='Media') Media
+                            option(value='Community') Community
+                            option(value='STEM') STEM
+                            option(value='Sports') Sports
                       .col-md-4
                         .form-group
                           label LE
-                          input.form-control.border-input(name='le' type='text' placeholder='your second palette' value=ct.user.my_palette[1])
+                          select.selectpicker(name='le' data-style='btn-warning' data-size='6' value=ct.user.my_palette[0])
+                            option(value='Arts') Arts
+                            option(value='Academic') Academic
+                            option(value='Media') Media
+                            option(value='Community') Community
+                            option(value='STEM') STEM
+                            option(value='Sports') Sports
                       .col-md-4
                         .form-group
                           label TTE
-                          input.form-control.border-input(name='tte' type='text' placeholder='your third palette' value=ct.user.my_palette[2])
+                          select.selectpicker(name='tte' data-style='btn-success' data-size='6' value=ct.user.my_palette[0])
+                            option(value='Arts') Arts
+                            option(value='Academic') Academic
+                            option(value='Media') Media
+                            option(value='Community') Community
+                            option(value='STEM') STEM
+                            option(value='Sports') Sports
                     .row
                       .col-md-12
                         .form-group

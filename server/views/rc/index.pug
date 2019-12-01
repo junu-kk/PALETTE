@@ -1,4 +1,17 @@
-extends ../layout
+doctype html
 
-block content
-  p palette RC page
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        h3 RC Page
+        br
+        h5 Developing!
+
+    include ../includes/footer.pug
+include ../includes/scripts.pug

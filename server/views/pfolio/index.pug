@@ -1,20 +1,17 @@
-extends ../layout
+doctype html
 
-block content
-  //position, awards, projects, internships
-  h3 Positions
-  -for(var i=0;i<10;i++)
-    p #{ct.pfolio.pos[i]}
-  br
-  h3 Awards
-  -for(i=0;i<10;i++)
-    p #{ct.pfolio.awards[i]}
-  br
-  h3 Projects
-  -for(i=0;i<10;i++)
-    p #{ct.pfolio.projs[i]}
-  br
-  h3 Internships
-  -for(i=0;i<10;i++)
-    p #{ct.pfolio.interns[i]}
-  
+head
+  include ../includes/head.pug
+
+.wrapper
+  include ../includes/sidebar.pug
+  .main-panel
+    include ../includes/navbar.pug
+    .content
+      block content
+        h3 Portfolio Page
+        br
+        h5 Developing!
+
+    include ../includes/footer.pug
+include ../includes/scripts.pug

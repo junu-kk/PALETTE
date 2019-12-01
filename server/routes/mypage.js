@@ -41,8 +41,10 @@ router.post('/update', (req,res)=>{
       if(err) throw err;
     });
 
-    res.redirect('/mypage');
-  })
+    
+  });
+  
+  res.redirect('/mypage');
 })
 
 //uploads new profile picture
