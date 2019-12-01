@@ -1,5 +1,4 @@
 doctype html
-
 head
   include ../includes/head.pug
 .wrapper
@@ -104,7 +103,7 @@ head
                     .text-center
                       button.btn.btn-info.btn-fill.btn-wd(type='submit') Update Profile Picture
                     .clearfix
-                          
+
             form(method='POST' action='/mypage/update')
               .card
                 .card-header
@@ -175,10 +174,10 @@ head
                           label About Me
                           input.form-control.border-input(name='bio' type='text' placeholder='your bio' value=ct.user.bio)
                           input.form-control.border-input(name='fun_facts' type='text' placeholder='your fun facts' value=ct.user.fun_facts)
-                  
+
                     .text-center
                       button.btn.btn-info.btn-fill.btn-wd(type='submit') Update Profile
                     .clearfix
-    
+
     include ../includes/footer.pug
 include ../includes/scripts.pug

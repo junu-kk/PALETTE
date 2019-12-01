@@ -1,5 +1,4 @@
 doctype html
-
 head
   include ../includes/head.pug
 
@@ -27,14 +26,14 @@ head
                         span.btn-label
                           i.fa.fa-check
                         | &#x9;                                            Go
-                  
-                  
-          
+
+
+
 
 
 
         //-for(var i=0;i<ct.excs.length;i++)
-          img(src=ct.excs[i].pic alt='') 
+          img(src=ct.excs[i].pic alt='')
           a(href='exc/'+ct.excs[i]._id) #{ct.excs[i].name}
           br
     include ../includes/footer.pug

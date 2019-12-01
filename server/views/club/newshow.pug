@@ -1,5 +1,4 @@
 doctype html
-
 head
   include ../includes/head.pug
 
@@ -16,7 +15,7 @@ head
                 -if(!(ct.club.pic==null||ct.club.pic==''))
                   .image-center
                     img(src=ct.club.pic alt='')
-                
+
                 h3 #{ct.club.name}
                 h5 #{ct.club.info}
     include ../includes/footer.pug
