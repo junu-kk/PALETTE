@@ -27,27 +27,27 @@
                                 span.sidebar-normal Sign Out
         ul.nav
             li.active
-                a(href='/exc' aria-expanded='true')
-                    i.ti-panel
-                    p
-                        | Extracurricular
-                        //b.caret
-                //a(data-toggle='collapse' href='#dashboardOverview' aria-expanded='true')
+                //a(href='/exc' aria-expanded='true')
                 //    i.ti-panel
                 //    p
                 //        | Extracurricular
-                //        b.caret
-                //
-                //#dashboardOverview.collapse.in
-                //    ul.nav
-                //        li.active
-                //            a(href='../dashboard/overview.html')
-                //                span.sidebar-mini O
-                //                span.sidebar-normal Overview
-                //        li
-                //            a(href='../dashboard/stats.html')
-                //                span.sidebar-mini S
-                //                span.sidebar-normal Stats
+                //        //b.caret
+                a(data-toggle='collapse' href='#dashboardOverview' aria-expanded='true')
+                    i.ti-panel
+                    p
+                        | Extracurricular
+                        b.caret
+
+                #dashboardOverview.collapse.in
+                    ul.nav
+                        li.active
+                            a(href='/exc?my=true')
+                                span.sidebar-mini My
+                                span.sidebar-normal My Activities
+                        li
+                            a(href='/exc')
+                                span.sidebar-mini S
+                                span.sidebar-normal Search Activities
             li
                 a(data-toggle='collapse' href='#schoolOptions')
                     i.ti-package
