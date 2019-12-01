@@ -18,7 +18,10 @@ head
                   .row
                     .col-sm-2
                       .img-center
-                        img(src=ct.schools[i].pic alt='')
+                        -if(!(ct.schools[i].pic==null || ct.schools[i].pic==''))
+                          img(src=ct.schools[i].pic alt='')
+                        -else
+                          img(src='/image/default_pic.png' alt='')
                       br
                     .col-sm-9
                       h3 #{ct.schools[i].name}
@@ -61,4 +64,5 @@ head
           a(href='school/'+ct.schools[i]._id) #{ct.schools[i].name}
           br
 
+    include ../includes/footer.pug
 include ../includes/scripts.pug

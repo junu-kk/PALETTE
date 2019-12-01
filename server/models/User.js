@@ -39,6 +39,7 @@ var userSchema = mongoose.Schema({
   }],
   pic:{
     type:String,
+    default:'/image/default_pic.png'
   },
   bio:{
     type:String,

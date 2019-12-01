@@ -15,7 +15,8 @@ head
                 img(src='../../assets/img/background.jpg' alt='...')
               .card-content
                 .author
-                  img.avatar.border-white(src=ct.user.pic alt='...')
+                  -if(!(ct.user.pic==null || ct.user.pic==''))
+                    img(src=ct.user.pic alt='')
                   h4.card-title
                     | #{ct.user.fname} #{ct.user.lname}
                     br
@@ -45,7 +46,7 @@ head
                       | 24,6$
                       br
                       small Spent
-            .card
+            //.card
               .card-header
                 h4.card-title Team Members
               .card-content
@@ -160,25 +161,6 @@ head
                     .text-center
                       button.btn.btn-info.btn-fill.btn-wd(type='submit') Update Profile
                     .clearfix
-    footer.footer
-      .container-fluid
-        nav.pull-left
-          ul
-            li
-              a(href='https://www.creative-tim.com')
-                | Creative Tim
-            li
-              a(href='https://blog.creative-tim.com')
-                | Blog
-            li
-              a(href='https://www.creative-tim.com/license')
-                | Licenses
-        .copyright.pull-right
-          | &copy; 
-          script.
-            document.write(new Date().getFullYear())
-          | , made with 
-          i.fa.fa-heart.heart
-          |  by 
-          a(href='https://www.creative-tim.com') Creative Tim
+    
+    include ../includes/footer.pug
 include ../includes/scripts.pug

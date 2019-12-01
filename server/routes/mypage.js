@@ -41,7 +41,7 @@ router.post('/update', (req,res)=>{
       if(err) throw err;
     });
 
-    res.redirect('/main');
+    res.redirect('/mypage');
   })
 })
 
@@ -57,7 +57,7 @@ router.post('/upload', upload.single('file'), (req, res, next) => {
       if (err) throw err;
     });
     
-    res.redirect('/main');
+    res.redirect('/mypage');
   });
 });
 
