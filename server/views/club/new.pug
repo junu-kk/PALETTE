@@ -9,14 +9,23 @@ head
     include ../includes/navbar.pug
     .content
       block content
-        style.
-          img{
-            width:10%
-          }
         p palette club page
         -for(var i=0;i<ct.clubs.length;i++)
-          img(src=ct.clubs[i].pic alt='') 
-          a(href='club/'+ct.clubs[i]._id) #{ct.clubs[i].name}
-          br
+          .row
+            .col-lg-10
+              .card
+                .card-content
+                  .row
+                    .col-sm-2
+                      .img-center
+                        img(src=ct.clubs[i].pic alt='')
+                      br
+                    .col-sm-9
+                      h3 #{ct.clubs[i].name}
+                      h5 #{ct.clubs[i].info}
+                      button.btn.btn-wd.btn-success(type='button' onclick="location.href='/club/"+ct.clubs[i]._id+"'")
+                        span.btn-label
+                          i.fa.fa-check
+                        | &#x9;                                            Go
 
 include ../includes/scripts.pug

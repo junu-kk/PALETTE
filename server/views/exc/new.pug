@@ -9,34 +9,24 @@ head
     include ../includes/navbar.pug
     .content
       block content
-        p palette extracurricular page
-        //이쯤 들어가야 하는 필터
-        -var rows = parseInt(ct.excs.length/3)+1
-        -for(var i=0;i<rows;i++)
+        p palette exc page
+        -for(var i=0;i<ct.excs.length;i++)
           .row
-            -if(!(ct.excs[3*i]==null || ct.excs[3*i] ==''))
-              .col-lg-3.col-sm-6
-                .card
-                  .card-header
-                    a(href='exc/'+ct.excs[3*i]._id) #{ct.excs[3*i].name}
-                  .image
-                    img(src=ct.excs[3*i].pic alt='')
-                  
-            -if(!(ct.excs[3*i+1]==null || ct.excs[3*i+1] ==''))
-              .col-lg-3.col-sm-6
-                .card
-                  .card-header
-                    a(href='exc/'+ct.excs[3*i+1]._id) #{ct.excs[3*i+1].name}
-                  .image
-                    img(src=ct.excs[3*i+1].pic alt='') 
-                  
-            -if(!(ct.excs[3*i+2]==null || ct.excs[3*i+2] ==''))
-              .col-lg-3.col-sm-6
-                .card
-                  .card-header
-                    a(href='exc/'+ct.excs[3*i+2]._id) #{ct.excs[3*i+2].name}
-                  .image
-                    img(src=ct.excs[3*i+2].pic alt='') 
+            .col-lg-10
+              .card
+                .card-content
+                  .row
+                    .col-sm-2
+                      .img-center
+                        img(src=ct.excs[i].pic alt='')
+                      br
+                    .col-sm-9
+                      h3 #{ct.excs[i].name}
+                      h5 #{ct.excs[i].info}
+                      button.btn.btn-wd.btn-success(type='button' onclick="location.href='/exc/"+ct.excs[i]._id+"'")
+                        span.btn-label
+                          i.fa.fa-check
+                        | &#x9;                                            Go
                   
                   
           

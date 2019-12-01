@@ -9,16 +9,15 @@ head
     include ../includes/navbar.pug
     .content
       block content
-        style.
-          img{
-            width:20%
-          }
-        h2 #{ct.club.name}
-        -if(!(ct.club.school==null||ct.club.school==''))
-          p from #{ct.club.school.name}
-        -if(!(ct.club.pic==null||ct.club.pic==''))
-          img(src=ct.club.pic alt='')
-        h3 information :
-        p #{ct.club.info}
+        .row
+          .col-lg-3.col-md-5
+            .card
+              .card-content
+                -if(!(ct.club.pic==null||ct.club.pic==''))
+                  .image-center
+                    img(src=ct.club.pic alt='')
+                
+                h3 #{ct.club.name}
+                h5 #{ct.club.info}
 
 include ../includes/scripts.pug
