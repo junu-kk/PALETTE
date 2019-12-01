@@ -10,8 +10,28 @@ head
     .content
       block content
         p palette school page
-        -var rows = parseInt(ct.schools.length/3)+1
-        -for(var i=0;i<rows;i++)
+        -for(var i=0;i<ct.schools.length;i++)
+          .row
+            .col-lg-10
+              .card
+                .card-content
+                  .row
+                    .col-sm-2
+                      .img-center
+                        img(src=ct.schools[i].pic alt='')
+                      br
+                    .col-sm-9
+                      h3 #{ct.schools[i].name}
+                      h5 #{ct.schools[i].info}
+                      button.btn.btn-wd.btn-success(type='button' onclick="location.href='/school/"+ct.schools[i]._id+"'")
+                        span.btn-label
+                          i.fa.fa-check
+                        | &#x9;                                            Go
+
+
+        
+        //-var rows = parseInt(ct.schools.length/3)+1
+        //-for(var i=0;i<rows;i++)
           .row
             -if(!(ct.schools[3*i]==null || ct.schools[3*i] ==''))
               .col-lg-3.col-sm-6

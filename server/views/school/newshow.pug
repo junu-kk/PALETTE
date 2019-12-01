@@ -9,23 +9,37 @@ head
     include ../includes/navbar.pug
     .content
       block content
-        .container-fluid
-          .row
-            .col-lg-4.col-md-5
-              .card
+        .row
+          .col-lg-3.col-md-5
+            .card
+              .card-content
                 -if(!(ct.school.pic==null||ct.school.pic==''))
-                  .image
+                  .image-center
                     img(src=ct.school.pic alt='')
-                .card-content
-                  h2 #{ct.school.name}
-                  h4 #{ct.school.info}
-                  h4 #{ct.school.address}
-            
-            .col-lg-8.col-md-7
-              .card
-                .card-header
-                  h4.card-title Clubs in #{ct.school.name}
-                  -for(var i=0;i<ct.school.clubs.length;i++)
+                
+                h3 #{ct.school.name}
+                h5 #{ct.school.info}
+                h5 at #{ct.school.address}
+          
+          .col-lg-8.col-md-7
+            .card
+              .card-header
+                h4.card-title Clubs in #{ct.school.name}
+              .card-content
+                -for(var i=0;i<ct.school.clubs.length;i++)
+                  .row
+                    .col-sm-2
+                      .img-center
+                        img(src=ct.school.clubs[i].pic alt='')
+                      br
+                    .col-sm-7
+                      h5 #{ct.school.clubs[i].name}
+                      p #{ct.school.clubs[i].info}
+                      button.btn.btn-xs.btn-success(onclick="location.href='/club/"+ct.school.clubs[i]._id+"'")
+                        span.btn-label
+                          i.fa.fa-check
+                        | &#x9;                                            Check Out
+                  //-for(var i=0;i<ct.school.clubs.length;i++)
                     a(href='/club/'+ct.school.clubs[i]._id) #{ct.school.clubs[i].name}
                     p : #{ct.school.clubs[i].info}
                     br
