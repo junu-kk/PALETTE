@@ -3,7 +3,7 @@
       Tip 1: you can change the color of the sidebar's background using: data-background-color="white | brown"
       Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
     .logo.text-center
-        a.simple-text.logo-normal(href='https://www.creative-tim.com')
+        a.simple-text.logo-normal(href='/main')
             | Palette
     .sidebar-wrapper
         .user
@@ -18,71 +18,73 @@
                 #collapseExample.collapse
                     ul.nav
                         li
-                            a(href='#profile')
-                                span.sidebar-mini Mp
+                            a(href='/mypage')
+                                //span.sidebar-mini My
                                 span.sidebar-normal My Profile
                         li
-                            a(href='#edit')
-                                span.sidebar-mini Ep
-                                span.sidebar-normal Edit Profile
-                        li
-                            a(href='#settings')
-                                span.sidebar-mini S
-                                span.sidebar-normal Settings
+                            a(href='/logout')
+                                //span.sidebar-mini S
+                                span.sidebar-normal Sign Out
         ul.nav
             li.active
-                a(data-toggle='collapse' href='#dashboardOverview' aria-expanded='true')
+                a(href='/exc' aria-expanded='true')
                     i.ti-panel
                     p
                         | Extracurricular
-                        b.caret
-                #dashboardOverview.collapse.in
-                    ul.nav
-                        li.active
-                            a(href='../dashboard/overview.html')
-                                span.sidebar-mini O
-                                span.sidebar-normal Overview
-                        li
-                            a(href='../dashboard/stats.html')
-                                span.sidebar-mini S
-                                span.sidebar-normal Stats
+                        //b.caret
+                //a(data-toggle='collapse' href='#dashboardOverview' aria-expanded='true')
+                //    i.ti-panel
+                //    p
+                //        | Extracurricular
+                //        b.caret
+                //
+                //#dashboardOverview.collapse.in
+                //    ul.nav
+                //        li.active
+                //            a(href='../dashboard/overview.html')
+                //                span.sidebar-mini O
+                //                span.sidebar-normal Overview
+                //        li
+                //            a(href='../dashboard/stats.html')
+                //                span.sidebar-mini S
+                //                span.sidebar-normal Stats
             li
-                a(data-toggle='collapse' href='#componentsExamples')
+                a(data-toggle='collapse' href='#schoolOptions')
                     i.ti-package
                     p
                         | School
                         b.caret
-                #componentsExamples.collapse
+                #schoolOptions.collapse
                     ul.nav
                         li
-                            a(href='../components/buttons.html')
-                                span.sidebar-mini B
-                                span.sidebar-normal Buttons
+                            a(href='/school?my=true')
+                                span.sidebar-mini my
+                                span.sidebar-normal My School
                         li
-                            a(href='../components/grid.html')
-                                span.sidebar-mini GS
-                                span.sidebar-normal Grid System
-                        li
-                            a(href='../components/panels.html')
-                                span.sidebar-mini P
-                                span.sidebar-normal Panels
-                        li
-                            a(href='../components/sweet-alert.html')
-                                span.sidebar-mini SA
-                                span.sidebar-normal Sweet Alert
-                        li
-                            a(href='../components/notifications.html')
-                                span.sidebar-mini N
-                                span.sidebar-normal Notifications
-                        li
-                            a(href='../components/icons.html')
-                                span.sidebar-mini I
-                                span.sidebar-normal Icons
-                        li
-                            a(href='../components/typography.html')
-                                span.sidebar-mini
-                                    i.ti-panel
-                                span.sidebar-normal Typography
+                            a(href='/school')
+                                span.sidebar-mini S
+                                span.sidebar-normal Search Schools
+                        //li
+                        //    a(href='../components/panels.html')
+                        //        span.sidebar-mini P
+                        //        span.sidebar-normal Panels
+                        //li
+                        //    a(href='../components/sweet-alert.html')
+                        //        span.sidebar-mini SA
+                        //        span.sidebar-normal Sweet Alert
+                        //li
+                        //    a(href='../components/notifications.html')
+                        //        span.sidebar-mini N
+                        //        span.sidebar-normal Notifications
+                        //li
+                        //    a(href='../components/icons.html')
+                        //        span.sidebar-mini I
+                        //        span.sidebar-normal Icons
+                        //li
+                        //    a(href='../components/typography.html')
+                        //        span.sidebar-mini
+                        //            i.ti-panel
+                        //        span.sidebar-normal Typography
             li
                 a(data-toggle='collapse' href='#formsExamples')
                     i.ti-clipboard
@@ -116,21 +118,21 @@
                 #tablesExamples.collapse
                     ul.nav
                         li
-                            a(href='../tables/regular.html')
-                                span.sidebar-mini RT
-                                span.sidebar-normal Regular Tables
+                            a(href='/club?my=true')
+                                span.sidebar-mini My
+                                span.sidebar-normal My Clubs
                         li
-                            a(href='../tables/extended.html')
-                                span.sidebar-mini ET
-                                span.sidebar-normal Extended Tables
-                        li
-                            a(href='../tables/bootstrap-table.html')
-                                span.sidebar-mini BT
-                                span.sidebar-normal Bootstrap Table
-                        li
-                            a(href='../tables/datatables.net.html')
-                                span.sidebar-mini DT
-                                span.sidebar-normal DataTables.net
+                            a(href='/club')
+                                span.sidebar-mini S
+                                span.sidebar-normal Search Clubs
+                        //li
+                        //    a(href='../tables/bootstrap-table.html')
+                        //        span.sidebar-mini BT
+                        //        span.sidebar-normal Bootstrap Table
+                        //li
+                        //    a(href='../tables/datatables.net.html')
+                        //        span.sidebar-mini DT
+                        //        span.sidebar-normal DataTables.net
             li
                 a(data-toggle='collapse' href='#mapsExamples')
                     i.ti-map

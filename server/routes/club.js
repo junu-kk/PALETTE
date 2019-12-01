@@ -8,13 +8,29 @@ router.get('/', (req, res, next)=>{
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  Club.find({}).exec((err,clubs)=>{
-    if(err) throw err;
+  if(req.query.my === 'true') {
+    Club.find({
+      '_id': {$in: req.user.clubs}
+    }).exec((err, clubs) => {
+      if (err) throw err;
 
-    return res.render('club/new', {ct:{
-      clubs:clubs,
-    }});
-  });
+      return res.render('club/new', {
+        ct: {
+          clubs: clubs,
+        }
+      })
+    })
+  } else {
+    Club.find({}).exec((err, clubs) => {
+      if (err) throw err;
+
+      return res.render('club/new', {
+        ct: {
+          clubs: clubs,
+        }
+      });
+    });
+  }
 });
 
 //show information of a club

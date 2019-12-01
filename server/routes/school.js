@@ -8,13 +8,27 @@ router.get('/', (req, res, next)=> {
   if(req.isUnauthenticated()){
     return res.redirect('/login');
   }
-  School.find({}).exec((err,schools)=>{
-    if(err) throw err;
+  if(req.query.my === 'true') {
+    School.findById(req.user.school)
+        .populate('clubs')
+        .exec((err,school)=>{
+          if(err) throw err;
+          return res.render('school/newshow', {ct:{
+              school:school,
+            }})
+        });
+  } else {
+    School.find({}).exec((err, schools) => {
+          if (err) throw err;
 
-    return res.render('school/new', {ct:{
-      schools:schools,
-    }});
-  });
+          return res.render('school/new', {
+            ct: {
+              schools: schools,
+            }
+          });
+        }
+    );
+  }
 });
 
 //shows information of school
